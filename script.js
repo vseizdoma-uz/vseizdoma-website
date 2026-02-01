@@ -44,7 +44,7 @@ const translations = {
         furniture: 'Мебель',
         computers: 'Компьютеры',
         gasStoves: 'Газовые плиты',
-        call: 'Позвонить',
+        andMore: 'И многое другое',
         howItWorksTitle: 'Как это работает',
         step1: 'Позвоните нам',
         step1Desc: 'Свяжитесь с нами любым удобным способом',
@@ -81,7 +81,7 @@ const translations = {
         furniture: 'Mebel',
         computers: 'Kompyuterlar',
         gasStoves: 'Gaz plitalari',
-        call: 'Qo\'ng\'iroq qilish',
+        andMore: 'Va boshqa ko\'p narsalar',
         howItWorksTitle: 'Bu qanday ishlaydi',
         step1: 'Bizga qo\'ng\'iroq qiling',
         step1Desc: 'Qulay usulda biz bilan bog\'laning',
@@ -118,7 +118,7 @@ const translations = {
         furniture: 'Furniture',
         computers: 'Computers',
         gasStoves: 'Gas stoves',
-        call: 'Call',
+        andMore: 'And much more',
         howItWorksTitle: 'How it works',
         step1: 'Call us',
         step1Desc: 'Contact us in any convenient way',
@@ -174,11 +174,10 @@ function setLanguage(lang) {
 
     // Категории
     document.querySelector('.categories .section-title').textContent = t.categoriesTitle;
-    const categoryCards = document.querySelectorAll('.category-card');
-    const categoryNames = [t.refrigerators, t.washingMachines, t.tvs, t.airConditioners, t.microwaves, t.furniture, t.computers, t.gasStoves];
-    categoryCards.forEach((card, i) => {
-        card.querySelector('h3').textContent = categoryNames[i];
-        card.querySelector('.call-btn').textContent = t.call;
+    const categoryItems = document.querySelectorAll('.category-item');
+    const categoryNames = [t.refrigerators, t.washingMachines, t.tvs, t.airConditioners, t.gasStoves, t.furniture, t.computers, t.andMore];
+    categoryItems.forEach((item, i) => {
+        item.querySelector('span:last-child').textContent = categoryNames[i];
     });
 
     // Как это работает
@@ -223,7 +222,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Добавляем анимацию к карточкам
-document.querySelectorAll('.feature-card, .category-card, .step').forEach(el => {
+document.querySelectorAll('.feature-card, .category-item, .step').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
