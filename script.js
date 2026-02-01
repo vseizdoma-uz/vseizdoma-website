@@ -45,6 +45,7 @@ const translations = {
         computers: 'Компьютеры',
         gasStoves: 'Газовые плиты',
         andMore: 'И многое другое',
+        galleryTitle: 'Наши услуги',
         howItWorksTitle: 'Как это работает',
         step1: 'Позвоните нам',
         step1Desc: 'Свяжитесь с нами любым удобным способом',
@@ -82,6 +83,7 @@ const translations = {
         computers: 'Kompyuterlar',
         gasStoves: 'Gaz plitalari',
         andMore: 'Va boshqa ko\'p narsalar',
+        galleryTitle: 'Bizning xizmatlar',
         howItWorksTitle: 'Bu qanday ishlaydi',
         step1: 'Bizga qo\'ng\'iroq qiling',
         step1Desc: 'Qulay usulda biz bilan bog\'laning',
@@ -119,6 +121,7 @@ const translations = {
         computers: 'Computers',
         gasStoves: 'Gas stoves',
         andMore: 'And much more',
+        galleryTitle: 'Our services',
         howItWorksTitle: 'How it works',
         step1: 'Call us',
         step1Desc: 'Contact us in any convenient way',
@@ -180,6 +183,9 @@ function setLanguage(lang) {
         item.querySelector('span:last-child').textContent = categoryNames[i];
     });
 
+    // Галерея
+    document.querySelector('.gallery .section-title').textContent = t.galleryTitle;
+
     // Как это работает
     document.querySelector('.how-it-works .section-title').textContent = t.howItWorksTitle;
     const steps = document.querySelectorAll('.step');
@@ -222,7 +228,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Добавляем анимацию к карточкам
-document.querySelectorAll('.feature-card, .category-item, .step').forEach(el => {
+document.querySelectorAll('.feature-card, .category-item, .gallery-item, .step').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
