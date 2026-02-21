@@ -44,6 +44,8 @@ const translations = {
         furniture: 'Мебель',
         computers: 'Компьютеры',
         gasStoves: 'Газовые плиты',
+        carpets: 'Ковры',
+        kitchenSet: 'Кухонный гарнитур',
         andMore: 'И многое другое',
         galleryTitle: 'Наши услуги',
         howItWorksTitle: 'Как это работает',
@@ -82,6 +84,8 @@ const translations = {
         furniture: 'Mebel',
         computers: 'Kompyuterlar',
         gasStoves: 'Gaz plitalari',
+        carpets: 'Gilamlar',
+        kitchenSet: 'Oshxona garnituri',
         andMore: 'Va boshqa ko\'p narsalar',
         galleryTitle: 'Bizning xizmatlar',
         howItWorksTitle: 'Bu qanday ishlaydi',
@@ -120,6 +124,8 @@ const translations = {
         furniture: 'Furniture',
         computers: 'Computers',
         gasStoves: 'Gas stoves',
+        carpets: 'Carpets',
+        kitchenSet: 'Kitchen set',
         andMore: 'And much more',
         galleryTitle: 'Our services',
         howItWorksTitle: 'How it works',
@@ -178,7 +184,7 @@ function setLanguage(lang) {
     // Категории
     document.querySelector('.categories .section-title').textContent = t.categoriesTitle;
     const categoryItems = document.querySelectorAll('.category-item');
-    const categoryNames = [t.refrigerators, t.washingMachines, t.tvs, t.airConditioners, t.gasStoves, t.furniture, t.computers, t.andMore];
+    const categoryNames = [t.refrigerators, t.washingMachines, t.tvs, t.airConditioners, t.gasStoves, t.furniture, t.computers, t.carpets, t.kitchenSet, t.andMore];
     categoryItems.forEach((item, i) => {
         item.querySelector('span:last-child').textContent = categoryNames[i];
     });
