@@ -35,18 +35,7 @@ const translations = {
         profitableDesc: 'Честная оценка техники. Цены выше, чем у конкурентов',
         convenient: 'Удобно',
         convenientDesc: 'Бесплатный вывоз техники. Оплата наличными на месте',
-        categoriesTitle: 'Что мы скупаем',
-        refrigerators: 'Холодильники',
-        washingMachines: 'Стиральные машины',
-        tvs: 'Телевизоры',
-        airConditioners: 'Кондиционеры',
-        microwaves: 'Микроволновки',
-        furniture: 'Мебель',
-        computers: 'Компьютеры',
-        gasStoves: 'Газовые плиты',
-        carpets: 'Ковры',
-        kitchenSet: 'Кухонный гарнитур',
-        andMore: 'И многое другое',
+        aboutTitle: '8 лет на рынке Ташкента',
         galleryTitle: 'Наши услуги',
         howItWorksTitle: 'Как это работает',
         step1: 'Позвоните нам',
@@ -75,18 +64,7 @@ const translations = {
         profitableDesc: 'Texnikani halol baholash. Raqobatchilardan yuqori narxlar',
         convenient: 'Qulay',
         convenientDesc: 'Bepul olib ketish. Joyida naqd pul bilan to\'lov',
-        categoriesTitle: 'Nimani sotib olamiz',
-        refrigerators: 'Muzlatgichlar',
-        washingMachines: 'Kir yuvish mashinalari',
-        tvs: 'Televizorlar',
-        airConditioners: 'Konditsionerlar',
-        microwaves: 'Mikroto\'lqinli pechlar',
-        furniture: 'Mebel',
-        computers: 'Kompyuterlar',
-        gasStoves: 'Gaz plitalari',
-        carpets: 'Gilamlar',
-        kitchenSet: 'Oshxona garnituri',
-        andMore: 'Va boshqa ko\'p narsalar',
+        aboutTitle: 'Toshkent bozorida 8 yil',
         galleryTitle: 'Bizning xizmatlar',
         howItWorksTitle: 'Bu qanday ishlaydi',
         step1: 'Bizga qo\'ng\'iroq qiling',
@@ -115,18 +93,7 @@ const translations = {
         profitableDesc: 'Fair equipment evaluation. Prices higher than competitors',
         convenient: 'Convenient',
         convenientDesc: 'Free pickup. Cash payment on the spot',
-        categoriesTitle: 'What we buy',
-        refrigerators: 'Refrigerators',
-        washingMachines: 'Washing machines',
-        tvs: 'TVs',
-        airConditioners: 'Air conditioners',
-        microwaves: 'Microwaves',
-        furniture: 'Furniture',
-        computers: 'Computers',
-        gasStoves: 'Gas stoves',
-        carpets: 'Carpets',
-        kitchenSet: 'Kitchen set',
-        andMore: 'And much more',
+        aboutTitle: '8 years in Tashkent market',
         galleryTitle: 'Our services',
         howItWorksTitle: 'How it works',
         step1: 'Call us',
@@ -181,13 +148,8 @@ function setLanguage(lang) {
     featureCards[2].querySelector('h3').textContent = t.convenient;
     featureCards[2].querySelector('p').textContent = t.convenientDesc;
 
-    // Категории
-    document.querySelector('.categories .section-title').textContent = t.categoriesTitle;
-    const categoryItems = document.querySelectorAll('.category-item');
-    const categoryNames = [t.refrigerators, t.washingMachines, t.tvs, t.airConditioners, t.gasStoves, t.furniture, t.computers, t.carpets, t.kitchenSet, t.andMore];
-    categoryItems.forEach((item, i) => {
-        item.querySelector('span:last-child').textContent = categoryNames[i];
-    });
+    // О нас
+    document.querySelector('.about-us .section-title').textContent = t.aboutTitle;
 
     // Галерея
     document.querySelector('.gallery .section-title').textContent = t.galleryTitle;
@@ -234,7 +196,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Добавляем анимацию к карточкам
-document.querySelectorAll('.feature-card, .category-item, .gallery-item, .step').forEach(el => {
+document.querySelectorAll('.feature-card, .highlight-item, .gallery-item, .step').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';

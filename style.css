@@ -322,38 +322,49 @@ body {
     font-size: 1rem;
 }
 
-/* Категории */
-.categories {
+/* О нас */
+.about-us {
     padding: 80px 0;
     background: var(--bg);
 }
 
-.categories-simple {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+.about-highlights {
+    display: flex;
+    flex-direction: column;
     gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-.category-item {
+.highlight-item {
     display: flex;
     align-items: center;
     gap: 15px;
-    padding: 20px 25px;
+    padding: 22px 30px;
     background: var(--bg-light);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    font-size: 1.1rem;
-    font-weight: 500;
+    border-radius: 14px;
+    font-size: 1.15rem;
     transition: all 0.2s;
 }
 
-.category-item:hover {
+.highlight-item:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow);
     border-color: var(--primary);
 }
 
-.category-icon {
+.highlight-item a {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 1.3rem;
+}
+
+.highlight-item a:hover {
+    color: var(--primary-dark);
+}
+
+.highlight-icon {
     font-size: 1.8rem;
 }
 
@@ -667,7 +678,8 @@ body {
         height: 36px;
     }
 
-    .categories-simple {
-        grid-template-columns: 1fr;
+    .highlight-item {
+        padding: 18px 20px;
+        font-size: 1rem;
     }
 }
