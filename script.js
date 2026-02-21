@@ -196,7 +196,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Добавляем анимацию к карточкам
-document.querySelectorAll('.feature-card, .highlight-item, .gallery-item, .step').forEach(el => {
+document.querySelectorAll('.feature-card, .about-card, .gallery-item, .step').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
