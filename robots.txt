@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vseizdoma.store/sitemap.xml
