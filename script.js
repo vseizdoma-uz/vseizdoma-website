@@ -109,8 +109,11 @@ const translations = {
         callNow: 'Позвонить сейчас',
         motto: 'Честно • Быстро • Выгодно',
         scrollMore: 'Подробнее',
-        videoTitle: 'Смотрите сами',
-        videoSubtitle: 'Как мы работаем — быстро, честно и удобно'
+        videoHeading: 'Смотрите<br><span class="highlight">как мы работаем</span>',
+        videoDesc: 'Быстро, честно и удобно. Нажмите play и убедитесь сами!',
+        videoFeat1: 'Реальная работа',
+        videoFeat2: 'Без постановки',
+        videoFeat3: 'Как есть'
     },
     uz: {
         heroTitle: 'Uydan <span class="highlight">hammani</span> sotib olaman',
@@ -151,8 +154,11 @@ const translations = {
         callNow: 'Hozir qo\'ng\'iroq qilish',
         motto: 'Halol • Tez • Foydali',
         scrollMore: 'Batafsil',
-        videoTitle: 'O\'zingiz ko\'ring',
-        videoSubtitle: 'Biz qanday ishlaymiz — tez, halol va qulay'
+        videoHeading: 'Ko\'ring<br><span class="highlight">qanday ishlaymiz</span>',
+        videoDesc: 'Tez, halol va qulay. Play bosing va o\'zingiz ishonch hosil qiling!',
+        videoFeat1: 'Haqiqiy ish',
+        videoFeat2: 'Sahnalashtirmasiz',
+        videoFeat3: 'Boricha'
     },
     en: {
         heroTitle: '<span class="highlight">Buy</span> everything from home',
@@ -193,8 +199,11 @@ const translations = {
         callNow: 'Call now',
         motto: 'Honest • Fast • Profitable',
         scrollMore: 'Learn more',
-        videoTitle: 'See for yourself',
-        videoSubtitle: 'How we work — fast, honest and convenient'
+        videoHeading: 'See<br><span class="highlight">how we work</span>',
+        videoDesc: 'Fast, honest and convenient. Press play and see for yourself!',
+        videoFeat1: 'Real work',
+        videoFeat2: 'No staging',
+        videoFeat3: 'As it is'
     }
 };
 
@@ -287,8 +296,14 @@ function setLanguage(lang) {
     // Видео-секция
     const videoSection = document.querySelector('.video-showcase');
     if (videoSection) {
-        videoSection.querySelector('.section-title').textContent = t.videoTitle;
-        videoSection.querySelector('.video-subtitle').textContent = t.videoSubtitle;
+        videoSection.querySelector('.video-heading').innerHTML = t.videoHeading;
+        videoSection.querySelector('.video-desc').textContent = t.videoDesc;
+        const vFeats = videoSection.querySelectorAll('.video-feat');
+        if (vFeats.length >= 3) {
+            vFeats[0].lastChild.textContent = ' ' + t.videoFeat1;
+            vFeats[1].lastChild.textContent = ' ' + t.videoFeat2;
+            vFeats[2].lastChild.textContent = ' ' + t.videoFeat3;
+        }
     }
 
     // Контакты
@@ -319,7 +334,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Добавляем анимацию к карточкам
-document.querySelectorAll('.about-card, .gallery-item, .step, .promo-container').forEach(el => {
+document.querySelectorAll('.about-card, .gallery-item, .step, .promo-container, .video-layout').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
@@ -344,14 +359,11 @@ navbar.style.transition = 'transform 0.3s ease';
 // Видеоплеер
 (function() {
     const video = document.getElementById('showcaseVideo');
-    const container = video?.closest('.video-container');
+    const screen = video?.closest('.phone-screen');
     const overlay = document.getElementById('videoPlayOverlay');
-    const controls = document.getElementById('videoControls');
-    const playBtn = document.getElementById('vcPlay');
-    const muteBtn = document.getElementById('vcMute');
-    const fullscreenBtn = document.getElementById('vcFullscreen');
-    const progress = document.getElementById('vcProgress');
-    const progressFilled = document.getElementById('vcProgressFilled');
+    const muteBtn = document.getElementById('vbMute');
+    const progress = document.getElementById('vbProgress');
+    const progressFilled = document.getElementById('vbProgressFilled');
 
     if (!video) return;
 
@@ -359,30 +371,25 @@ navbar.style.transition = 'transform 0.3s ease';
 
     function playVideo() {
         video.play();
-        container.classList.add('playing');
         overlay.classList.add('hidden');
-    }
-
-    function pauseVideo() {
-        video.pause();
-        container.classList.remove('playing');
     }
 
     function togglePlay() {
         if (video.paused) {
             playVideo();
         } else {
-            pauseVideo();
+            video.pause();
+            overlay.classList.remove('hidden');
         }
     }
 
     overlay.addEventListener('click', playVideo);
-    playBtn.addEventListener('click', togglePlay);
 
-    video.addEventListener('ended', () => {
-        container.classList.remove('playing');
-        overlay.classList.remove('hidden');
-        progressFilled.style.width = '0%';
+    // Тап по видео — пауза/плей
+    screen.addEventListener('click', (e) => {
+        if (e.target.closest('.video-play-overlay') || e.target.closest('.vb-controls') || e.target.closest('.vb-progress')) return;
+        if (!overlay.classList.contains('hidden')) return;
+        togglePlay();
     });
 
     video.addEventListener('timeupdate', () => {
@@ -400,24 +407,6 @@ navbar.style.transition = 'transform 0.3s ease';
 
     muteBtn.addEventListener('click', () => {
         video.muted = !video.muted;
-        container.classList.toggle('unmuted', !video.muted);
-    });
-
-    fullscreenBtn.addEventListener('click', () => {
-        if (document.fullscreenElement) {
-            document.exitFullscreen();
-        } else {
-            container.requestFullscreen().catch(() => {});
-        }
-    });
-
-    // Показывать контролы на мобильных при тапе
-    let controlsTimeout;
-    container.addEventListener('click', (e) => {
-        if (e.target.closest('.video-controls') || e.target.closest('.video-play-overlay')) return;
-        if (!overlay.classList.contains('hidden')) return;
-        controls.classList.add('visible');
-        clearTimeout(controlsTimeout);
-        controlsTimeout = setTimeout(() => controls.classList.remove('visible'), 3000);
+        screen.classList.toggle('unmuted', !video.muted);
     });
 })();
