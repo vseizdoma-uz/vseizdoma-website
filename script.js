@@ -108,7 +108,9 @@ const translations = {
         schedule: 'Ежедневно: 9:00 — 21:00',
         callNow: 'Позвонить сейчас',
         motto: 'Честно • Быстро • Выгодно',
-        scrollMore: 'Подробнее'
+        scrollMore: 'Подробнее',
+        videoTitle: 'Смотрите сами',
+        videoSubtitle: 'Как мы работаем — быстро, честно и удобно'
     },
     uz: {
         heroTitle: 'Uydan <span class="highlight">hammani</span> sotib olaman',
@@ -148,7 +150,9 @@ const translations = {
         schedule: 'Har kuni: 9:00 — 21:00',
         callNow: 'Hozir qo\'ng\'iroq qilish',
         motto: 'Halol • Tez • Foydali',
-        scrollMore: 'Batafsil'
+        scrollMore: 'Batafsil',
+        videoTitle: 'O\'zingiz ko\'ring',
+        videoSubtitle: 'Biz qanday ishlaymiz — tez, halol va qulay'
     },
     en: {
         heroTitle: '<span class="highlight">Buy</span> everything from home',
@@ -188,7 +192,9 @@ const translations = {
         schedule: 'Daily: 9:00 AM — 9:00 PM',
         callNow: 'Call now',
         motto: 'Honest • Fast • Profitable',
-        scrollMore: 'Learn more'
+        scrollMore: 'Learn more',
+        videoTitle: 'See for yourself',
+        videoSubtitle: 'How we work — fast, honest and convenient'
     }
 };
 
@@ -278,6 +284,13 @@ function setLanguage(lang) {
         sidePanelEl.querySelector('.side-panel-btn').textContent = t.sidePanelBtn;
     }
 
+    // Видео-секция
+    const videoSection = document.querySelector('.video-showcase');
+    if (videoSection) {
+        videoSection.querySelector('.section-title').textContent = t.videoTitle;
+        videoSection.querySelector('.video-subtitle').textContent = t.videoSubtitle;
+    }
+
     // Контакты
     document.querySelector('.contact-left h2').textContent = t.contactTitle;
     const contactItems = document.querySelectorAll('.contact-info-item');
@@ -327,3 +340,84 @@ window.addEventListener('scroll', () => {
 });
 
 navbar.style.transition = 'transform 0.3s ease';
+
+// Видеоплеер
+(function() {
+    const video = document.getElementById('showcaseVideo');
+    const container = video?.closest('.video-container');
+    const overlay = document.getElementById('videoPlayOverlay');
+    const controls = document.getElementById('videoControls');
+    const playBtn = document.getElementById('vcPlay');
+    const muteBtn = document.getElementById('vcMute');
+    const fullscreenBtn = document.getElementById('vcFullscreen');
+    const progress = document.getElementById('vcProgress');
+    const progressFilled = document.getElementById('vcProgressFilled');
+
+    if (!video) return;
+
+    video.muted = true;
+
+    function playVideo() {
+        video.play();
+        container.classList.add('playing');
+        overlay.classList.add('hidden');
+    }
+
+    function pauseVideo() {
+        video.pause();
+        container.classList.remove('playing');
+    }
+
+    function togglePlay() {
+        if (video.paused) {
+            playVideo();
+        } else {
+            pauseVideo();
+        }
+    }
+
+    overlay.addEventListener('click', playVideo);
+    playBtn.addEventListener('click', togglePlay);
+
+    video.addEventListener('ended', () => {
+        container.classList.remove('playing');
+        overlay.classList.remove('hidden');
+        progressFilled.style.width = '0%';
+    });
+
+    video.addEventListener('timeupdate', () => {
+        if (video.duration) {
+            const pct = (video.currentTime / video.duration) * 100;
+            progressFilled.style.width = pct + '%';
+        }
+    });
+
+    progress.addEventListener('click', (e) => {
+        const rect = progress.getBoundingClientRect();
+        const pct = (e.clientX - rect.left) / rect.width;
+        video.currentTime = pct * video.duration;
+    });
+
+    muteBtn.addEventListener('click', () => {
+        video.muted = !video.muted;
+        container.classList.toggle('unmuted', !video.muted);
+    });
+
+    fullscreenBtn.addEventListener('click', () => {
+        if (document.fullscreenElement) {
+            document.exitFullscreen();
+        } else {
+            container.requestFullscreen().catch(() => {});
+        }
+    });
+
+    // Показывать контролы на мобильных при тапе
+    let controlsTimeout;
+    container.addEventListener('click', (e) => {
+        if (e.target.closest('.video-controls') || e.target.closest('.video-play-overlay')) return;
+        if (!overlay.classList.contains('hidden')) return;
+        controls.classList.add('visible');
+        clearTimeout(controlsTimeout);
+        controlsTimeout = setTimeout(() => controls.classList.remove('visible'), 3000);
+    });
+})();
