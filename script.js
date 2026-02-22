@@ -20,6 +20,28 @@ function updateThemeIcon(theme) {
     themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
 }
 
+// Боковая панель mebelimport
+const sideTab = document.getElementById('sideTab');
+const sidePanel = document.getElementById('sidePanel');
+const sidePanelClose = document.getElementById('sidePanelClose');
+const sidePanelOverlay = document.getElementById('sidePanelOverlay');
+
+function openSidePanel() {
+    sidePanel.classList.add('open');
+    sidePanelOverlay.classList.add('open');
+    sideTab.classList.add('hidden');
+}
+
+function closeSidePanel() {
+    sidePanel.classList.remove('open');
+    sidePanelOverlay.classList.remove('open');
+    sideTab.classList.remove('hidden');
+}
+
+sideTab.addEventListener('click', openSidePanel);
+sidePanelClose.addEventListener('click', closeSidePanel);
+sidePanelOverlay.addEventListener('click', closeSidePanel);
+
 // Фильтрация галереи по табам
 const galleryTabs = document.querySelectorAll('.gallery-tab');
 const galleryItems = document.querySelectorAll('.gallery-item');
@@ -71,6 +93,13 @@ const translations = {
         promoFeat2: 'Быстрый выезд на осмотр',
         promoFeat3: 'Оплата наличными и переводом',
         promoBtn: 'Перейти на сайт',
+        sideTabText: 'Элитная мебель',
+        sidePanelTitle: 'Покупаем дорого импортную мебель',
+        sidePanelDesc: 'Барокко, рококо, классика — оценим за 30 минут и купим по лучшей цене!',
+        sidePanelFeat1: '⏱️ Оценка за 30 минут',
+        sidePanelFeat2: '🚗 Быстрый выезд',
+        sidePanelFeat3: '💰 Оплата на месте',
+        sidePanelBtn: 'Перейти на сайт →',
         contactTitle: 'Свяжитесь с нами',
         location: 'Ташкент, Узбекистан',
         schedule: 'Ежедневно: 9:00 — 21:00',
@@ -104,6 +133,13 @@ const translations = {
         promoFeat2: 'Tez chiqish ko\'rikka',
         promoFeat3: 'Naqd va o\'tkazma orqali to\'lov',
         promoBtn: 'Saytga o\'tish',
+        sideTabText: 'Elit mebel',
+        sidePanelTitle: 'Import mebelni qimmat sotib olamiz',
+        sidePanelDesc: 'Barokko, rokoko, klassika — 30 daqiqada baholaymiz va eng yaxshi narxda sotib olamiz!',
+        sidePanelFeat1: '⏱️ 30 daqiqada baholash',
+        sidePanelFeat2: '🚗 Tez chiqish',
+        sidePanelFeat3: '💰 Joyida to\'lov',
+        sidePanelBtn: 'Saytga o\'tish →',
         contactTitle: 'Biz bilan bog\'laning',
         location: 'Toshkent, O\'zbekiston',
         schedule: 'Har kuni: 9:00 — 21:00',
@@ -137,6 +173,13 @@ const translations = {
         promoFeat2: 'Fast on-site inspection',
         promoFeat3: 'Cash and bank transfer payment',
         promoBtn: 'Visit website',
+        sideTabText: 'Premium furniture',
+        sidePanelTitle: 'We buy imported furniture at top prices',
+        sidePanelDesc: 'Baroque, rococo, classic — we evaluate in 30 minutes and buy at the best price!',
+        sidePanelFeat1: '⏱️ Evaluation in 30 min',
+        sidePanelFeat2: '🚗 Fast visit',
+        sidePanelFeat3: '💰 Payment on the spot',
+        sidePanelBtn: 'Visit website →',
         contactTitle: 'Contact us',
         location: 'Tashkent, Uzbekistan',
         schedule: 'Daily: 9:00 AM — 9:00 PM',
@@ -214,6 +257,22 @@ function setLanguage(lang) {
         if (promoBtn) {
             promoBtn.firstChild.textContent = t.promoBtn + ' ';
         }
+    }
+
+    // Боковая панель mebelimport
+    const sideTabEl = document.getElementById('sideTab');
+    const sidePanelEl = document.getElementById('sidePanel');
+    if (sideTabEl) sideTabEl.querySelector('span').textContent = t.sideTabText;
+    if (sidePanelEl) {
+        sidePanelEl.querySelector('.side-panel-title').textContent = t.sidePanelTitle;
+        sidePanelEl.querySelector('.side-panel-desc').textContent = t.sidePanelDesc;
+        const spFeats = sidePanelEl.querySelectorAll('.side-panel-features li');
+        if (spFeats.length >= 3) {
+            spFeats[0].textContent = t.sidePanelFeat1;
+            spFeats[1].textContent = t.sidePanelFeat2;
+            spFeats[2].textContent = t.sidePanelFeat3;
+        }
+        sidePanelEl.querySelector('.side-panel-btn').textContent = t.sidePanelBtn;
     }
 
     // Контакты
