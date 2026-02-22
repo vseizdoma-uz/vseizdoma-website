@@ -38,6 +38,9 @@ function closeSidePanel() {
     sideTab.classList.remove('hidden');
 }
 
+setTimeout(() => sideTab.classList.add('pulse'), 2000);
+sideTab.addEventListener('animationend', () => sideTab.classList.remove('pulse'));
+
 sideTab.addEventListener('click', openSidePanel);
 sidePanelClose.addEventListener('click', closeSidePanel);
 sidePanelOverlay.addEventListener('click', closeSidePanel);

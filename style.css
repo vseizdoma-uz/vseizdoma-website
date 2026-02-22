@@ -798,6 +798,15 @@ body {
     box-shadow: -4px 0 25px rgba(201, 168, 76, 0.5);
 }
 
+.side-tab.pulse {
+    animation: sideTabPulse 2s ease-in-out 3;
+}
+
+@keyframes sideTabPulse {
+    0%, 100% { box-shadow: -2px 0 15px rgba(201, 168, 76, 0.3); }
+    50% { box-shadow: -4px 0 30px rgba(201, 168, 76, 0.7), 0 0 15px rgba(201, 168, 76, 0.4); }
+}
+
 .side-tab.hidden {
     transform: translateY(-50%) translateX(100%);
     pointer-events: none;
