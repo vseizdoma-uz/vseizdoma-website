@@ -123,6 +123,24 @@ const translations = {
         seoCard3Text: 'Хотите быстро продать б/у технику или мебель в Ташкенте? Звоните — приедем за 1-2 часа, оценим честно и заплатим сразу. Никакого ожидания покупателей на OLX, никаких торгов. Мы работаем 8 лет и знаем реальные цены на вторичном рынке Ташкента.',
         seoCard4Title: 'Вывоз старой техники и мебели',
         seoCard4Text: 'Бесплатный вывоз техники и мебели при скупке. Работаем по всему Ташкенту и Ташкентской области — Чирчик, Алмалык, Ангрен, Нурафшон. Грузчики, транспорт, демонтаж — всё берём на себя. Вам нужно только позвонить по номеру +998 99 111 23 23.',
+        seoCard5Title: 'Куплю холодильник б/у в Ташкенте',
+        seoCard5Text: 'Скупаем холодильники б/у всех марок: Samsung, LG, Bosch, Indesit, Artel, Atlant, Beko. Однокамерные, двухкамерные, side-by-side — покупаем любые в рабочем состоянии. Куплю холодильник б/у дорого с выездом на дом. Оценка бесплатно, оплата сразу наличными.',
+        seoCard6Title: 'Куплю стиральную машину б/у',
+        seoCard6Text: 'Покупаем стиральные машины б/у в Ташкенте: автомат, полуавтомат, с вертикальной и фронтальной загрузкой. Samsung, LG, Artel, Bosch, Indesit и другие марки. Продать стиральную машину б/у можно за 1 час — звоните, приедем и заплатим на месте.',
+        seoCard7Title: 'Скупка кондиционеров б/у',
+        seoCard7Text: 'Куплю кондиционер б/у в Ташкенте — настенные сплит-системы, напольные, кассетные. Покупаем кондиционеры Artel, Samsung, LG, Midea, Haier, Gree, Cooper&Hunter. Демонтаж кондиционера за наш счёт. Скупка кондиционеров дорого с выездом по всему городу.',
+        seoCard8Title: 'Куплю дорого мебель в Ташкенте',
+        seoCard8Text: 'Куплю дорого б/у мебель — спальные гарнитуры, гостиные, прихожие, кухонные гарнитуры. Особенно ценим импортную элитную мебель: итальянскую, турецкую, малайзийскую. Мебель в стиле барокко, рококо, классика — покупаем по максимальным ценам. Выезд оценщика бесплатно.',
+        seoCard9Title: 'Скупка стройматериалов б/у',
+        seoCard9Text: 'Покупаем б/у стройматериалы в Ташкенте: двери, окна, сантехнику, радиаторы, трубы, ламинат, плитку и другие материалы после ремонта или демонтажа. Скупка стройматериалов по выгодным ценам — не выбрасывайте, продайте нам! Вывезем сами.',
+        seoCard10Title: 'Куплю телевизор б/у Ташкент',
+        seoCard10Text: 'Скупаем телевизоры б/у: LED, Smart TV, UHD 4K, OLED. Покупаем телевизоры Samsung, LG, Sony, Artel, Shivaki и другие марки. Куплю телевизор б/у в Ташкенте дорого — от 32 до 75 дюймов. Приедем, проверим, заплатим сразу.',
+        seoCard11Title: 'Куплю газовую плиту б/у',
+        seoCard11Text: 'Покупаем газовые и электрические плиты б/у в Ташкенте. Artel, Shivaki, Indesit, Bosch, Gefest — любые марки и модели. Продать газовую плиту б/у легко — один звонок и мы приедем с оплатой. Также покупаем духовые шкафы и варочные панели.',
+        seoCard12Title: 'Скупка мебели и техники при переезде',
+        seoCard12Text: 'Переезжаете и не хотите везти старую мебель и технику? Мы выкупим всё за один визит: мебель, бытовую технику, стройматериалы. Скупка при переезде — быстро, выгодно, без хлопот. Работаем по всему Ташкенту, Чирчику, Алмалыку, Нурафшону.',
+        seoCard13Title: 'Скупка мебели по районам Ташкента',
+        seoCard13Text: 'Работаем по всем районам Ташкента: Чиланзар, Юнусабад, Мирзо Улугбек, Сергели, Яшнабад, Мирабад, Шайхантаур, Алмазар, Учтепа, Бектемир. Скупка б/у мебели и техники в вашем районе — выезд за 1-2 часа. Звоните: +998 99 111 23 23.',
         faqTitle: 'Частые вопросы',
         faq1Q: 'Какую технику вы покупаете?',
         faq1A: 'Мы покупаем холодильники, стиральные машины, кондиционеры, телевизоры, газовые и электрические плиты, микроволновые печи, посудомоечные машины и другую бытовую технику в рабочем состоянии.',
@@ -131,7 +149,21 @@ const translations = {
         faq3Q: 'Как быстро вы приедете?',
         faq3A: 'По Ташкенту — в течение 1-2 часов после звонка. По области — в тот же день или на следующий день, в зависимости от времени обращения.',
         faq4Q: 'Как происходит оплата?',
-        faq4A: 'Оплачиваем на месте сразу после осмотра и согласования цены. Принимаем наличные (сум, доллар) и безналичный перевод на карту.'
+        faq4A: 'Оплачиваем на месте сразу после осмотра и согласования цены. Принимаем наличные (сум, доллар) и безналичный перевод на карту.',
+        faq5Q: 'Вы покупаете нерабочую технику?',
+        faq5A: 'Да, покупаем технику в нерабочем состоянии, но по сниженной цене. Холодильники, стиральные машины, кондиционеры — даже если не работают, мы можем их выкупить. Звоните для оценки.',
+        faq6Q: 'Скупаете ли вы стройматериалы?',
+        faq6A: 'Да, покупаем б/у стройматериалы: двери, окна, сантехнику, радиаторы, ламинат, плитку, трубы и другие материалы после ремонта или демонтажа.',
+        faq7Q: 'В каких районах Ташкента вы работаете?',
+        faq7A: 'Работаем по всему Ташкенту: Чиланзар, Юнусабад, Мирзо Улугбек, Сергели, Яшнабад, Мирабад, Шайхантаур, Алмазар, Учтепа, Бектемир. Также выезжаем в Чирчик, Алмалык, Ангрен, Нурафшон.',
+        faq8Q: 'Сколько стоит вывоз мебели и техники?',
+        faq8A: 'Вывоз бесплатный при скупке. Мы приезжаем со своими грузчиками и транспортом. Демонтаж мебели и кондиционеров тоже за наш счёт.',
+        faq9Q: 'Как продать холодильник б/у в Ташкенте?',
+        faq9A: 'Позвоните нам по номеру +998 99 111 23 23, опишите марку и состояние. Мы назовём примерную цену, приедем, осмотрим и заплатим на месте. Весь процесс — 1-2 часа.',
+        faq10Q: 'Покупаете ли вы элитную импортную мебель?',
+        faq10A: 'Да, это наша специализация! Покупаем дорого итальянскую, турецкую, малайзийскую мебель. Барокко, рококо, классика — оцениваем по максимуму.',
+        faq11Q: 'Можно ли продать всю квартиру сразу — мебель и технику?',
+        faq11A: 'Конечно! При переезде мы выкупим всё за один визит: мебель, технику, стройматериалы. Удобнее и быстрее чем продавать по отдельности на OLX.'
     },
     uz: {
         heroTitle: 'Uydan <span class="highlight">hammani</span> sotib olaman',
@@ -186,6 +218,24 @@ const translations = {
         seoCard3Text: 'Toshkentda ishlatilgan texnika yoki mebelni tez sotmoqchimisiz? Qo\'ng\'iroq qiling — 1-2 soat ichida kelamiz, halol baholaymiz va darhol to\'laymiz. OLXda xaridor kutish shart emas. 8 yillik tajriba.',
         seoCard4Title: 'Eski texnika va mebelni olib ketish',
         seoCard4Text: 'Sotib olishda texnika va mebelni bepul olib ketamiz. Butun Toshkent va viloyatda ishlaymiz — Chirchiq, Olmaliq, Angren, Nurafshon. Yuk tashuvchilar, transport — barchasini o\'zimiz hal qilamiz.',
+        seoCard5Title: 'Toshkentda ishlatilgan muzlatgich sotib olaman',
+        seoCard5Text: 'Barcha brendlarning ishlatilgan muzlatgichlarini sotib olamiz: Samsung, LG, Bosch, Indesit, Artel, Atlant, Beko. Bir kamerali, ikki kamerali — barchasini qimmat sotib olamiz. Uyga chiqish bepul.',
+        seoCard6Title: 'Ishlatilgan kir yuvish mashinasi sotib olaman',
+        seoCard6Text: 'Toshkentda ishlatilgan kir yuvish mashinalarini sotib olamiz: avtomat, yarim avtomat. Samsung, LG, Artel, Bosch, Indesit. 1 soat ichida kelamiz va joyida to\'laymiz.',
+        seoCard7Title: 'Ishlatilgan konditsioner sotib olish',
+        seoCard7Text: 'Toshkentda ishlatilgan konditsionerlarni sotib olamiz — devorga o\'rnatiladigan split-sistemalar, polga qo\'yiladigan. Artel, Samsung, LG, Midea, Haier, Gree. Demontaj biz hisobimizga.',
+        seoCard8Title: 'Toshkentda mebelni qimmat sotib olaman',
+        seoCard8Text: 'Ishlatilgan mebelni qimmat sotib olamiz — yotoqxona, mehmonxona, oshxona mebellari. Import elit mebel: italyan, turk, malayziya. Barokko, rokoko, klassika — eng yuqori narxda baholaymiz.',
+        seoCard9Title: 'Ishlatilgan qurilish materiallari sotib olish',
+        seoCard9Text: 'Toshkentda ishlatilgan qurilish materiallarini sotib olamiz: eshiklar, derazalar, santexnika, radiatorlar, quvurlar, laminat, plitka. Tashlab yubormang — bizga soting!',
+        seoCard10Title: 'Toshkentda ishlatilgan televizor sotib olaman',
+        seoCard10Text: 'Ishlatilgan televizorlarni sotib olamiz: LED, Smart TV, UHD 4K, OLED. Samsung, LG, Sony, Artel, Shivaki. 32 dan 75 dyuymgacha — qimmat sotib olamiz.',
+        seoCard11Title: 'Ishlatilgan gaz plita sotib olaman',
+        seoCard11Text: 'Toshkentda ishlatilgan gaz va elektr plitalarni sotib olamiz. Artel, Shivaki, Indesit, Bosch, Gefest. Duhovka va pishirish panellarini ham sotib olamiz.',
+        seoCard12Title: 'Ko\'chib o\'tishda mebel va texnika sotib olish',
+        seoCard12Text: 'Ko\'chib o\'tayapsizmi? Biz bir tashrifda hammasini sotib olamiz: mebel, texnika, qurilish materiallari. Tez, foydali, hech qanday tashvishsiz.',
+        seoCard13Title: 'Toshkent tumanlarida mebel sotib olish',
+        seoCard13Text: 'Toshkentning barcha tumanlarida ishlaymiz: Chilonzor, Yunusobod, Mirzo Ulug\'bek, Sergeli, Yashnobod, Mirobod, Shayxontohur, Olmazor, Uchtepa, Bektemir. 1-2 soat ichida chiqamiz.',
         faqTitle: 'Ko\'p beriladigan savollar',
         faq1Q: 'Qanday texnikani sotib olasiz?',
         faq1A: 'Muzlatgichlar, kir yuvish mashinalari, konditsionerlar, televizorlar, gaz va elektr plitalar, mikroto\'lqinli pechlar va boshqa ishlaydigan maishiy texnikani sotib olamiz.',
@@ -194,7 +244,21 @@ const translations = {
         faq3Q: 'Qanchalik tez kelasiz?',
         faq3A: 'Toshkent bo\'yicha — qo\'ng\'iroqdan 1-2 soat ichida. Viloyat bo\'yicha — o\'sha kuni yoki ertasi kuni.',
         faq4Q: 'To\'lov qanday amalga oshiriladi?',
-        faq4A: 'Ko\'rik va narxni kelishgandan so\'ng joyida darhol to\'laymiz. Naqd pul (so\'m, dollar) va kartaga o\'tkazma qabul qilamiz.'
+        faq4A: 'Ko\'rik va narxni kelishgandan so\'ng joyida darhol to\'laymiz. Naqd pul (so\'m, dollar) va kartaga o\'tkazma qabul qilamiz.',
+        faq5Q: 'Ishlamaydigan texnikani sotib olasizmi?',
+        faq5A: 'Ha, ishlamaydigan texnikani ham sotib olamiz, lekin arzonroq narxda. Muzlatgich, kir yuvish mashinasi, konditsioner — ishlamasa ham sotib olishimiz mumkin.',
+        faq6Q: 'Qurilish materiallarini sotib olasizmi?',
+        faq6A: 'Ha, ishlatilgan qurilish materiallarini sotib olamiz: eshiklar, derazalar, santexnika, radiatorlar, laminat, plitka, quvurlar.',
+        faq7Q: 'Toshkentning qaysi tumanlarida ishlaysiz?',
+        faq7A: 'Butun Toshkentda ishlaymiz: Chilonzor, Yunusobod, Mirzo Ulug\'bek, Sergeli, Yashnobod, Mirobod, Shayxontohur, Olmazor, Uchtepa, Bektemir. Chirchiq, Olmaliq, Angren, Nurafshonga ham chiqamiz.',
+        faq8Q: 'Mebel va texnikani olib ketish qancha turadi?',
+        faq8A: 'Sotib olishda bepul olib ketamiz. Yuk tashuvchilar va transport biz tomondan. Mebel va konditsioner demontaji ham biz hisobimizga.',
+        faq9Q: 'Toshkentda ishlatilgan muzlatgichni qanday sotish mumkin?',
+        faq9A: '+998 99 111 23 23 raqamiga qo\'ng\'iroq qiling, brend va holatni tasvirlang. Biz taxminiy narxni aytamiz, kelamiz, ko\'rib chiqamiz va joyida to\'laymiz. 1-2 soat davom etadi.',
+        faq10Q: 'Elit import mebelni sotib olasizmi?',
+        faq10A: 'Ha, bu bizning ixtisosligimiz! Italyan, turk, malayziya mebelini qimmat sotib olamiz. Barokko, rokoko, klassika — eng yuqori narxda baholaymiz.',
+        faq11Q: 'Butun kvartirani — mebel va texnikani birdan sotsa bo\'ladimi?',
+        faq11A: 'Albatta! Ko\'chib o\'tishda biz bir tashrifda hammasini sotib olamiz: mebel, texnika, qurilish materiallari. OLXda alohida sotishdan ko\'ra tezroq va qulayroq.'
     },
     en: {
         heroTitle: '<span class="highlight">Buy</span> everything from home',
@@ -249,6 +313,24 @@ const translations = {
         seoCard3Text: 'Want to quickly sell used appliances or furniture in Tashkent? Call us — we arrive in 1-2 hours, give a fair price, and pay immediately. No waiting for buyers on OLX. 8 years of experience in the Tashkent market.',
         seoCard4Title: 'Pickup and removal service',
         seoCard4Text: 'Free pickup of appliances and furniture when selling to us. We serve all of Tashkent and the region — Chirchik, Almalyk, Angren, Nurafshon. Movers, transport, disassembly — we handle everything. Just call +998 99 111 23 23.',
+        seoCard5Title: 'Buy used refrigerator in Tashkent',
+        seoCard5Text: 'We buy used refrigerators of all brands: Samsung, LG, Bosch, Indesit, Artel, Atlant, Beko. Single-door, double-door, side-by-side — we buy any working refrigerator at a good price. Free home visit.',
+        seoCard6Title: 'Buy used washing machine',
+        seoCard6Text: 'We buy used washing machines in Tashkent: automatic, semi-automatic, top and front loading. Samsung, LG, Artel, Bosch, Indesit. We arrive within 1 hour and pay on the spot.',
+        seoCard7Title: 'Buy used air conditioners',
+        seoCard7Text: 'We buy used air conditioners in Tashkent — wall-mounted split systems, floor-standing, cassette. Artel, Samsung, LG, Midea, Haier, Gree. Dismounting at our expense.',
+        seoCard8Title: 'Buy furniture at top prices in Tashkent',
+        seoCard8Text: 'We buy used furniture at the best prices — bedroom sets, living rooms, hallways, kitchen sets. We especially value imported premium furniture: Italian, Turkish, Malaysian. Baroque, rococo, classic styles.',
+        seoCard9Title: 'Buy used building materials',
+        seoCard9Text: 'We buy used building materials in Tashkent: doors, windows, plumbing, radiators, pipes, laminate, tiles and other materials after renovation. Don\'t throw them away — sell to us!',
+        seoCard10Title: 'Buy used TV in Tashkent',
+        seoCard10Text: 'We buy used TVs: LED, Smart TV, UHD 4K, OLED. Samsung, LG, Sony, Artel, Shivaki and other brands. From 32 to 75 inches — we pay top prices.',
+        seoCard11Title: 'Buy used gas stove',
+        seoCard11Text: 'We buy used gas and electric stoves in Tashkent. Artel, Shivaki, Indesit, Bosch, Gefest — any brand. We also buy ovens and cooktops.',
+        seoCard12Title: 'Buy furniture and appliances when moving',
+        seoCard12Text: 'Moving and don\'t want to take old furniture and appliances? We buy everything in one visit: furniture, appliances, building materials. Fast, profitable, hassle-free.',
+        seoCard13Title: 'Buying furniture across Tashkent districts',
+        seoCard13Text: 'We work in all Tashkent districts: Chilanzar, Yunusabad, Mirzo Ulugbek, Sergeli, Yashnaabad, Mirabad, Shaykhantaur, Almazar, Uchtepa, Bektemir. We arrive in 1-2 hours.',
         faqTitle: 'Frequently asked questions',
         faq1Q: 'What appliances do you buy?',
         faq1A: 'We buy refrigerators, washing machines, air conditioners, TVs, gas and electric stoves, microwaves, dishwashers, and other working household appliances.',
@@ -257,7 +339,21 @@ const translations = {
         faq3Q: 'How fast can you arrive?',
         faq3A: 'In Tashkent — within 1-2 hours of your call. In the region — same day or next day, depending on the time.',
         faq4Q: 'How does payment work?',
-        faq4A: 'We pay on the spot right after inspection and price agreement. We accept cash (som, dollar) and bank transfers.'
+        faq4A: 'We pay on the spot right after inspection and price agreement. We accept cash (som, dollar) and bank transfers.',
+        faq5Q: 'Do you buy non-working appliances?',
+        faq5A: 'Yes, we buy non-working appliances at a reduced price. Refrigerators, washing machines, air conditioners — even if broken, we can buy them.',
+        faq6Q: 'Do you buy building materials?',
+        faq6A: 'Yes, we buy used building materials: doors, windows, plumbing, radiators, laminate, tiles, pipes and other materials after renovation or demolition.',
+        faq7Q: 'Which Tashkent districts do you cover?',
+        faq7A: 'We cover all of Tashkent: Chilanzar, Yunusabad, Mirzo Ulugbek, Sergeli, Yashnaabad, Mirabad, Shaykhantaur, Almazar, Uchtepa, Bektemir. Also Chirchik, Almalyk, Angren, Nurafshon.',
+        faq8Q: 'How much does furniture pickup cost?',
+        faq8A: 'Pickup is free when selling to us. We come with our own movers and transport. Furniture and AC dismounting is also at our expense.',
+        faq9Q: 'How to sell a used refrigerator in Tashkent?',
+        faq9A: 'Call us at +998 99 111 23 23, describe the brand and condition. We\'ll give an estimate, come, inspect, and pay on the spot. The whole process takes 1-2 hours.',
+        faq10Q: 'Do you buy premium imported furniture?',
+        faq10A: 'Yes, that\'s our specialty! We buy Italian, Turkish, Malaysian furniture at top prices. Baroque, rococo, classic — we evaluate at maximum prices.',
+        faq11Q: 'Can I sell the entire apartment — furniture and appliances?',
+        faq11A: 'Of course! When moving, we buy everything in one visit: furniture, appliances, building materials. It\'s faster and more convenient than selling separately on OLX.'
     }
 };
 
@@ -365,27 +461,27 @@ function setLanguage(lang) {
     if (seoSection) {
         seoSection.querySelector('.section-title').textContent = t.seoTitle;
         const seoCards = seoSection.querySelectorAll('.seo-card');
-        const seoData = [
-            { title: t.seoCard1Title, text: t.seoCard1Text },
-            { title: t.seoCard2Title, text: t.seoCard2Text },
-            { title: t.seoCard3Title, text: t.seoCard3Text },
-            { title: t.seoCard4Title, text: t.seoCard4Text }
-        ];
+        const seoData = [];
+        for (let i = 1; i <= 13; i++) {
+            if (t['seoCard'+i+'Title']) seoData.push({ title: t['seoCard'+i+'Title'], text: t['seoCard'+i+'Text'] });
+        }
         seoCards.forEach((card, i) => {
-            card.querySelector('h3').textContent = seoData[i].title;
-            card.querySelector('p').textContent = seoData[i].text;
+            if (seoData[i]) {
+                card.querySelector('h3').textContent = seoData[i].title;
+                card.querySelector('p').textContent = seoData[i].text;
+            }
         });
         seoSection.querySelector('.seo-faq > h3').textContent = t.faqTitle;
         const faqItems = seoSection.querySelectorAll('.faq-item');
-        const faqData = [
-            { q: t.faq1Q, a: t.faq1A },
-            { q: t.faq2Q, a: t.faq2A },
-            { q: t.faq3Q, a: t.faq3A },
-            { q: t.faq4Q, a: t.faq4A }
-        ];
+        const faqData = [];
+        for (let i = 1; i <= 11; i++) {
+            if (t['faq'+i+'Q']) faqData.push({ q: t['faq'+i+'Q'], a: t['faq'+i+'A'] });
+        }
         faqItems.forEach((item, i) => {
-            item.querySelector('summary').textContent = faqData[i].q;
-            item.querySelector('p').textContent = faqData[i].a;
+            if (faqData[i]) {
+                item.querySelector('summary').textContent = faqData[i].q;
+                item.querySelector('p').textContent = faqData[i].a;
+            }
         });
     }
 
