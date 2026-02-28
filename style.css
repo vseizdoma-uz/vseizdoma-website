@@ -731,6 +731,50 @@ body {
     line-height: 1.7;
 }
 
+/* Промо-галерея фото */
+.promo-gallery {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.promo-gallery h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.promo-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.promo-gallery-item {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.promo-gallery-item:hover {
+    transform: scale(1.03);
+}
+
+.promo-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .promo-gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}
+
 .seo-faq h3 {
     font-size: 1.4rem;
     font-weight: 700;
