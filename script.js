@@ -163,7 +163,14 @@ const translations = {
         faq10Q: 'Покупаете ли вы элитную импортную мебель?',
         faq10A: 'Да, это наша специализация! Покупаем дорого итальянскую, турецкую, малайзийскую мебель. Барокко, рококо, классика — оцениваем по максимуму.',
         faq11Q: 'Можно ли продать всю квартиру сразу — мебель и технику?',
-        faq11A: 'Конечно! При переезде мы выкупим всё за один визит: мебель, технику, стройматериалы. Удобнее и быстрее чем продавать по отдельности на OLX.'
+        faq11A: 'Конечно! При переезде мы выкупим всё за один визит: мебель, технику, стройматериалы. Удобнее и быстрее чем продавать по отдельности на OLX.',
+        serviceLinksTitle: 'Наши услуги',
+        sl1Title: 'Скупка мебели б/у', sl1Desc: 'Диваны, шкафы, кровати, кухонные гарнитуры. Импортную мебель — дорого',
+        sl2Title: 'Скупка техники б/у', sl2Desc: 'Холодильники, стиралки, кондиционеры, ТВ. Все марки, любое состояние',
+        sl3Title: 'Куплю холодильник б/у', sl3Desc: 'Samsung, LG, Bosch, Artel. Однокамерные, двухкамерные, side-by-side',
+        sl4Title: 'Куплю стиральную машину', sl4Desc: 'Автомат, полуавтомат. Samsung, LG, Artel, Bosch. Продажа за 1 час',
+        sl5Title: 'Куплю кондиционер б/у', sl5Desc: 'Сплит-системы, напольные. Демонтаж бесплатно, оплата на месте',
+        sl6Title: 'Куплю телевизор б/у', sl6Desc: 'LED, Smart TV, 4K, OLED. От 32 до 75 дюймов. Samsung, LG, Sony'
     },
     uz: {
         heroTitle: 'Uydan <span class="highlight">hammani</span> sotib olaman',
@@ -258,7 +265,14 @@ const translations = {
         faq10Q: 'Elit import mebelni sotib olasizmi?',
         faq10A: 'Ha, bu bizning ixtisosligimiz! Italyan, turk, malayziya mebelini qimmat sotib olamiz. Barokko, rokoko, klassika — eng yuqori narxda baholaymiz.',
         faq11Q: 'Butun kvartirani — mebel va texnikani birdan sotsa bo\'ladimi?',
-        faq11A: 'Albatta! Ko\'chib o\'tishda biz bir tashrifda hammasini sotib olamiz: mebel, texnika, qurilish materiallari. OLXda alohida sotishdan ko\'ra tezroq va qulayroq.'
+        faq11A: 'Albatta! Ko\'chib o\'tishda biz bir tashrifda hammasini sotib olamiz: mebel, texnika, qurilish materiallari. OLXda alohida sotishdan ko\'ra tezroq va qulayroq.',
+        serviceLinksTitle: 'Bizning xizmatlar',
+        sl1Title: 'Mebel sotib olish', sl1Desc: 'Divanlar, shkaflar, karavotlar, oshxona garnitulari. Import mebelni qimmat',
+        sl2Title: 'Texnika sotib olish', sl2Desc: 'Muzlatgichlar, kir yuvish mashinalari, konditsionerlar, TV. Barcha markalar',
+        sl3Title: 'Muzlatgich sotib olish', sl3Desc: 'Samsung, LG, Bosch, Artel. Bir kamerali, ikki kamerali, side-by-side',
+        sl4Title: 'Kir yuvish mashinasi', sl4Desc: 'Avtomat, yarim avtomat. Samsung, LG, Artel, Bosch. 1 soatda sotish',
+        sl5Title: 'Konditsioner sotib olish', sl5Desc: 'Split-tizimlar, polga qo\'yiladigan. Demontaj bepul, joyida to\'lov',
+        sl6Title: 'Televizor sotib olish', sl6Desc: 'LED, Smart TV, 4K, OLED. 32 dan 75 dyuymgacha. Samsung, LG, Sony'
     },
     en: {
         heroTitle: '<span class="highlight">Buy</span> everything from home',
@@ -353,7 +367,14 @@ const translations = {
         faq10Q: 'Do you buy premium imported furniture?',
         faq10A: 'Yes, that\'s our specialty! We buy Italian, Turkish, Malaysian furniture at top prices. Baroque, rococo, classic — we evaluate at maximum prices.',
         faq11Q: 'Can I sell the entire apartment — furniture and appliances?',
-        faq11A: 'Of course! When moving, we buy everything in one visit: furniture, appliances, building materials. It\'s faster and more convenient than selling separately on OLX.'
+        faq11A: 'Of course! When moving, we buy everything in one visit: furniture, appliances, building materials. It\'s faster and more convenient than selling separately on OLX.',
+        serviceLinksTitle: 'Our Services',
+        sl1Title: 'Furniture Buying', sl1Desc: 'Sofas, wardrobes, beds, kitchen sets. Imported furniture — top prices',
+        sl2Title: 'Appliance Buying', sl2Desc: 'Fridges, washers, ACs, TVs. All brands, any condition',
+        sl3Title: 'Buy Refrigerator', sl3Desc: 'Samsung, LG, Bosch, Artel. Single-door, double-door, side-by-side',
+        sl4Title: 'Buy Washing Machine', sl4Desc: 'Automatic, semi-auto. Samsung, LG, Artel, Bosch. Sell in 1 hour',
+        sl5Title: 'Buy Air Conditioner', sl5Desc: 'Split systems, floor units. Free disassembly, on-site payment',
+        sl6Title: 'Buy TV', sl6Desc: 'LED, Smart TV, 4K, OLED. From 32 to 75 inches. Samsung, LG, Sony'
     }
 };
 
@@ -485,6 +506,18 @@ function setLanguage(lang) {
         });
     }
 
+    // Карточки услуг
+    const slSection = document.querySelector('.service-links');
+    if (slSection) {
+        slSection.querySelector('.section-title').textContent = t.serviceLinksTitle;
+        const slCards = slSection.querySelectorAll('.service-card');
+        for (let i = 0; i < slCards.length && i < 6; i++) {
+            const card = slCards[i];
+            if (t['sl'+(i+1)+'Title']) card.querySelector('h3').textContent = t['sl'+(i+1)+'Title'];
+            if (t['sl'+(i+1)+'Desc']) card.querySelector('p').textContent = t['sl'+(i+1)+'Desc'];
+        }
+    }
+
     // Контакты
     document.querySelector('.contact-left h2').textContent = t.contactTitle;
     const contactItems = document.querySelectorAll('.contact-info-item');
@@ -513,7 +546,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Добавляем анимацию к карточкам
-document.querySelectorAll('.about-card, .gallery-item, .step, .promo-container, .video-layout, .seo-card, .faq-item').forEach(el => {
+document.querySelectorAll('.about-card, .gallery-item, .step, .promo-container, .video-layout, .seo-card, .faq-item, .service-card').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
