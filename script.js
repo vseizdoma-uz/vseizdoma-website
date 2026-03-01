@@ -183,6 +183,8 @@ const translations = {
         faq11A: 'Конечно! При переезде мы выкупим всё за один визит: мебель, технику, стройматериалы. Удобнее и быстрее чем продавать по отдельности на OLX.',
         sl1Pill: '🪑 Мебель', sl2Pill: '🔌 Техника', sl3Pill: '❄️ Холодильники',
         sl4Pill: '🌀 Стиралки', sl5Pill: '❄️ Кондиционеры', sl6Pill: '📺 Телевизоры',
+        card7: 'Газовые плиты', card8: 'Микроволновки', card9: 'Компьютеры',
+        card10: 'Шкафы', card11: 'Кухни', card12: 'Диваны',
         navServices: 'Услуги'
     },
     uz: {
@@ -281,6 +283,8 @@ const translations = {
         faq11A: 'Albatta! Ko\'chib o\'tishda biz bir tashrifda hammasini sotib olamiz: mebel, texnika, qurilish materiallari. OLXda alohida sotishdan ko\'ra tezroq va qulayroq.',
         sl1Pill: '🪑 Mebel', sl2Pill: '🔌 Texnika', sl3Pill: '❄️ Muzlatgich',
         sl4Pill: '🌀 Kir yuvish', sl5Pill: '❄️ Konditsioner', sl6Pill: '📺 Televizor',
+        card7: 'Gaz plitalar', card8: 'Mikroto\'lqinli', card9: 'Kompyuterlar',
+        card10: 'Shkaflar', card11: 'Oshxona', card12: 'Divanlar',
         navServices: 'Xizmatlar'
     },
     en: {
@@ -379,6 +383,8 @@ const translations = {
         faq11A: 'Of course! When moving, we buy everything in one visit: furniture, appliances, building materials. It\'s faster and more convenient than selling separately on OLX.',
         sl1Pill: '🪑 Furniture', sl2Pill: '🔌 Appliances', sl3Pill: '❄️ Fridges',
         sl4Pill: '🌀 Washers', sl5Pill: '❄️ ACs', sl6Pill: '📺 TVs',
+        card7: 'Gas Stoves', card8: 'Microwaves', card9: 'Computers',
+        card10: 'Wardrobes', card11: 'Kitchens', card12: 'Sofas',
         navServices: 'Services'
     }
 };
@@ -513,7 +519,10 @@ function setLanguage(lang) {
 
     // Карточки категорий (без эмодзи — есть картинки)
     const cardNames = document.querySelectorAll('.service-card-name');
-    const cardTexts = [t.sl1Pill, t.sl2Pill, t.sl3Pill, t.sl4Pill, t.sl5Pill, t.sl6Pill];
+    const cardTexts = [
+        t.sl1Pill, t.sl2Pill, t.sl3Pill, t.sl4Pill, t.sl5Pill, t.sl6Pill,
+        t.card7, t.card8, t.card9, t.card10, t.card11, t.card12
+    ];
     cardNames.forEach((el, i) => { if (cardTexts[i]) el.textContent = cardTexts[i].replace(/^[\u{1F000}-\u{1FFFF}]\s*/u, ''); });
 
     // Навигационное меню
