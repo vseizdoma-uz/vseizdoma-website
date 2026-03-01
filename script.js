@@ -1,3 +1,20 @@
+// Бургер-меню
+const burgerBtn = document.getElementById('burgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+
+burgerBtn.addEventListener('click', () => {
+    burgerBtn.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+});
+
+// Закрытие мобильного меню при клике на ссылку
+mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        burgerBtn.classList.remove('active');
+        mobileMenu.classList.remove('open');
+    });
+});
+
 // Переключение темы
 const themeToggle = document.getElementById('themeToggle');
 const themeIcon = themeToggle.querySelector('.theme-icon');
@@ -165,7 +182,8 @@ const translations = {
         faq11Q: 'Можно ли продать всю квартиру сразу — мебель и технику?',
         faq11A: 'Конечно! При переезде мы выкупим всё за один визит: мебель, технику, стройматериалы. Удобнее и быстрее чем продавать по отдельности на OLX.',
         sl1Pill: '🪑 Мебель', sl2Pill: '🔌 Техника', sl3Pill: '❄️ Холодильники',
-        sl4Pill: '🌀 Стиралки', sl5Pill: '❄️ Кондиционеры', sl6Pill: '📺 Телевизоры'
+        sl4Pill: '🌀 Стиралки', sl5Pill: '❄️ Кондиционеры', sl6Pill: '📺 Телевизоры',
+        navServices: 'Услуги'
     },
     uz: {
         heroTitle: 'Uydan <span class="highlight">hammani</span> sotib olaman',
@@ -262,7 +280,8 @@ const translations = {
         faq11Q: 'Butun kvartirani — mebel va texnikani birdan sotsa bo\'ladimi?',
         faq11A: 'Albatta! Ko\'chib o\'tishda biz bir tashrifda hammasini sotib olamiz: mebel, texnika, qurilish materiallari. OLXda alohida sotishdan ko\'ra tezroq va qulayroq.',
         sl1Pill: '🪑 Mebel', sl2Pill: '🔌 Texnika', sl3Pill: '❄️ Muzlatgich',
-        sl4Pill: '🌀 Kir yuvish', sl5Pill: '❄️ Konditsioner', sl6Pill: '📺 Televizor'
+        sl4Pill: '🌀 Kir yuvish', sl5Pill: '❄️ Konditsioner', sl6Pill: '📺 Televizor',
+        navServices: 'Xizmatlar'
     },
     en: {
         heroTitle: '<span class="highlight">Buy</span> everything from home',
@@ -359,7 +378,8 @@ const translations = {
         faq11Q: 'Can I sell the entire apartment — furniture and appliances?',
         faq11A: 'Of course! When moving, we buy everything in one visit: furniture, appliances, building materials. It\'s faster and more convenient than selling separately on OLX.',
         sl1Pill: '🪑 Furniture', sl2Pill: '🔌 Appliances', sl3Pill: '❄️ Fridges',
-        sl4Pill: '🌀 Washers', sl5Pill: '❄️ ACs', sl6Pill: '📺 TVs'
+        sl4Pill: '🌀 Washers', sl5Pill: '❄️ ACs', sl6Pill: '📺 TVs',
+        navServices: 'Services'
     }
 };
 
@@ -495,6 +515,15 @@ function setLanguage(lang) {
     const pills = document.querySelectorAll('.service-pill');
     const pillTexts = [t.sl1Pill, t.sl2Pill, t.sl3Pill, t.sl4Pill, t.sl5Pill, t.sl6Pill];
     pills.forEach((pill, i) => { if (pillTexts[i]) pill.textContent = pillTexts[i]; });
+
+    // Навигационное меню
+    const navServicesEl = document.querySelector('.nav-services-text');
+    if (navServicesEl) navServicesEl.textContent = t.navServices;
+    const navMenuLinks = document.querySelectorAll('.nav-menu-link');
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+    const navTexts = [t.sl1Pill, t.sl2Pill, t.sl3Pill, t.sl4Pill, t.sl5Pill, t.sl6Pill];
+    navMenuLinks.forEach((link, i) => { if (navTexts[i]) link.textContent = navTexts[i]; });
+    mobileMenuLinks.forEach((link, i) => { if (navTexts[i]) link.textContent = navTexts[i]; });
 
     // Контакты
     document.querySelector('.contact-left h2').textContent = t.contactTitle;

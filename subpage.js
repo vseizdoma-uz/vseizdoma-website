@@ -1,3 +1,19 @@
+// ===== Burger Menu =====
+const burgerBtn = document.getElementById('burgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+
+burgerBtn.addEventListener('click', () => {
+    burgerBtn.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+});
+
+mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        burgerBtn.classList.remove('active');
+        mobileMenu.classList.remove('open');
+    });
+});
+
 // ===== Theme Switching =====
 const themeToggle = document.getElementById('themeToggle');
 const themeIcon = themeToggle.querySelector('.theme-icon');
@@ -17,6 +33,13 @@ themeToggle.addEventListener('click', () => {
 function updateThemeIcon(theme) {
     themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
 }
+
+// ===== Nav Menu Translations =====
+const navTranslations = {
+    ru: { services: 'Услуги', links: ['🪑 Мебель', '🔌 Техника', '❄️ Холодильники', '🌀 Стиралки', '❄️ Кондиционеры', '📺 Телевизоры'] },
+    uz: { services: 'Xizmatlar', links: ['🪑 Mebel', '🔌 Texnika', '❄️ Muzlatgich', '🌀 Kir yuvish', '❄️ Konditsioner', '📺 Televizor'] },
+    en: { services: 'Services', links: ['🪑 Furniture', '🔌 Appliances', '❄️ Fridges', '🌀 Washers', '❄️ ACs', '📺 TVs'] }
+};
 
 // ===== Language Switching =====
 const langBtns = document.querySelectorAll('.lang-btn');
@@ -54,6 +77,15 @@ function setLanguage(lang) {
             }
         }
     });
+
+    // Update nav menu translations
+    const nt = navTranslations[lang];
+    if (nt) {
+        const navServicesEl = document.querySelector('.nav-services-text');
+        if (navServicesEl) navServicesEl.textContent = nt.services;
+        document.querySelectorAll('.nav-menu-link').forEach((link, i) => { if (nt.links[i]) link.textContent = nt.links[i]; });
+        document.querySelectorAll('.mobile-menu-link').forEach((link, i) => { if (nt.links[i]) link.textContent = nt.links[i]; });
+    }
 }
 
 // ===== Navbar Hide/Show on Scroll =====
@@ -65,6 +97,8 @@ window.addEventListener('scroll', () => {
     if (currentScroll > 100) {
         if (currentScroll > lastScroll) {
             navbar.classList.add('hidden');
+            burgerBtn.classList.remove('active');
+            mobileMenu.classList.remove('open');
         } else {
             navbar.classList.remove('hidden');
         }
