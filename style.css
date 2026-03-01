@@ -873,52 +873,118 @@ body {
     display: none;
 }
 
-/* Кнопки-пилюли ссылок на услуги */
-.service-pills {
-    padding: 20px 0;
-    background: var(--bg);
-    border-bottom: 1px solid var(--border);
-}
-
-.service-pills-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-}
-
-.service-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 10px 18px;
+/* Карточки категорий услуг */
+.service-cards-section {
+    padding: 30px 0;
     background: var(--bg-light);
-    border: 1px solid var(--border);
-    border-radius: 50px;
-    text-decoration: none;
-    color: var(--text);
-    font-size: 0.9rem;
-    font-weight: 600;
-    white-space: nowrap;
-    transition: all 0.2s;
 }
 
-.service-pill:hover {
+.service-cards-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.service-cards-track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 8px 0;
+    flex: 1;
+}
+
+.service-cards-track::-webkit-scrollbar {
+    display: none;
+}
+
+.service-card {
+    flex: 0 0 170px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px 16px 14px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.25s;
+    cursor: pointer;
+}
+
+.service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    border-color: var(--primary);
+}
+
+[data-theme="dark"] .service-card:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.service-card-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+}
+
+.service-card img {
+    width: 100px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.service-cards-arrow {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: var(--shadow);
+    line-height: 1;
+}
+
+.service-cards-arrow:hover {
     background: var(--primary);
     color: white;
     border-color: var(--primary);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
 @media (max-width: 768px) {
-    .service-pills-row {
-        gap: 8px;
+    .service-cards-section {
+        padding: 20px 0;
     }
 
-    .service-pill {
-        padding: 8px 14px;
+    .service-card {
+        flex: 0 0 140px;
+        padding: 14px 12px 10px;
+    }
+
+    .service-card img {
+        width: 80px;
+        height: 65px;
+    }
+
+    .service-card-name {
         font-size: 0.8rem;
+    }
+
+    .service-cards-arrow {
+        display: none;
     }
 }
 

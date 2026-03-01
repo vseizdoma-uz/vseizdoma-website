@@ -511,10 +511,10 @@ function setLanguage(lang) {
         });
     }
 
-    // Кнопки-пилюли услуг
-    const pills = document.querySelectorAll('.service-pill');
-    const pillTexts = [t.sl1Pill, t.sl2Pill, t.sl3Pill, t.sl4Pill, t.sl5Pill, t.sl6Pill];
-    pills.forEach((pill, i) => { if (pillTexts[i]) pill.textContent = pillTexts[i]; });
+    // Карточки категорий (без эмодзи — есть картинки)
+    const cardNames = document.querySelectorAll('.service-card-name');
+    const cardTexts = [t.sl1Pill, t.sl2Pill, t.sl3Pill, t.sl4Pill, t.sl5Pill, t.sl6Pill];
+    cardNames.forEach((el, i) => { if (cardTexts[i]) el.textContent = cardTexts[i].replace(/^[\u{1F000}-\u{1FFFF}]\s*/u, ''); });
 
     // Навигационное меню
     const navServicesEl = document.querySelector('.nav-services-text');
@@ -627,5 +627,21 @@ navbar.style.transition = 'transform 0.3s ease';
     muteBtn.addEventListener('click', () => {
         video.muted = !video.muted;
         screen.classList.toggle('unmuted', !video.muted);
+    });
+})();
+
+// Стрелки прокрутки карточек категорий
+(function() {
+    const track = document.getElementById('serviceCardsTrack');
+    if (!track) return;
+    const leftArr = document.querySelector('.service-cards-arrow-left');
+    const rightArr = document.querySelector('.service-cards-arrow-right');
+    const scrollAmount = 200;
+
+    leftArr.addEventListener('click', () => {
+        track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+    rightArr.addEventListener('click', () => {
+        track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     });
 })();
