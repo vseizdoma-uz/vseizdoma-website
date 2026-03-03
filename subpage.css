@@ -512,9 +512,7 @@ body {
 }
 
 .advantage-card {
-    background: var(--bg-glass);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 16px;
     padding: 30px;
