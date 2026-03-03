@@ -599,25 +599,10 @@ body {
     position: relative;
 }
 
-.about-card::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: 17px;
-    background: var(--gradient-main);
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.4s;
-}
-
 .about-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 12px 40px var(--primary-glow);
-    border-color: transparent;
-}
-
-.about-card:hover::before {
-    opacity: 1;
+    border-color: var(--primary);
 }
 
 .about-icon {
@@ -1053,25 +1038,10 @@ body {
     position: relative;
 }
 
-.service-card::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: 17px;
-    background: var(--gradient-main);
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.35s;
-}
-
 .service-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 30px var(--primary-glow);
-    border-color: transparent;
-}
-
-.service-card:hover::before {
-    opacity: 1;
+    border-color: var(--primary);
 }
 
 [data-theme="dark"] .service-card:hover {

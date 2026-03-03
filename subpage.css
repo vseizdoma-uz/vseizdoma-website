@@ -522,17 +522,6 @@ body {
     position: relative;
 }
 
-.advantage-card::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: 17px;
-    background: var(--gradient-main);
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.4s;
-}
-
 .advantage-card.visible {
     opacity: 1;
     transform: translateY(0);
@@ -541,11 +530,7 @@ body {
 .advantage-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 12px 40px var(--primary-glow);
-    border-color: transparent;
-}
-
-.advantage-card:hover::before {
-    opacity: 1;
+    border-color: var(--primary);
 }
 
 .advantage-icon {
