@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /promo/
+Disallow: /.claude/
+
 Sitemap: https://vseizdoma.store/sitemap.xml
+Host: https://vseizdoma.store
