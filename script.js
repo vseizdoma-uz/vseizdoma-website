@@ -546,43 +546,62 @@ function setLanguage(lang) {
     document.querySelector('.scroll-indicator span').textContent = t.scrollMore;
 }
 
-// Плавное появление элементов при скролле
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
+// Staggered scroll animations with data-animate
+const animObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            const delay = entry.target.dataset.delay || 0;
+            setTimeout(() => {
+                entry.target.classList.add('animated');
+            }, delay);
+            animObserver.unobserve(entry.target);
         }
     });
-}, observerOptions);
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
 
-// Добавляем анимацию к карточкам
-document.querySelectorAll('.about-card, .gallery-item, .step, .promo-container, .video-layout, .seo-card, .faq-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(el);
-});
+// Apply staggered delays to groups of elements
+function initAnimations() {
+    document.querySelectorAll('[data-animate]').forEach(el => {
+        animObserver.observe(el);
+    });
 
-// Скрытие/показ навигации при скролле
+    // Stagger sibling elements within grids
+    const groups = ['.about-grid', '.seo-grid', '.steps', '.gallery-grid'];
+    groups.forEach(selector => {
+        const container = document.querySelector(selector);
+        if (!container) return;
+        const children = container.querySelectorAll('[data-animate]');
+        children.forEach((child, i) => {
+            child.dataset.delay = i * 100;
+        });
+    });
+
+    // Also animate gallery items and faq items
+    document.querySelectorAll('.gallery-item, .faq-item').forEach((el, i) => {
+        if (!el.hasAttribute('data-animate')) {
+            el.setAttribute('data-animate', 'fade-up');
+            el.dataset.delay = (i % 4) * 80;
+            animObserver.observe(el);
+        }
+    });
+}
+
+initAnimations();
+
+// Navbar scroll: hide/show + glassmorphism glow
 let lastScrollY = window.scrollY;
 const navbar = document.querySelector('.navbar');
 
 window.addEventListener('scroll', () => {
-    if (window.scrollY > lastScrollY && window.scrollY > 100) {
+    const currentY = window.scrollY;
+    if (currentY > lastScrollY && currentY > 100) {
         navbar.style.transform = 'translateY(-100%)';
     } else {
         navbar.style.transform = 'translateY(0)';
     }
-    lastScrollY = window.scrollY;
-});
-
-navbar.style.transition = 'transform 0.3s ease';
+    navbar.classList.toggle('scrolled', currentY > 50);
+    lastScrollY = currentY;
+}, { passive: true });
 
 // Видеоплеер
 (function() {
