@@ -16,7 +16,7 @@
     --gradient-hero: linear-gradient(135deg, #eff6ff 0%, #ede9fe 50%, #ecfeff 100%);
     --gradient-accent: linear-gradient(135deg, #2563eb, #7c3aed);
     --text: #1f2937;
-    --text-light: #6b7280;
+    --text-light: #4b5563;
     --bg: #ffffff;
     --bg-light: #f9fafb;
     --bg-glass: rgba(255, 255, 255, 0.7);
@@ -38,7 +38,7 @@
     --gradient-hero: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f2837 100%);
     --gradient-accent: linear-gradient(135deg, #3b82f6, #8b5cf6);
     --text: #f9fafb;
-    --text-light: #9ca3af;
+    --text-light: #d1d5db;
     --bg: #111827;
     --bg-light: #1f2937;
     --bg-glass: rgba(17, 24, 39, 0.75);
@@ -1561,7 +1561,8 @@ body {
 
 .footer-nav a {
     color: var(--text-light);
-    text-decoration: none;
+    text-decoration: underline;
+    text-underline-offset: 3px;
     font-size: 0.85rem;
     font-weight: 500;
     transition: color 0.2s;
