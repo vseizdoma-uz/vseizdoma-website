@@ -26,6 +26,7 @@
     --shadow-glow: 0 0 30px rgba(37, 99, 235, 0.15);
     --gold: #c9a84c;
     --gold-light: #f0e0a0;
+    --green: #15803d;
 }
 
 [data-theme="dark"] {
@@ -48,6 +49,7 @@
     --shadow-glow: 0 0 30px rgba(59, 130, 246, 0.15);
     --gold: #d4b65a;
     --gold-light: #f5ecc8;
+    --green: #4ade80;
 }
 
 html {
@@ -623,7 +625,7 @@ body {
 }
 
 .text-green {
-    color: #22c55e;
+    color: var(--green);
 }
 
 .text-primary {
