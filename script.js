@@ -84,7 +84,7 @@ galleryTabs.forEach(tab => {
 });
 
 // Переключение языка
-const langBtns = document.querySelectorAll('.lang-btn');
+const langBtns = document.querySelectorAll('.lang-btn[data-lang]');
 
 const translations = {
     ru: {
@@ -389,17 +389,18 @@ const translations = {
     }
 };
 
-// Загружаем сохранённый язык
+// Загружаем сохранённый язык (only if button-based switcher exists)
 const savedLang = localStorage.getItem('lang') || 'ru';
-setLanguage(savedLang);
-
-langBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const lang = btn.getAttribute('data-lang');
-        setLanguage(lang);
-        localStorage.setItem('lang', lang);
+if (langBtns.length > 0) {
+    setLanguage(savedLang);
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang');
+            setLanguage(lang);
+            localStorage.setItem('lang', lang);
+        });
     });
-});
+}
 
 function setLanguage(lang) {
     // Обновляем активную кнопку

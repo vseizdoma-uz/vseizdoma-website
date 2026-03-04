@@ -42,18 +42,20 @@ const navTranslations = {
 };
 
 // ===== Language Switching =====
-const langBtns = document.querySelectorAll('.lang-btn');
+const langBtns = document.querySelectorAll('.lang-btn[data-lang]');
 const savedLang = localStorage.getItem('lang') || 'ru';
 
-setLanguage(savedLang);
-
-langBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const lang = btn.getAttribute('data-lang');
-        setLanguage(lang);
-        localStorage.setItem('lang', lang);
+// Only apply JS translations if buttons have data-lang (old button-based switcher)
+if (langBtns.length > 0) {
+    setLanguage(savedLang);
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang');
+            setLanguage(lang);
+            localStorage.setItem('lang', lang);
+        });
     });
-});
+}
 
 function setLanguage(lang) {
     // Update active button
@@ -106,7 +108,7 @@ window.addEventListener('scroll', () => {
         navbar.classList.remove('hidden');
     }
     lastScroll = currentScroll;
-});
+}, { passive: true });
 
 // ===== Scroll Animations =====
 const observer = new IntersectionObserver((entries) => {

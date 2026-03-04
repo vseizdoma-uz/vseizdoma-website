@@ -6,7 +6,7 @@
     <title>Скупка мебели б/у в Ташкенте — продать мебель дорого | ВсёИзДома</title>
     <meta name="description" content="Продать мебель б/у в Ташкенте дорого — диваны, шкафы, кровати, кухонные гарнитуры, спальные гарнитуры. Скупка старой мебели с бесплатным вывозом и демонтажом. Выезд за 1-2 часа, оплата наличными.">
     <link rel="canonical" href="https://vseizdoma.store/skupka-mebeli.html">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="author" content="ВсёИзДома">
     <meta name="geo.region" content="UZ-TO">
     <meta name="geo.placename" content="Tashkent">
@@ -15,6 +15,8 @@
     <meta name="ICBM" content="41.2995, 69.2401">
     <meta name="language" content="ru">
     <link rel="alternate" hreflang="ru" href="https://vseizdoma.store/skupka-mebeli.html">
+    <link rel="alternate" hreflang="uz" href="https://vseizdoma.store/uz/skupka-mebeli.html">
+    <link rel="alternate" hreflang="en" href="https://vseizdoma.store/en/skupka-mebeli.html">
     <link rel="alternate" hreflang="x-default" href="https://vseizdoma.store/skupka-mebeli.html">
 
     <meta property="og:type" content="website">
@@ -33,7 +35,8 @@
     <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="subpage.css">
     <meta name="theme-color" content="#2563eb">
 </head>
@@ -59,9 +62,9 @@
             </div>
             <div class="nav-right">
                 <div class="lang-switcher">
-                    <button class="lang-btn active" data-lang="ru">RU</button>
-                    <button class="lang-btn" data-lang="uz">UZ</button>
-                    <button class="lang-btn" data-lang="en">EN</button>
+                    <a href="skupka-mebeli.html" class="lang-btn active">RU</a>
+                    <a href="uz/skupka-mebeli.html" class="lang-btn">UZ</a>
+                    <a href="en/skupka-mebeli.html" class="lang-btn">EN</a>
                 </div>
                 <button class="theme-toggle" id="themeToggle" title="Сменить тему">
                     <span class="theme-icon">🌙</span>
@@ -105,7 +108,7 @@
                     </a>
                 </div>
                 <div class="sub-hero-image">
-                    <img src="images/livingroom-baroque-display.jpg" alt="Скупка элитной мебели б/у в Ташкенте — гостиные, спальни, шкафы" width="600" height="450">
+                    <img src="images/livingroom-baroque-display.jpg" alt="Скупка элитной мебели б/у в Ташкенте — гостиные, спальни, шкафы" width="600" height="450" fetchpriority="high">
                 </div>
             </div>
         </div>
@@ -422,12 +425,13 @@
         }
     };
     </script>
-    <script src="subpage.js"></script>
+    <script src="subpage.js" defer></script>
 
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Service",
+        "inLanguage": "ru",
         "name": "Скупка мебели б/у в Ташкенте",
         "description": "Покупаем б/у мебель в Ташкенте: диваны, шкафы, кровати, кухонные гарнитуры, элитную импортную мебель. Выезд за 1-2 часа, оплата на месте.",
         "provider": {
@@ -448,6 +452,7 @@
     {
         "@context": "https://schema.org",
         "@type": "FAQPage",
+        "inLanguage": "ru",
         "mainEntity": [
             {"@type": "Question", "name": "Какую мебель вы покупаете?", "acceptedAnswer": {"@type": "Answer", "text": "Покупаем диваны, кровати, шкафы, комоды, столы, стулья, кресла, кухонные гарнитуры, спальные гарнитуры, прихожие, стенки. Как отечественную, так и импортную мебель любых стилей."}},
             {"@type": "Question", "name": "Сколько стоит б/у мебель?", "acceptedAnswer": {"@type": "Answer", "text": "Цена зависит от марки, состояния, возраста и материала мебели. Импортная элитная мебель из натурального дерева ценится выше."}},
@@ -458,6 +463,24 @@
             {"@type": "Question", "name": "Покупаете ли мебель целыми комнатами?", "acceptedAnswer": {"@type": "Answer", "text": "Да! При переезде или ремонте выкупим всю мебель из квартиры за один визит: спальню, гостиную, кухню, прихожую."}},
             {"@type": "Question", "name": "Eski mebelni qayerda sotish mumkin Toshkentda?", "acceptedAnswer": {"@type": "Answer", "text": "Bizga qo'ng'iroq qiling — Toshkentning istalgan tumaniga 1-2 soatda chiqamiz. Divan, shkaf, krovat, oshxona mebeli — barchasini qimmat sotib olamiz. Bepul demontaj va olib ketish."}}
         ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Скупка мебели б/у в Ташкенте",
+        "description": "Каталог мебели, которую мы покупаем: шкафы, диваны, кровати, кухонные гарнитуры, элитная импортная мебель.",
+        "url": "https://vseizdoma.store/skupka-mebeli.html",
+        "inLanguage": "ru",
+        "mainEntity": {
+            "@type": "ItemList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Шкафы и гардеробы"},
+                {"@type": "ListItem", "position": 2, "name": "Диваны и мягкая мебель"},
+                {"@type": "ListItem", "position": 3, "name": "Элитная импортная мебель"}
+            ]
+        }
     }
     </script>
 </body>

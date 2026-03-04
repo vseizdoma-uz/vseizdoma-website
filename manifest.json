@@ -1,0 +1,17 @@
+{
+    "name": "ВсёИзДома — Скупка техники и мебели",
+    "short_name": "ВсёИзДома",
+    "description": "Скупка б/у мебели и бытовой техники в Ташкенте. Бесплатный выезд, оплата наличными.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#f8fafc",
+    "theme_color": "#2563eb",
+    "lang": "ru",
+    "icons": [
+        {
+            "src": "images/favicon.jpg",
+            "sizes": "192x192",
+            "type": "image/jpeg"
+        }
+    ]
+}

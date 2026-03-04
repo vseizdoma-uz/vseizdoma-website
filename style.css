@@ -136,6 +136,9 @@ body {
     font-size: 0.85rem;
     font-weight: 500;
     color: var(--text-light);
+    text-decoration: none;
+    display: inline-block;
+    line-height: 1;
     transition: all 0.2s;
 }
 

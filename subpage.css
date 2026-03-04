@@ -138,6 +138,9 @@ body {
     font-size: 0.8rem;
     font-weight: 600;
     font-family: inherit;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 1;
     transition: all 0.2s;
 }
 
