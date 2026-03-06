@@ -2061,107 +2061,6 @@ body {
     contain: layout style paint;
 }
 
-/* === Секция отзывов клиентов === */
-.reviews-section {
-    padding: 60px 0;
-    background: var(--bg-light);
-}
-
-.reviews-section .section-title {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-}
-
-.review-card {
-    background: var(--bg);
-    border-radius: 16px;
-    padding: 28px;
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.review-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-}
-
-.review-stars {
-    color: var(--gold);
-    font-size: 1.2rem;
-    margin-bottom: 12px;
-    letter-spacing: 2px;
-}
-
-.review-text {
-    color: var(--text);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 16px;
-    font-style: italic;
-}
-
-.review-author {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.review-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: var(--gradient-accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: 700;
-    font-size: 1rem;
-}
-
-.review-author-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.review-author-name {
-    font-weight: 600;
-    color: var(--text);
-    font-size: 0.9rem;
-}
-
-.review-author-date {
-    font-size: 0.8rem;
-    color: var(--text-light);
-}
-
-.reviews-summary {
-    text-align: center;
-    margin-top: 32px;
-    padding: 20px;
-    background: var(--bg);
-    border-radius: 12px;
-    border: 1px solid var(--border);
-}
-
-.reviews-summary-stars {
-    font-size: 1.5rem;
-    color: var(--gold);
-    letter-spacing: 3px;
-}
-
-.reviews-summary-text {
-    color: var(--text-light);
-    font-size: 0.9rem;
-    margin-top: 8px;
-}
 
 /* === Секция районов обслуживания === */
 .districts-section {
@@ -2233,10 +2132,7 @@ body {
 }
 
 @media (max-width: 768px) {
-    .reviews-grid {
-        grid-template-columns: 1fr;
-    }
-    .districts-grid {
+.districts-grid {
         grid-template-columns: repeat(2, 1fr);
     }
     .contact-map iframe {
