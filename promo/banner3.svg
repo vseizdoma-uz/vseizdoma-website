@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#000000"/>
+      <stop offset="100%" stop-color="#1c1c1c"/>
+    </linearGradient>
+    <linearGradient id="redGold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="100%" stop-color="#FF6347"/>
+    </linearGradient>
+    <linearGradient id="pureGold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFE44D"/>
+      <stop offset="50%" stop-color="#FFD700"/>
+      <stop offset="100%" stop-color="#DAA520"/>
+    </linearGradient>
+    <filter id="strongGlow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="url(#bg3)"/>
+
+  <!-- Red accent strip top -->
+  <rect x="0" y="0" width="1080" height="8" fill="#DC143C"/>
+
+  <!-- Red accent strip bottom -->
+  <rect x="0" y="1072" width="1080" height="8" fill="#DC143C"/>
+
+  <!-- Large decorative dollar/money symbols faded -->
+  <text x="50" y="300" font-family="Arial Black, sans-serif" font-size="400" fill="#FFFFFF" opacity="0.02" transform="rotate(-15, 50, 300)">$</text>
+  <text x="750" y="900" font-family="Arial Black, sans-serif" font-size="350" fill="#FFFFFF" opacity="0.02" transform="rotate(10, 750, 900)">$</text>
+
+  <!-- ВСЁИЗДОМА -->
+  <rect x="280" y="55" width="520" height="55" rx="27" fill="#DC143C"/>
+  <text x="540" y="94" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="34" fill="#FFFFFF" letter-spacing="6">ВСЁИЗДОМА</text>
+
+  <!-- КУПЛЮ -->
+  <text x="540" y="255" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="160" fill="url(#pureGold)" filter="url(#strongGlow)">КУПЛЮ</text>
+
+  <!-- ДОРОГО -->
+  <text x="540" y="415" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="160" fill="url(#pureGold)" filter="url(#strongGlow)">ДОРОГО</text>
+
+  <!-- Red divider -->
+  <rect x="100" y="445" width="880" height="4" fill="#DC143C"/>
+
+  <!-- What we buy list -->
+  <text x="540" y="520" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="38" fill="#FFFFFF">МЕБЕЛЬ  &#x2022;  ТЕХНИКУ  &#x2022;  СТРОЙМАТЕРИАЛЫ</text>
+
+  <!-- Быстро, Надёжно -->
+  <text x="540" y="610" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="70" fill="#FFFFFF" opacity="0.95">Быстро, Надёжно</text>
+
+  <!-- Оплата на месте badge -->
+  <rect x="310" y="645" width="460" height="50" rx="25" fill="none" stroke="#FFD700" stroke-width="2" opacity="0.7"/>
+  <text x="540" y="679" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="28" fill="#FFD700" opacity="0.9">ОПЛАТА НАЛИЧНЫМИ НА МЕСТЕ</text>
+
+  <!-- НАРИМАН -->
+  <text x="540" y="810" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="118" fill="#FFFFFF">НАРИМАН</text>
+
+  <!-- Phone -->
+  <text x="540" y="930" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="100" fill="#FFFFFF">(99) 111-23-23</text>
+
+  <!-- Bottom info bar -->
+  <rect x="0" y="970" width="1080" height="100" fill="#DC143C" opacity="0.9"/>
+  <text x="540" y="1020" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="32" fill="#FFFFFF">ВЫЕЗД ПО ВСЕМУ ТАШКЕНТУ  &#x2022;  КРУГЛОСУТОЧНО</text>
+  <text x="540" y="1055" text-anchor="middle" font-family="Arial, sans-serif" font-weight="400" font-size="26" fill="#FFD700">vseizdoma.store</text>
+</svg>

@@ -1156,3 +1156,11 @@ body {
         font-size: 0.75rem;
     }
 }
+
+/* === Дата обновления === */
+.last-updated {
+    text-align: center;
+    padding: 12px 0;
+    color: var(--text-light);
+    font-size: 0.8rem;
+}
