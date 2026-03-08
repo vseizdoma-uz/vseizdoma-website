@@ -1,3 +1,17 @@
+// ===== GA4 Event Tracking =====
+document.addEventListener('click', function(e) {
+    var link = e.target.closest('a');
+    if (!link) return;
+    var href = link.getAttribute('href') || '';
+    if (href.startsWith('tel:')) {
+        gtag('event', 'phone_click', { event_category: 'contact', event_label: href });
+    } else if (href.indexOf('t.me') !== -1) {
+        gtag('event', 'telegram_click', { event_category: 'contact', event_label: href });
+    } else if (href.indexOf('instagram') !== -1) {
+        gtag('event', 'instagram_click', { event_category: 'contact', event_label: href });
+    }
+});
+
 // ===== Burger Menu =====
 const burgerBtn = document.getElementById('burgerBtn');
 const mobileMenu = document.getElementById('mobileMenu');
