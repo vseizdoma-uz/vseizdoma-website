@@ -3,207 +3,246 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Google Analytics — vseizdoma.store</title>
 <meta name="robots" content="noindex, nofollow">
+<title>Аналитика — vseizdoma.store</title>
 <style>
+  :root {
+    --bg: #f8f9fa; --bg2: #fff; --text: #202124; --text2: #5f6368;
+    --border: #dadce0; --blue: #1a73e8; --green: #34a853; --red: #ea4335;
+    --orange: #fbbc04; --purple: #9334e8;
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; padding: 2rem; }
-  .container { max-width: 1200px; margin: 0 auto; }
-  h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.3rem; color: #fff; }
-  .subtitle { color: #94a3b8; margin-bottom: 2rem; font-size: 0.95rem; }
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
-  .card { background: #1e293b; border-radius: 12px; padding: 1.2rem; border: 1px solid #334155; }
-  .card-label { font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3rem; }
-  .card-value { font-size: 1.8rem; font-weight: 700; color: #fff; }
-  .card-sub { font-size: 0.8rem; color: #64748b; margin-top: 0.2rem; }
-  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
-  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
-  @media (max-width: 900px) { .grid2, .grid3 { grid-template-columns: 1fr; } }
-  .panel { background: #1e293b; border-radius: 12px; padding: 1.5rem; border: 1px solid #334155; }
-  .panel h2 { font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: 1rem; }
+  body { font-family: 'Google Sans', 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); }
+  .header { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; flex-wrap: wrap; gap: 0.8rem; }
+  .header-left { display: flex; align-items: center; gap: 1rem; }
+  .logo { width: 32px; height: 32px; background: var(--blue); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 1.1rem; }
+  .header h1 { font-size: 1.2rem; font-weight: 500; }
+  .header-right { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+  .periods { display: flex; background: var(--bg); border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+  .periods button { border: none; background: none; padding: 0.5rem 1rem; font-size: 0.85rem; cursor: pointer; color: var(--text2); transition: all 0.2s; font-family: inherit; }
+  .periods button.active { background: var(--blue); color: #fff; }
+  .periods button:hover:not(.active) { background: #e8eaed; }
+  .btn-refresh { border: 1px solid var(--border); background: var(--bg2); border-radius: 8px; padding: 0.5rem 1rem; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem; color: var(--text); font-family: inherit; transition: all 0.2s; }
+  .btn-refresh:hover { background: #e8eaed; }
+  .btn-refresh.loading .icon { animation: spin 1s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .main { max-width: 1400px; margin: 0 auto; padding: 1.5rem 2rem; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+  .kpi { background: var(--bg2); border-radius: 12px; padding: 1.2rem; border: 1px solid var(--border); }
+  .kpi-label { font-size: 0.8rem; color: var(--text2); margin-bottom: 0.4rem; }
+  .kpi-value { font-size: 2rem; font-weight: 500; line-height: 1.2; }
+  .kpi-sub { font-size: 0.78rem; color: var(--text2); margin-top: 0.3rem; }
+  .chart-panel { background: var(--bg2); border-radius: 12px; padding: 1.5rem; border: 1px solid var(--border); margin-bottom: 1.5rem; }
+  .chart-panel h2 { font-size: 1rem; font-weight: 500; margin-bottom: 1rem; }
+  canvas { width: 100% !important; height: 280px !important; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  @media (max-width: 1000px) { .grid3 { grid-template-columns: 1fr; } }
+  @media (max-width: 768px) { .grid2 { grid-template-columns: 1fr; } .main { padding: 1rem; } .header { padding: 0.8rem 1rem; } }
+  .panel { background: var(--bg2); border-radius: 12px; padding: 1.2rem; border: 1px solid var(--border); }
+  .panel h2 { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.8rem; }
   table { width: 100%; border-collapse: collapse; }
-  th { text-align: left; font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.5rem 0.8rem; border-bottom: 1px solid #334155; }
-  td { padding: 0.55rem 0.8rem; border-bottom: 1px solid #1e293b; font-size: 0.9rem; }
-  tr:hover td { background: #334155; }
+  th { text-align: left; font-size: 0.75rem; color: var(--text2); font-weight: 500; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border); }
+  td { padding: 0.5rem 0.6rem; font-size: 0.85rem; border-bottom: 1px solid #f1f3f4; }
+  tr:last-child td { border-bottom: none; }
   .num { text-align: right; font-variant-numeric: tabular-nums; }
-  .bar-wrap { display: flex; align-items: center; gap: 0.6rem; }
-  .bar { height: 6px; border-radius: 3px; background: #3b82f6; min-width: 2px; }
-  .chart-container { width: 100%; margin-bottom: 1.5rem; }
-  canvas { width: 100% !important; height: 300px !important; }
-  .tag { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 6px; font-size: 0.8rem; font-weight: 500; }
-  .tag-blue { background: #1e3a5f; color: #60a5fa; }
-  .tag-green { background: #14532d; color: #4ade80; }
-  .tag-purple { background: #3b0764; color: #c084fc; }
-  .tag-amber { background: #451a03; color: #fbbf24; }
-  .footer { text-align: center; color: #475569; font-size: 0.8rem; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #1e293b; }
+  .bar-cell { display: flex; align-items: center; gap: 0.5rem; }
+  .bar { height: 8px; border-radius: 4px; background: var(--blue); opacity: 0.7; min-width: 3px; transition: width 0.5s ease; }
+  .bar.green { background: var(--green); }
+  .bar.purple { background: var(--purple); }
+  .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; padding: 0.3rem 0; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .loading-overlay { position: fixed; inset: 0; background: rgba(255,255,255,0.8); display: flex; align-items: center; justify-content: center; z-index: 999; }
+  .loading-overlay.hidden { display: none; }
+  .spinner { width: 40px; height: 40px; border: 3px solid var(--border); border-top-color: var(--blue); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  .status { font-size: 0.78rem; color: var(--text2); text-align: center; padding: 1rem; }
 </style>
 </head>
 <body>
-<div class="container">
-  <h1>vseizdoma.store — Аналитика</h1>
-  <p class="subtitle">Период: последние 28 дней (по 8 марта 2026)</p>
 
-  <div class="cards">
-    <div class="card">
-      <div class="card-label">Пользователи</div>
-      <div class="card-value">541</div>
-      <div class="card-sub">Новых: 528</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Сессии</div>
-      <div class="card-value">586</div>
-      <div class="card-sub">~1.08 на юзера</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Просмотры</div>
-      <div class="card-value">1 481</div>
-      <div class="card-sub">~2.5 на сессию</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Ср. время сессии</div>
-      <div class="card-value">2:03</div>
-      <div class="card-sub">123 секунды</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Bounce Rate</div>
-      <div class="card-value">81.7%</div>
-      <div class="card-sub">отказы</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Новые юзеры</div>
-      <div class="card-value">97.6%</div>
-      <div class="card-sub">528 из 541</div>
-    </div>
+<div class="loading-overlay" id="loader">
+  <div class="spinner"></div>
+</div>
+
+<div class="header">
+  <div class="header-left">
+    <div class="logo">V</div>
+    <h1>vseizdoma.store</h1>
   </div>
+  <div class="header-right">
+    <div class="periods">
+      <button data-period="1">Сегодня</button>
+      <button data-period="7">7 дней</button>
+      <button data-period="14">14 дней</button>
+      <button data-period="28" class="active">28 дней</button>
+      <button data-period="90">90 дней</button>
+    </div>
+    <button class="btn-refresh" id="refreshBtn" onclick="loadData()">
+      <span class="icon">&#x21bb;</span> Обновить
+    </button>
+  </div>
+</div>
 
-  <!-- Chart -->
-  <div class="panel chart-container">
-    <h2>Динамика по дням</h2>
+<div class="main">
+  <div class="kpis" id="kpis"></div>
+  <div class="chart-panel">
+    <h2>Трафик по дням</h2>
     <canvas id="dailyChart"></canvas>
   </div>
-
   <div class="grid2">
-    <!-- Top Pages -->
-    <div class="panel">
-      <h2>Топ страниц</h2>
-      <table>
-        <tr><th>Страница</th><th class="num">Просмотры</th><th class="num">Юзеры</th></tr>
-        <tr><td>/uz/</td><td class="num">701</td><td class="num">13</td></tr>
-        <tr><td>/ <span class="tag tag-blue">Главная RU</span></td><td class="num">698</td><td class="num">537</td></tr>
-        <tr><td>/en/</td><td class="num">43</td><td class="num">5</td></tr>
-        <tr><td>/skupka-mebeli.html</td><td class="num">20</td><td class="num">13</td></tr>
-        <tr><td>/skupka-tehniki.html</td><td class="num">5</td><td class="num">5</td></tr>
-        <tr><td>/kupit-holodilnik.html</td><td class="num">4</td><td class="num">4</td></tr>
-        <tr><td>/kupit-konditsioner.html</td><td class="num">3</td><td class="num">3</td></tr>
-        <tr><td>/kupit-stiralnuyu.html</td><td class="num">3</td><td class="num">3</td></tr>
-        <tr><td>/kupit-televizor.html</td><td class="num">2</td><td class="num">1</td></tr>
-        <tr><td>/uz/skupka-mebeli.html</td><td class="num">2</td><td class="num">2</td></tr>
-      </table>
-    </div>
-
-    <!-- Traffic Sources -->
-    <div class="panel">
-      <h2>Источники трафика</h2>
-      <table>
-        <tr><th>Источник</th><th class="num">Сессии</th><th class="num">Юзеры</th></tr>
-        <tr><td><span class="tag tag-green">Google</span></td><td class="num">398</td><td class="num">361</td></tr>
-        <tr><td>Нет данных</td><td class="num">146</td><td class="num">146</td></tr>
-        <tr><td>(not set)</td><td class="num">47</td><td class="num">47</td></tr>
-        <tr><td><span class="tag tag-blue">Прямой</span></td><td class="num">19</td><td class="num">17</td></tr>
-        <tr><td><span class="tag tag-purple">Instagram</span></td><td class="num">3</td><td class="num">3</td></tr>
-        <tr><td><span class="tag tag-blue">Facebook</span></td><td class="num">1</td><td class="num">1</td></tr>
-        <tr><td><span class="tag tag-purple">IG</span></td><td class="num">1</td><td class="num">1</td></tr>
-      </table>
-      <br>
-      <div style="color:#94a3b8; font-size:0.85rem;">Google — <strong>67.9%</strong> всего трафика</div>
-    </div>
+    <div class="panel"><h2>Популярные страницы</h2><table id="pagesTable"></table></div>
+    <div class="panel"><h2>Источники трафика</h2><table id="sourcesTable"></table></div>
   </div>
-
   <div class="grid3">
-    <!-- Countries -->
-    <div class="panel">
-      <h2>Страны</h2>
-      <table>
-        <tr><th>Страна</th><th class="num">Юзеры</th></tr>
-        <tr><td>Узбекистан</td><td class="num"><div class="bar-wrap"><div class="bar" style="width:100%"></div>533</div></td></tr>
-        <tr><td>США</td><td class="num">5</td></tr>
-        <tr><td>Франция</td><td class="num">1</td></tr>
-        <tr><td>Швеция</td><td class="num">1</td></tr>
-        <tr><td>Турция</td><td class="num">1</td></tr>
-      </table>
-    </div>
-
-    <!-- Cities -->
-    <div class="panel">
-      <h2>Города</h2>
-      <table>
-        <tr><th>Город</th><th class="num">Юзеры</th></tr>
-        <tr><td><strong>Ташкент</strong></td><td class="num"><div class="bar-wrap"><div class="bar" style="width:100%"></div>420</div></td></tr>
-        <tr><td>Самарканд</td><td class="num"><div class="bar-wrap"><div class="bar" style="width:19%"></div>81</div></td></tr>
-        <tr><td>Ургенч</td><td class="num">5</td></tr>
-        <tr><td>Нукус</td><td class="num">4</td></tr>
-        <tr><td>Бухара</td><td class="num">2</td></tr>
-        <tr><td>Андижан</td><td class="num">1</td></tr>
-      </table>
-    </div>
-
-    <!-- Devices -->
-    <div class="panel">
-      <h2>Устройства</h2>
-      <table>
-        <tr><th>Тип</th><th class="num">Юзеры</th><th class="num">%</th></tr>
-        <tr><td>📱 Мобильные</td><td class="num">516</td><td class="num">95.4%</td></tr>
-        <tr><td>💻 Десктоп</td><td class="num">19</td><td class="num">3.5%</td></tr>
-        <tr><td>📟 Планшеты</td><td class="num">6</td><td class="num">1.1%</td></tr>
-      </table>
-
-      <h2 style="margin-top:1.5rem;">Браузеры</h2>
-      <table>
-        <tr><th>Браузер</th><th class="num">Юзеры</th></tr>
-        <tr><td>Chrome</td><td class="num">311</td></tr>
-        <tr><td>Android Webview</td><td class="num">128</td></tr>
-        <tr><td>Samsung Internet</td><td class="num">57</td></tr>
-        <tr><td>Safari</td><td class="num">37</td></tr>
-        <tr><td>Яндекс Браузер</td><td class="num">7</td></tr>
-      </table>
-
-      <h2 style="margin-top:1.5rem;">Языки</h2>
-      <table>
-        <tr><th>Язык</th><th class="num">Юзеры</th></tr>
-        <tr><td>Русский</td><td class="num">467</td></tr>
-        <tr><td>Узбекский</td><td class="num">59</td></tr>
-        <tr><td>Английский</td><td class="num">15</td></tr>
-      </table>
-    </div>
+    <div class="panel"><h2>Города</h2><table id="citiesTable"></table></div>
+    <div class="panel"><h2>Устройства и браузеры</h2><div id="devicesContent"></div><br><h2>Браузеры</h2><table id="browsersTable"></table></div>
+    <div class="panel"><h2>Страны</h2><table id="countriesTable"></table><br><h2>Языки</h2><table id="languagesTable"></table></div>
   </div>
-
-  <div class="footer">
-    Отчёт сгенерирован через Google Analytics Data API · vseizdoma.store · 8 марта 2026
-  </div>
+  <div class="status" id="status"></div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <script>
-const ctx = document.getElementById('dailyChart').getContext('2d');
-new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: ['5 мар', '6 мар', '7 мар', '8 мар'],
-    datasets: [
-      { label: 'Просмотры', data: [18, 11, 500, 952], borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,0.1)', fill: true, tension: 0.3 },
-      { label: 'Пользователи', data: [9, 9, 345, 182], borderColor: '#10b981', backgroundColor: 'rgba(16,185,129,0.1)', fill: true, tension: 0.3 },
-      { label: 'Сессии', data: [10, 12, 365, 200], borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.1)', fill: true, tension: 0.3 },
-    ]
-  },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { labels: { color: '#94a3b8' } } },
-    scales: {
-      x: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } },
-      y: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } }
-    }
-  }
+const API = 'https://ga-api-psi.vercel.app/api/analytics';
+let chart = null;
+let currentPeriod = '28';
+
+document.querySelectorAll('.periods button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.periods button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentPeriod = btn.dataset.period;
+    loadData();
+  });
 });
+
+function fmt(n) { return Number(n).toLocaleString('ru-RU'); }
+function fmtDur(s) {
+  s = Math.round(Number(s));
+  const m = Math.floor(s / 60);
+  const sec = s % 60;
+  return m > 0 ? m + 'м ' + sec + 'с' : sec + 'с';
+}
+function fmtDate(d) {
+  const months = ['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'];
+  return d.slice(6,8) + ' ' + months[parseInt(d.slice(4,6))-1];
+}
+
+async function loadData() {
+  var loader = document.getElementById('loader');
+  var btn = document.getElementById('refreshBtn');
+  loader.classList.remove('hidden');
+  btn.classList.add('loading');
+  try {
+    var res = await fetch(API + '?period=' + currentPeriod);
+    var data = await res.json();
+    if (data.error) throw new Error(data.error);
+    render(data);
+    document.getElementById('status').textContent = 'Обновлено: ' + new Date().toLocaleString('ru-RU');
+  } catch (e) {
+    document.getElementById('status').textContent = 'Ошибка: ' + e.message;
+  } finally {
+    loader.classList.add('hidden');
+    btn.classList.remove('loading');
+  }
+}
+
+function render(d) {
+  var o = d.overview;
+  var sessPerUser = (Number(o.sessions) / Math.max(Number(o.users), 1)).toFixed(2);
+  var viewsPerSess = (Number(o.pageviews) / Math.max(Number(o.sessions), 1)).toFixed(1);
+
+  document.getElementById('kpis').innerHTML =
+    '<div class="kpi"><div class="kpi-label">Пользователи</div><div class="kpi-value" style="color:var(--blue)">' + fmt(o.users) + '</div><div class="kpi-sub">Новых: ' + fmt(o.new_users) + '</div></div>' +
+    '<div class="kpi"><div class="kpi-label">Сессии</div><div class="kpi-value" style="color:var(--green)">' + fmt(o.sessions) + '</div><div class="kpi-sub">' + sessPerUser + ' на юзера</div></div>' +
+    '<div class="kpi"><div class="kpi-label">Просмотры</div><div class="kpi-value" style="color:var(--purple)">' + fmt(o.pageviews) + '</div><div class="kpi-sub">' + viewsPerSess + ' на сессию</div></div>' +
+    '<div class="kpi"><div class="kpi-label">Ср. сессия</div><div class="kpi-value">' + fmtDur(o.avg_duration) + '</div><div class="kpi-sub">' + o.avg_duration + ' сек</div></div>' +
+    '<div class="kpi"><div class="kpi-label">Отказы</div><div class="kpi-value" style="color:var(--red)">' + o.bounce_rate + '%</div><div class="kpi-sub">bounce rate</div></div>';
+
+  // Daily chart
+  var labels = d.daily.map(function(r) { return fmtDate(r.date); });
+  var datasets = [
+    { label: 'Просмотры', data: d.daily.map(function(r) { return Number(r.views); }), borderColor: '#9334e8', backgroundColor: 'rgba(147,52,232,0.08)', fill: true, tension: 0.3, borderWidth: 2, pointRadius: 3 },
+    { label: 'Пользователи', data: d.daily.map(function(r) { return Number(r.users); }), borderColor: '#1a73e8', backgroundColor: 'rgba(26,115,232,0.08)', fill: true, tension: 0.3, borderWidth: 2, pointRadius: 3 },
+    { label: 'Сессии', data: d.daily.map(function(r) { return Number(r.sessions); }), borderColor: '#34a853', backgroundColor: 'rgba(52,168,83,0.08)', fill: true, tension: 0.3, borderWidth: 2, pointRadius: 3 }
+  ];
+  if (chart) chart.destroy();
+  chart = new Chart(document.getElementById('dailyChart'), {
+    type: 'line',
+    data: { labels: labels, datasets: datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { intersect: false, mode: 'index' },
+      plugins: { legend: { labels: { usePointStyle: true, pointStyle: 'circle', padding: 20 } } },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 11 } } },
+        y: { grid: { color: '#f1f3f4' }, ticks: { font: { size: 11 } } }
+      }
+    }
+  });
+
+  // Pages
+  var maxViews = Math.max.apply(null, d.pages.map(function(p) { return Number(p.views); }));
+  document.getElementById('pagesTable').innerHTML =
+    '<tr><th>Страница</th><th class="num">Просмотры</th><th class="num">Юзеры</th><th class="num">Ср. время</th></tr>' +
+    d.pages.map(function(p) {
+      return '<tr><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="' + p.path + '">' + p.path + '</td>' +
+        '<td class="num"><div class="bar-cell"><div class="bar purple" style="width:' + (Number(p.views)/maxViews*80) + 'px"></div>' + fmt(p.views) + '</div></td>' +
+        '<td class="num">' + fmt(p.users) + '</td>' +
+        '<td class="num">' + fmtDur(p.dur) + '</td></tr>';
+    }).join('');
+
+  // Sources
+  var sourceNames = { '(direct)': 'Прямой', 'google': 'Google', '(not set)': 'Не указан', '(data not available)': 'Нет данных', 'l.instagram.com': 'Instagram', 'facebook.com': 'Facebook', 'ig': 'Instagram' };
+  var maxSess = Math.max.apply(null, d.sources.map(function(s) { return Number(s.sessions); }));
+  document.getElementById('sourcesTable').innerHTML =
+    '<tr><th>Источник</th><th class="num">Сессии</th><th class="num">Юзеры</th></tr>' +
+    d.sources.map(function(s) {
+      return '<tr><td>' + (sourceNames[s.source] || s.source) + '</td>' +
+        '<td class="num"><div class="bar-cell"><div class="bar green" style="width:' + (Number(s.sessions)/maxSess*80) + 'px"></div>' + fmt(s.sessions) + '</div></td>' +
+        '<td class="num">' + fmt(s.users) + '</td></tr>';
+    }).join('');
+
+  // Cities
+  var cities = d.cities.filter(function(c) { return c.city && c.city !== '(not set)' && c.city !== ''; });
+  var maxCity = Math.max.apply(null, cities.map(function(c) { return Number(c.users); }));
+  document.getElementById('citiesTable').innerHTML =
+    '<tr><th>Город</th><th class="num">Юзеры</th><th class="num">Сессии</th></tr>' +
+    cities.map(function(c) {
+      return '<tr><td>' + c.city + '</td>' +
+        '<td class="num"><div class="bar-cell"><div class="bar" style="width:' + (Number(c.users)/maxCity*60) + 'px"></div>' + fmt(c.users) + '</div></td>' +
+        '<td class="num">' + fmt(c.sessions) + '</td></tr>';
+    }).join('');
+
+  // Countries
+  document.getElementById('countriesTable').innerHTML =
+    '<tr><th>Страна</th><th class="num">Юзеры</th></tr>' +
+    d.countries.map(function(c) { return '<tr><td>' + c.country + '</td><td class="num">' + fmt(c.users) + '</td></tr>'; }).join('');
+
+  // Devices
+  var totalDev = d.devices.reduce(function(s, v) { return s + Number(v.users); }, 0);
+  var devNames = { mobile: 'Мобильные', desktop: 'Десктоп', tablet: 'Планшеты' };
+  var devColors = { mobile: 'var(--blue)', desktop: 'var(--green)', tablet: 'var(--orange)' };
+  document.getElementById('devicesContent').innerHTML =
+    d.devices.map(function(v) {
+      var pct = ((Number(v.users) / totalDev) * 100).toFixed(1);
+      return '<div class="legend-item"><div class="legend-dot" style="background:' + (devColors[v.device] || '#999') + '"></div>' +
+        '<span>' + (devNames[v.device] || v.device) + ': <strong>' + fmt(v.users) + '</strong> (' + pct + '%)</span></div>';
+    }).join('');
+
+  // Browsers
+  document.getElementById('browsersTable').innerHTML =
+    '<tr><th>Браузер</th><th class="num">Юзеры</th></tr>' +
+    d.browsers.map(function(b) { return '<tr><td>' + b.browser + '</td><td class="num">' + fmt(b.users) + '</td></tr>'; }).join('');
+
+  // Languages
+  var langNames = { Russian: 'Русский', Uzbek: 'Узбекский', English: 'Английский' };
+  document.getElementById('languagesTable').innerHTML =
+    '<tr><th>Язык</th><th class="num">Юзеры</th></tr>' +
+    d.languages.map(function(l) { return '<tr><td>' + (langNames[l.language] || l.language) + '</td><td class="num">' + fmt(l.users) + '</td></tr>'; }).join('');
+}
+
+loadData();
 </script>
 </body>
 </html>
