@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Analytics — vseizdoma.store</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; padding: 2rem; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.3rem; color: #fff; }
+  .subtitle { color: #94a3b8; margin-bottom: 2rem; font-size: 0.95rem; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .card { background: #1e293b; border-radius: 12px; padding: 1.2rem; border: 1px solid #334155; }
+  .card-label { font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3rem; }
+  .card-value { font-size: 1.8rem; font-weight: 700; color: #fff; }
+  .card-sub { font-size: 0.8rem; color: #64748b; margin-top: 0.2rem; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+  @media (max-width: 900px) { .grid2, .grid3 { grid-template-columns: 1fr; } }
+  .panel { background: #1e293b; border-radius: 12px; padding: 1.5rem; border: 1px solid #334155; }
+  .panel h2 { font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: 1rem; }
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.5rem 0.8rem; border-bottom: 1px solid #334155; }
+  td { padding: 0.55rem 0.8rem; border-bottom: 1px solid #1e293b; font-size: 0.9rem; }
+  tr:hover td { background: #334155; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .bar-wrap { display: flex; align-items: center; gap: 0.6rem; }
+  .bar { height: 6px; border-radius: 3px; background: #3b82f6; min-width: 2px; }
+  .chart-container { width: 100%; margin-bottom: 1.5rem; }
+  canvas { width: 100% !important; height: 300px !important; }
+  .tag { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 6px; font-size: 0.8rem; font-weight: 500; }
+  .tag-blue { background: #1e3a5f; color: #60a5fa; }
+  .tag-green { background: #14532d; color: #4ade80; }
+  .tag-purple { background: #3b0764; color: #c084fc; }
+  .tag-amber { background: #451a03; color: #fbbf24; }
+  .footer { text-align: center; color: #475569; font-size: 0.8rem; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #1e293b; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>vseizdoma.store — Аналитика</h1>
+  <p class="subtitle">Период: последние 28 дней (по 8 марта 2026)</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-label">Пользователи</div>
+      <div class="card-value">541</div>
+      <div class="card-sub">Новых: 528</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Сессии</div>
+      <div class="card-value">586</div>
+      <div class="card-sub">~1.08 на юзера</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Просмотры</div>
+      <div class="card-value">1 481</div>
+      <div class="card-sub">~2.5 на сессию</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Ср. время сессии</div>
+      <div class="card-value">2:03</div>
+      <div class="card-sub">123 секунды</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Bounce Rate</div>
+      <div class="card-value">81.7%</div>
+      <div class="card-sub">отказы</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Новые юзеры</div>
+      <div class="card-value">97.6%</div>
+      <div class="card-sub">528 из 541</div>
+    </div>
+  </div>
+
+  <!-- Chart -->
+  <div class="panel chart-container">
+    <h2>Динамика по дням</h2>
+    <canvas id="dailyChart"></canvas>
+  </div>
+
+  <div class="grid2">
+    <!-- Top Pages -->
+    <div class="panel">
+      <h2>Топ страниц</h2>
+      <table>
+        <tr><th>Страница</th><th class="num">Просмотры</th><th class="num">Юзеры</th></tr>
+        <tr><td>/uz/</td><td class="num">701</td><td class="num">13</td></tr>
+        <tr><td>/ <span class="tag tag-blue">Главная RU</span></td><td class="num">698</td><td class="num">537</td></tr>
+        <tr><td>/en/</td><td class="num">43</td><td class="num">5</td></tr>
+        <tr><td>/skupka-mebeli.html</td><td class="num">20</td><td class="num">13</td></tr>
+        <tr><td>/skupka-tehniki.html</td><td class="num">5</td><td class="num">5</td></tr>
+        <tr><td>/kupit-holodilnik.html</td><td class="num">4</td><td class="num">4</td></tr>
+        <tr><td>/kupit-konditsioner.html</td><td class="num">3</td><td class="num">3</td></tr>
+        <tr><td>/kupit-stiralnuyu.html</td><td class="num">3</td><td class="num">3</td></tr>
+        <tr><td>/kupit-televizor.html</td><td class="num">2</td><td class="num">1</td></tr>
+        <tr><td>/uz/skupka-mebeli.html</td><td class="num">2</td><td class="num">2</td></tr>
+      </table>
+    </div>
+
+    <!-- Traffic Sources -->
+    <div class="panel">
+      <h2>Источники трафика</h2>
+      <table>
+        <tr><th>Источник</th><th class="num">Сессии</th><th class="num">Юзеры</th></tr>
+        <tr><td><span class="tag tag-green">Google</span></td><td class="num">398</td><td class="num">361</td></tr>
+        <tr><td>Нет данных</td><td class="num">146</td><td class="num">146</td></tr>
+        <tr><td>(not set)</td><td class="num">47</td><td class="num">47</td></tr>
+        <tr><td><span class="tag tag-blue">Прямой</span></td><td class="num">19</td><td class="num">17</td></tr>
+        <tr><td><span class="tag tag-purple">Instagram</span></td><td class="num">3</td><td class="num">3</td></tr>
+        <tr><td><span class="tag tag-blue">Facebook</span></td><td class="num">1</td><td class="num">1</td></tr>
+        <tr><td><span class="tag tag-purple">IG</span></td><td class="num">1</td><td class="num">1</td></tr>
+      </table>
+      <br>
+      <div style="color:#94a3b8; font-size:0.85rem;">Google — <strong>67.9%</strong> всего трафика</div>
+    </div>
+  </div>
+
+  <div class="grid3">
+    <!-- Countries -->
+    <div class="panel">
+      <h2>Страны</h2>
+      <table>
+        <tr><th>Страна</th><th class="num">Юзеры</th></tr>
+        <tr><td>Узбекистан</td><td class="num"><div class="bar-wrap"><div class="bar" style="width:100%"></div>533</div></td></tr>
+        <tr><td>США</td><td class="num">5</td></tr>
+        <tr><td>Франция</td><td class="num">1</td></tr>
+        <tr><td>Швеция</td><td class="num">1</td></tr>
+        <tr><td>Турция</td><td class="num">1</td></tr>
+      </table>
+    </div>
+
+    <!-- Cities -->
+    <div class="panel">
+      <h2>Города</h2>
+      <table>
+        <tr><th>Город</th><th class="num">Юзеры</th></tr>
+        <tr><td><strong>Ташкент</strong></td><td class="num"><div class="bar-wrap"><div class="bar" style="width:100%"></div>420</div></td></tr>
+        <tr><td>Самарканд</td><td class="num"><div class="bar-wrap"><div class="bar" style="width:19%"></div>81</div></td></tr>
+        <tr><td>Ургенч</td><td class="num">5</td></tr>
+        <tr><td>Нукус</td><td class="num">4</td></tr>
+        <tr><td>Бухара</td><td class="num">2</td></tr>
+        <tr><td>Андижан</td><td class="num">1</td></tr>
+      </table>
+    </div>
+
+    <!-- Devices -->
+    <div class="panel">
+      <h2>Устройства</h2>
+      <table>
+        <tr><th>Тип</th><th class="num">Юзеры</th><th class="num">%</th></tr>
+        <tr><td>📱 Мобильные</td><td class="num">516</td><td class="num">95.4%</td></tr>
+        <tr><td>💻 Десктоп</td><td class="num">19</td><td class="num">3.5%</td></tr>
+        <tr><td>📟 Планшеты</td><td class="num">6</td><td class="num">1.1%</td></tr>
+      </table>
+
+      <h2 style="margin-top:1.5rem;">Браузеры</h2>
+      <table>
+        <tr><th>Браузер</th><th class="num">Юзеры</th></tr>
+        <tr><td>Chrome</td><td class="num">311</td></tr>
+        <tr><td>Android Webview</td><td class="num">128</td></tr>
+        <tr><td>Samsung Internet</td><td class="num">57</td></tr>
+        <tr><td>Safari</td><td class="num">37</td></tr>
+        <tr><td>Яндекс Браузер</td><td class="num">7</td></tr>
+      </table>
+
+      <h2 style="margin-top:1.5rem;">Языки</h2>
+      <table>
+        <tr><th>Язык</th><th class="num">Юзеры</th></tr>
+        <tr><td>Русский</td><td class="num">467</td></tr>
+        <tr><td>Узбекский</td><td class="num">59</td></tr>
+        <tr><td>Английский</td><td class="num">15</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="footer">
+    Отчёт сгенерирован через Google Analytics Data API · vseizdoma.store · 8 марта 2026
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script>
+const ctx = document.getElementById('dailyChart').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['5 мар', '6 мар', '7 мар', '8 мар'],
+    datasets: [
+      { label: 'Просмотры', data: [18, 11, 500, 952], borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,0.1)', fill: true, tension: 0.3 },
+      { label: 'Пользователи', data: [9, 9, 345, 182], borderColor: '#10b981', backgroundColor: 'rgba(16,185,129,0.1)', fill: true, tension: 0.3 },
+      { label: 'Сессии', data: [10, 12, 365, 200], borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.1)', fill: true, tension: 0.3 },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#94a3b8' } } },
+    scales: {
+      x: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } },
+      y: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } }
+    }
+  }
+});
+</script>
+</body>
+</html>
