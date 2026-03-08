@@ -34,7 +34,7 @@
   .kpi-sub { font-size: 0.78rem; color: var(--text2); margin-top: 0.3rem; }
   .chart-panel { background: var(--bg2); border-radius: 12px; padding: 1.5rem; border: 1px solid var(--border); margin-bottom: 1.5rem; }
   .chart-panel h2 { font-size: 1rem; font-weight: 500; margin-bottom: 1rem; }
-  canvas { width: 100% !important; height: 280px !important; }
+  canvas { width: 100% !important; height: 350px !important; }
   .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
   .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
   @media (max-width: 1000px) { .grid3 { grid-template-columns: 1fr; } }
@@ -159,12 +159,24 @@ function render(d) {
     '<div class="kpi"><div class="kpi-label">Ср. сессия</div><div class="kpi-value">' + fmtDur(o.avg_duration) + '</div><div class="kpi-sub">' + o.avg_duration + ' сек</div></div>' +
     '<div class="kpi"><div class="kpi-label">Отказы</div><div class="kpi-value" style="color:var(--red)">' + o.bounce_rate + '%</div><div class="kpi-sub">bounce rate</div></div>';
 
-  // Daily chart
-  var labels = d.daily.map(function(r) { return fmtDate(r.date); });
+  // Daily chart — fill missing days with zeros
+  var periodDays = Number(currentPeriod) || 28;
+  var dailyMap = {};
+  d.daily.forEach(function(r) { dailyMap[r.date] = r; });
+  var filledDaily = [];
+  for (var i = periodDays - 1; i >= 0; i--) {
+    var dt = new Date();
+    dt.setDate(dt.getDate() - i);
+    var key = dt.getFullYear() + String(dt.getMonth()+1).padStart(2,'0') + String(dt.getDate()).padStart(2,'0');
+    filledDaily.push(dailyMap[key] || { date: key, users: '0', sessions: '0', views: '0' });
+  }
+
+  var showPoints = filledDaily.length <= 31;
+  var labels = filledDaily.map(function(r) { return fmtDate(r.date); });
   var datasets = [
-    { label: 'Просмотры', data: d.daily.map(function(r) { return Number(r.views); }), borderColor: '#9334e8', backgroundColor: 'rgba(147,52,232,0.08)', fill: true, tension: 0.3, borderWidth: 2, pointRadius: 3 },
-    { label: 'Пользователи', data: d.daily.map(function(r) { return Number(r.users); }), borderColor: '#1a73e8', backgroundColor: 'rgba(26,115,232,0.08)', fill: true, tension: 0.3, borderWidth: 2, pointRadius: 3 },
-    { label: 'Сессии', data: d.daily.map(function(r) { return Number(r.sessions); }), borderColor: '#34a853', backgroundColor: 'rgba(52,168,83,0.08)', fill: true, tension: 0.3, borderWidth: 2, pointRadius: 3 }
+    { label: 'Просмотры', data: filledDaily.map(function(r) { return Number(r.views); }), borderColor: '#9334e8', backgroundColor: 'rgba(147,52,232,0.1)', fill: true, tension: 0.35, borderWidth: 2.5, pointRadius: showPoints ? 3 : 1, pointHoverRadius: 5, pointBackgroundColor: '#9334e8' },
+    { label: 'Пользователи', data: filledDaily.map(function(r) { return Number(r.users); }), borderColor: '#1a73e8', backgroundColor: 'rgba(26,115,232,0.1)', fill: true, tension: 0.35, borderWidth: 2.5, pointRadius: showPoints ? 3 : 1, pointHoverRadius: 5, pointBackgroundColor: '#1a73e8' },
+    { label: 'Сессии', data: filledDaily.map(function(r) { return Number(r.sessions); }), borderColor: '#34a853', backgroundColor: 'rgba(52,168,83,0.1)', fill: true, tension: 0.35, borderWidth: 2.5, pointRadius: showPoints ? 3 : 1, pointHoverRadius: 5, pointBackgroundColor: '#34a853' }
   ];
   if (chart) chart.destroy();
   chart = new Chart(document.getElementById('dailyChart'), {
@@ -173,10 +185,13 @@ function render(d) {
     options: {
       responsive: true, maintainAspectRatio: false,
       interaction: { intersect: false, mode: 'index' },
-      plugins: { legend: { labels: { usePointStyle: true, pointStyle: 'circle', padding: 20 } } },
+      plugins: {
+        legend: { labels: { usePointStyle: true, pointStyle: 'circle', padding: 20 } },
+        tooltip: { backgroundColor: 'rgba(32,33,36,0.9)', titleFont: { size: 13 }, bodyFont: { size: 12 }, padding: 12, cornerRadius: 8, displayColors: true }
+      },
       scales: {
-        x: { grid: { display: false }, ticks: { font: { size: 11 } } },
-        y: { grid: { color: '#f1f3f4' }, ticks: { font: { size: 11 } } }
+        x: { grid: { display: false }, ticks: { font: { size: 11 }, maxTicksLimit: 15 } },
+        y: { grid: { color: '#f1f3f4' }, ticks: { font: { size: 11 } }, beginAtZero: true }
       }
     }
   });
