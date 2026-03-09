@@ -89,6 +89,7 @@
     <h2>Трафик по дням</h2>
     <canvas id="dailyChart"></canvas>
   </div>
+  <div class="events-panel" id="eventsPanel" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1.5rem;"></div>
   <div class="grid2">
     <div class="panel"><h2>Популярные страницы</h2><table id="pagesTable"></table></div>
     <div class="panel"><h2>Источники трафика</h2><table id="sourcesTable"></table></div>
@@ -249,6 +250,18 @@ function render(d) {
   document.getElementById('browsersTable').innerHTML =
     '<tr><th>Браузер</th><th class="num">Юзеры</th></tr>' +
     d.browsers.map(function(b) { return '<tr><td>' + b.browser + '</td><td class="num">' + fmt(b.users) + '</td></tr>'; }).join('');
+
+  // Contact Events
+  var evtNames = { phone_click: '📞 Звонки', telegram_click: '✈️ Telegram', instagram_click: '📷 Instagram' };
+  var evtColors = { phone_click: 'var(--green)', telegram_click: 'var(--blue)', instagram_click: 'var(--purple)' };
+  var evtMap = {};
+  (d.events || []).forEach(function(e) { evtMap[e.event] = Number(e.count); });
+  var totalEvents = (evtMap.phone_click || 0) + (evtMap.telegram_click || 0) + (evtMap.instagram_click || 0);
+  document.getElementById('eventsPanel').innerHTML =
+    '<div class="kpi"><div class="kpi-label">Все переходы</div><div class="kpi-value" style="color:var(--text)">' + fmt(totalEvents) + '</div><div class="kpi-sub">звонки + мессенджеры</div></div>' +
+    '<div class="kpi"><div class="kpi-label">📞 Звонки</div><div class="kpi-value" style="color:var(--green)">' + fmt(evtMap.phone_click || 0) + '</div><div class="kpi-sub">phone_click</div></div>' +
+    '<div class="kpi"><div class="kpi-label">✈️ Telegram</div><div class="kpi-value" style="color:var(--blue)">' + fmt(evtMap.telegram_click || 0) + '</div><div class="kpi-sub">telegram_click</div></div>' +
+    '<div class="kpi"><div class="kpi-label">📷 Instagram</div><div class="kpi-value" style="color:var(--purple)">' + fmt(evtMap.instagram_click || 0) + '</div><div class="kpi-sub">instagram_click</div></div>';
 
   // Languages
   var langNames = { Russian: 'Русский', Uzbek: 'Узбекский', English: 'Английский' };
