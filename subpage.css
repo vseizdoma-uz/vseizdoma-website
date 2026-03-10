@@ -1157,6 +1157,92 @@ body {
     }
 }
 
+/* === Навигация по каталогу === */
+.catalog-nav-section {
+    padding: 40px 0 20px;
+    border-top: 1px solid var(--border);
+}
+
+.catalog-nav-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text);
+}
+
+.catalog-nav-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.catalog-nav-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.catalog-nav-card:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+    transform: translateY(-1px);
+}
+
+.catalog-nav-columns {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.catalog-nav-col {
+    flex: 1;
+    min-width: 200px;
+}
+
+.catalog-nav-col h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.catalog-nav-col a {
+    display: block;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 4px 0;
+    transition: color 0.2s;
+}
+
+.catalog-nav-col a:hover {
+    color: var(--blue);
+}
+
+@media (max-width: 480px) {
+    .catalog-nav-cards {
+        gap: 8px;
+    }
+    .catalog-nav-card {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    .catalog-nav-columns {
+        gap: 25px;
+    }
+}
+
 /* === Дата обновления === */
 .last-updated {
     text-align: center;
