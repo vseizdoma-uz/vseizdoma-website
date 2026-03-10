@@ -52,7 +52,19 @@
       "WebFetch(domain:blog.rayo.work)",
       "WebFetch(domain:www.rush-analytics.ru)",
       "WebFetch(domain:www.localfalcon.com)",
-      "Bash(sort:*)"
+      "Bash(sort:*)",
+      "Bash(for f in index.html uz/index.html en/index.html kupit-konditsioner.html kupit-televizor.html kupit-stiralnuyu.html kupit-holodilnik.html skupka-mebeli.html skupka-tehniki.html uz/kupit-konditsioner.html uz/kupit-televizor.html uz/kupit-stiralnuyu.html uz/kupit-holodilnik.html uz/skupka-mebeli.html uz/skupka-tehniki.html en/kupit-konditsioner.html en/kupit-televizor.html en/kupit-stiralnuyu.html en/kupit-holodilnik.html en/skupka-mebeli.html en/skupka-tehniki.html)",
+      "Bash(do echo \"=== $f ===\")",
+      "Read(//d/Emir-Asan Sayt/**)",
+      "Bash(while read -r json)",
+      "Bash(do echo \"$json\")",
+      "Bash(npm install:*)",
+      "Read(//d/ga-api/**)",
+      "Bash(vercel --prod)",
+      "WebFetch(domain:www.google.com)",
+      "Bash(GOOGLE_APPLICATION_CREDENTIALS=\"C:/Users/Muslim/.config/ga-service-account.json\" python:*)",
+      "Bash(npx vercel:*)",
+      "WebFetch(domain:share.google)"
     ]
   }
 }

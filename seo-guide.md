@@ -91,8 +91,8 @@
     <meta name="author" content="ВсёИзДома">
     <meta name="geo.region" content="UZ-TO">
     <meta name="geo.placename" content="Tashkent">
-    <meta name="geo.position" content="41.2995;69.2401">
-    <meta name="ICBM" content="41.2995, 69.2401">
+    <meta name="geo.position" content="41.2735;69.2824">
+    <meta name="ICBM" content="41.2735, 69.2824">
     <meta name="language" content="ru">
 
     <!-- Keywords: 10-15 ключей через запятую -->
@@ -175,16 +175,16 @@ Schema.org — главный инструмент для Rich Results (звёз
     "telephone": "+998991112323",
     "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Lutufiy",
+        "streetAddress": "Abdurauf Fitrat ko'chasi 313",
         "addressLocality": "Ташкент",
         "addressRegion": "Ташкент",
-        "postalCode": "100131",
+        "postalCode": "100060",
         "addressCountry": "UZ"
     },
     "geo": {
         "@type": "GeoCoordinates",
-        "latitude": 41.2995,
-        "longitude": 69.2401
+        "latitude": 41.2735,
+        "longitude": 69.2824
     },
     "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
@@ -203,8 +203,8 @@ Schema.org — главный инструмент для Rich Results (звёз
         "@type": "GeoCircle",
         "geoMidpoint": {
             "@type": "GeoCoordinates",
-            "latitude": 41.2995,
-            "longitude": 69.2401
+            "latitude": 41.2735,
+            "longitude": 69.2824
         },
         "geoRadius": "80000"
     },
@@ -250,7 +250,7 @@ Schema.org — главный инструмент для Rich Results (звёз
         "name": "ВсёИзДома",
         "telephone": "+998991112323",
         "url": "https://vseizdoma.store",
-        "address": {"@type": "PostalAddress", "streetAddress": "Lutufiy", "addressLocality": "Ташкент", "addressCountry": "UZ"},
+        "address": {"@type": "PostalAddress", "streetAddress": "Abdurauf Fitrat ko'chasi 313", "addressLocality": "Ташкент", "addressCountry": "UZ"},
         "areaServed": [
             {"@type": "City", "name": "Ташкент"},
             {"@type": "City", "name": "Чирчик"},
@@ -544,7 +544,7 @@ Sitemap: https://vseizdoma.store/sitemap.xml
 ```html
 <div class="contact-map">
     <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.0!2d69.2401!3d41.2995..."
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.0!2d69.2824!3d41.2735..."
         allowfullscreen=""
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
@@ -560,8 +560,8 @@ Sitemap: https://vseizdoma.store/sitemap.xml
 ```html
 <meta name="geo.region" content="UZ-TO">
 <meta name="geo.placename" content="Tashkent">
-<meta name="geo.position" content="41.2995;69.2401">
-<meta name="ICBM" content="41.2995, 69.2401">
+<meta name="geo.position" content="41.2735;69.2824">
+<meta name="ICBM" content="41.2735, 69.2824">
 ```
 
 ### 7.3 Районы обслуживания с Place microdata
