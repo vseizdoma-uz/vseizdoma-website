@@ -172,12 +172,21 @@ function render(d) {
     filledDaily.push(dailyMap[key] || { date: key, users: '0', sessions: '0', views: '0' });
   }
 
+  // Build daily events map
+  var dailyEventsMap = {};
+  (d.daily_events || []).forEach(function(e) {
+    if (!dailyEventsMap[e.date]) dailyEventsMap[e.date] = {};
+    dailyEventsMap[e.date][e.event] = Number(e.count);
+  });
+
   var showPoints = filledDaily.length <= 31;
   var labels = filledDaily.map(function(r) { return fmtDate(r.date); });
   var datasets = [
     { label: 'Просмотры', data: filledDaily.map(function(r) { return Number(r.views); }), borderColor: '#9334e8', backgroundColor: 'rgba(147,52,232,0.1)', fill: true, tension: 0.35, borderWidth: 2.5, pointRadius: showPoints ? 3 : 1, pointHoverRadius: 5, pointBackgroundColor: '#9334e8' },
     { label: 'Пользователи', data: filledDaily.map(function(r) { return Number(r.users); }), borderColor: '#1a73e8', backgroundColor: 'rgba(26,115,232,0.1)', fill: true, tension: 0.35, borderWidth: 2.5, pointRadius: showPoints ? 3 : 1, pointHoverRadius: 5, pointBackgroundColor: '#1a73e8' },
-    { label: 'Сессии', data: filledDaily.map(function(r) { return Number(r.sessions); }), borderColor: '#34a853', backgroundColor: 'rgba(52,168,83,0.1)', fill: true, tension: 0.35, borderWidth: 2.5, pointRadius: showPoints ? 3 : 1, pointHoverRadius: 5, pointBackgroundColor: '#34a853' }
+    { label: 'Сессии', data: filledDaily.map(function(r) { return Number(r.sessions); }), borderColor: '#34a853', backgroundColor: 'rgba(52,168,83,0.1)', fill: true, tension: 0.35, borderWidth: 2.5, pointRadius: showPoints ? 3 : 1, pointHoverRadius: 5, pointBackgroundColor: '#34a853' },
+    { label: 'Telegram', data: filledDaily.map(function(r) { var ev = dailyEventsMap[r.date] || {}; return ev.telegram_click || 0; }), borderColor: '#0088cc', backgroundColor: 'rgba(0,136,204,0.08)', fill: false, tension: 0.35, borderWidth: 2, pointRadius: showPoints ? 3 : 1, pointHoverRadius: 5, pointBackgroundColor: '#0088cc', borderDash: [5, 3] },
+    { label: 'Instagram', data: filledDaily.map(function(r) { var ev = dailyEventsMap[r.date] || {}; return ev.instagram_click || 0; }), borderColor: '#E4405F', backgroundColor: 'rgba(228,64,95,0.08)', fill: false, tension: 0.35, borderWidth: 2, pointRadius: showPoints ? 3 : 1, pointHoverRadius: 5, pointBackgroundColor: '#E4405F', borderDash: [5, 3] }
   ];
   if (chart) chart.destroy();
   chart = new Chart(document.getElementById('dailyChart'), {
