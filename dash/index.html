@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Аналитика — vseizdoma.store</title>
+<link rel="icon" type="image/jpeg" href="images/favicon.jpg">
+<style>
+  :root {
+    --bg: #f8f9fa; --bg2: #fff; --text: #202124; --text2: #5f6368;
+    --border: #dadce0; --blue: #1a73e8; --green: #34a853; --red: #ea4335;
+    --orange: #fbbc04; --purple: #9334e8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Google Sans', 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); }
+  .header { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; flex-wrap: wrap; gap: 0.8rem; }
+  .header-left { display: flex; align-items: center; gap: 1rem; }
+  .logo { width: 32px; height: 32px; background: var(--blue); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 1.1rem; }
+  .header h1 { font-size: 1.2rem; font-weight: 500; }
+  .header-right { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+  .periods { display: flex; background: var(--bg); border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+  .periods button { border: none; background: none; padding: 0.5rem 1rem; font-size: 0.85rem; cursor: pointer; color: var(--text2); transition: all 0.2s; font-family: inherit; }
+  .periods button.active { background: var(--blue); color: #fff; }
+  .periods button:hover:not(.active) { background: #e8eaed; }
+  .btn-refresh { border: 1px solid var(--border); background: var(--bg2); border-radius: 8px; padding: 0.5rem 1rem; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem; color: var(--text); font-family: inherit; transition: all 0.2s; }
+  .btn-refresh:hover { background: #e8eaed; }
+  .btn-refresh.loading .icon { animation: spin 1s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Tabs */
+  .tabs { display: flex; background: var(--bg2); border-bottom: 1px solid var(--border); padding: 0 2rem; gap: 0; }
+  .tab { border: none; background: none; padding: 0.9rem 1.5rem; font-size: 0.95rem; cursor: pointer; color: var(--text2); font-family: inherit; font-weight: 500; border-bottom: 3px solid transparent; transition: all 0.2s; position: relative; }
+  .tab:hover { color: var(--text); background: #f1f3f4; }
+  .tab.active { color: var(--blue); border-bottom-color: var(--blue); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+  @media (max-width: 768px) { .tabs { padding: 0 0.5rem; } .tab { padding: 0.8rem 0.8rem; font-size: 0.85rem; } }
+
+  .main { max-width: 1400px; margin: 0 auto; padding: 1.5rem 2rem; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+  .kpi { background: var(--bg2); border-radius: 12px; padding: 1.2rem; border: 1px solid var(--border); }
+  .kpi-label { font-size: 0.8rem; color: var(--text2); margin-bottom: 0.4rem; }
+  .kpi-value { font-size: 2rem; font-weight: 500; line-height: 1.2; }
+  .kpi-sub { font-size: 0.78rem; color: var(--text2); margin-top: 0.3rem; }
+  .chart-panel { background: var(--bg2); border-radius: 12px; padding: 1.5rem; border: 1px solid var(--border); margin-bottom: 1.5rem; }
+  .chart-panel h2 { font-size: 1rem; font-weight: 500; margin-bottom: 1rem; }
+  canvas { width: 100% !important; height: 350px !important; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .pos-badge { display: inline-block; background: #e8f0fe; color: var(--blue); border-radius: 6px; padding: 0.15rem 0.5rem; font-size: 0.8rem; font-weight: 500; }
+  .ctr-good { color: var(--green); font-weight: 500; }
+  .ctr-mid { color: var(--orange); font-weight: 500; }
+  .ctr-low { color: var(--red); font-weight: 500; }
+  @media (max-width: 1000px) { .grid3 { grid-template-columns: 1fr; } }
+  @media (max-width: 768px) { .grid2 { grid-template-columns: 1fr; } .main { padding: 1rem; } .header { padding: 0.8rem 1rem; } }
+  .panel { background: var(--bg2); border-radius: 12px; padding: 1.2rem; border: 1px solid var(--border); }
+  .panel h2 { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.8rem; }
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; font-size: 0.75rem; color: var(--text2); font-weight: 500; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border); }
+  td { padding: 0.5rem 0.6rem; font-size: 0.85rem; border-bottom: 1px solid #f1f3f4; }
+  tr:last-child td { border-bottom: none; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .bar-cell { display: flex; align-items: center; gap: 0.5rem; }
+  .bar { height: 8px; border-radius: 4px; background: var(--blue); opacity: 0.7; min-width: 3px; transition: width 0.5s ease; }
+  .bar.green { background: var(--green); }
+  .bar.purple { background: var(--purple); }
+  .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; padding: 0.3rem 0; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .loading-overlay { position: fixed; inset: 0; background: rgba(255,255,255,0.8); display: flex; align-items: center; justify-content: center; z-index: 999; }
+  .loading-overlay.hidden { display: none; }
+  .spinner { width: 40px; height: 40px; border: 3px solid var(--border); border-top-color: var(--blue); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  .status { font-size: 0.78rem; color: var(--text2); text-align: center; padding: 1rem; }
+  .gsc-notice { background: #fef7e0; border: 1px solid #f9e6a0; border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 1.5rem; font-size: 0.9rem; color: #5f5000; }
+</style>
+</head>
+<body>
+
+<div class="loading-overlay" id="loader">
+  <div class="spinner"></div>
+</div>
+
+<div class="header">
+  <div class="header-left">
+    <div class="logo">V</div>
+    <h1>vseizdoma.store</h1>
+  </div>
+  <div class="header-right">
+    <div class="periods">
+      <button data-period="1">Сегодня</button>
+      <button data-period="7">7 дней</button>
+      <button data-period="14">14 дней</button>
+      <button data-period="28" class="active">28 дней</button>
+      <button data-period="90">90 дней</button>
+    </div>
+    <button class="btn-refresh" id="refreshBtn" onclick="loadData()">
+      <span class="icon">&#x21bb;</span> Обновить
+    </button>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" data-tab="ga">Google Analytics</button>
+  <button class="tab" data-tab="gsc">Google Search Console</button>
+</div>
+
+<div class="main">
+
+  <!-- GA Tab -->
+  <div class="tab-content active" id="tab-ga">
+    <div class="kpis" id="kpis"></div>
+    <div class="chart-panel">
+      <h2>Трафик по дням</h2>
+      <canvas id="dailyChart"></canvas>
+    </div>
+    <div class="events-panel" id="eventsPanel" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1.5rem;"></div>
+    <div class="grid2">
+      <div class="panel"><h2>Популярные страницы</h2><table id="pagesTable"></table></div>
+      <div class="panel"><h2>Источники трафика</h2><table id="sourcesTable"></table></div>
+    </div>
+    <div class="grid3">
+      <div class="panel"><h2>Города</h2><table id="citiesTable"></table></div>
+      <div class="panel"><h2>Устройства и браузеры</h2><div id="devicesContent"></div><br><h2>Браузеры</h2><table id="browsersTable"></table></div>
+      <div class="panel"><h2>Страны</h2><table id="countriesTable"></table><br><h2>Языки</h2><table id="languagesTable"></table></div>
+    </div>
+  </div>
+
+  <!-- GSC Tab -->
+  <div class="tab-content" id="tab-gsc">
+    <div class="kpis" id="gscKpis"></div>
+    <div class="chart-panel">
+      <h2>Поисковый трафик по дням</h2>
+      <canvas id="gscChart"></canvas>
+    </div>
+    <div class="grid2">
+      <div class="panel"><h2>Топ запросы</h2><table id="gscQueriesTable"></table></div>
+      <div class="panel"><h2>Страницы в поиске</h2><table id="gscPagesTable"></table></div>
+    </div>
+  </div>
+
+  <div class="status" id="status"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script>
+const API = 'https://ga-api-psi.vercel.app/api/analytics';
+const GSC_API = 'https://ga-api-psi.vercel.app/api/search-console';
+let chart = null;
+let gscChart = null;
+let currentPeriod = '28';
+let currentTab = 'ga';
+
+// Tab switching
+document.querySelectorAll('.tab').forEach(function(tab) {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+    document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); });
+    tab.classList.add('active');
+    currentTab = tab.dataset.tab;
+    document.getElementById('tab-' + currentTab).classList.add('active');
+    // Redraw charts when switching tabs (Chart.js needs visible canvas)
+    if (currentTab === 'ga' && chart) chart.resize();
+    if (currentTab === 'gsc' && gscChart) gscChart.resize();
+  });
+});
+
+document.querySelectorAll('.periods button').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.periods button').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    currentPeriod = btn.dataset.period;
+    loadData();
+  });
+});
+
+function fmt(n) { return Number(n).toLocaleString('ru-RU'); }
+function fmtDur(s) {
+  s = Math.round(Number(s));
+  var m = Math.floor(s / 60);
+  var sec = s % 60;
+  return m > 0 ? m + 'м ' + sec + 'с' : sec + 'с';
+}
+function fmtDate(d) {
+  var months = ['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'];
+  return d.slice(6,8) + ' ' + months[parseInt(d.slice(4,6))-1];
+}
+function ctrClass(ctr) { return Number(ctr) >= 5 ? 'ctr-good' : Number(ctr) >= 2 ? 'ctr-mid' : 'ctr-low'; }
+
+async function loadData() {
+  var loader = document.getElementById('loader');
+  var btn = document.getElementById('refreshBtn');
+  loader.classList.remove('hidden');
+  btn.classList.add('loading');
+  try {
+    var [gaRes, gscRes] = await Promise.all([
+      fetch(API + '?period=' + currentPeriod),
+      fetch(GSC_API + '?period=' + currentPeriod).catch(function() { return null; })
+    ]);
+    var data = await gaRes.json();
+    if (data.error) throw new Error(data.error);
+    renderGA(data);
+
+    if (gscRes && gscRes.ok) {
+      var gscData = await gscRes.json();
+      if (!gscData.error) renderGSC(gscData);
+      else showGscError(gscData.error);
+    } else {
+      showGscError('API недоступен. Проверьте доступ сервис-аккаунта в Search Console.');
+    }
+    document.getElementById('status').textContent = 'Обновлено: ' + new Date().toLocaleString('ru-RU');
+  } catch (e) {
+    document.getElementById('status').textContent = 'Ошибка: ' + e.message;
+  } finally {
+    loader.classList.add('hidden');
+    btn.classList.remove('loading');
+  }
+}
+
+function showGscError(msg) {
+  document.getElementById('gscKpis').innerHTML = '<div class="gsc-notice">Search Console: ' + msg + '</div>';
+}
+
+function renderGA(d) {
+  var o = d.overview;
+  var sessPerUser = (Number(o.sessions) / Math.max(Number(o.users), 1)).toFixed(2);
+  var viewsPerSess = (Number(o.pageviews) / Math.max(Number(o.sessions), 1)).toFixed(1);
+
+  document.getElementById('kpis').innerHTML =
+    '<div class="kpi"><div class="kpi-label">Пользователи</div><div class="kpi-value" style="color:var(--blue)">' + fmt(o.users) + '</div><div class="kpi-sub">Новых: ' + fmt(o.new_users) + '</div></div>' +
+    '<div class="kpi"><div class="kpi-label">Сессии</div><div class="kpi-value" style="color:var(--green)">' + fmt(o.sessions) + '</div><div class="kpi-sub">' + sessPerUser + ' на юзера</div></div>' +
+    '<div class="kpi"><div class="kpi-label">Просмотры</div><div class="kpi-value" style="color:var(--purple)">' + fmt(o.pageviews) + '</div><div class="kpi-sub">' + viewsPerSess + ' на сессию</div></div>' +
+    '<div class="kpi"><div class="kpi-label">Ср. сессия</div><div class="kpi-value">' + fmtDur(o.avg_duration) + '</div><div class="kpi-sub">' + o.avg_duration + ' сек</div></div>' +
+    '<div class="kpi"><div class="kpi-label">Отказы</div><div class="kpi-value" style="color:var(--red)">' + o.bounce_rate + '%</div><div class="kpi-sub">bounce rate</div></div>';
+
+  // Daily chart
+  var periodDays = Number(currentPeriod) || 28;
+  var dailyMap = {};
+  d.daily.forEach(function(r) { dailyMap[r.date] = r; });
+  var filledDaily = [];
+  for (var i = periodDays - 1; i >= 0; i--) {
+    var dt = new Date();
+    dt.setDate(dt.getDate() - i);
+    var key = dt.getFullYear() + String(dt.getMonth()+1).padStart(2,'0') + String(dt.getDate()).padStart(2,'0');
+    filledDaily.push(dailyMap[key] || { date: key, users: '0', sessions: '0', views: '0' });
+  }
+
+  var dailyEventsMap = {};
+  (d.daily_events || []).forEach(function(e) {
+    if (!dailyEventsMap[e.date]) dailyEventsMap[e.date] = {};
+    dailyEventsMap[e.date][e.event] = Number(e.count);
+  });
+
+  var showPoints = filledDaily.length <= 31;
+  var labels = filledDaily.map(function(r) { return fmtDate(r.date); });
+  var datasets = [
+    { label: 'Просмотры', data: filledDaily.map(function(r) { return Number(r.views); }), borderColor: '#9334e8', backgroundColor: 'rgba(147,52,232,0.1)', fill: true, tension: 0.35, borderWidth: 2.5, pointRadius: showPoints ? 3 : 1, pointHoverRadius: 5, pointBackgroundColor: '#9334e8' },
+    { label: 'Пользователи', data: filledDaily.map(function(r) { return Number(r.users); }), borderColor: '#1a73e8', backgroundColor: 'rgba(26,115,232,0.1)', fill: true, tension: 0.35, borderWidth: 2.5, pointRadius: showPoints ? 3 : 1, pointHoverRadius: 5, pointBackgroundColor: '#1a73e8' },
+    { label: 'Сессии', data: filledDaily.map(function(r) { return Number(r.sessions); }), borderColor: '#34a853', backgroundColor: 'rgba(52,168,83,0.1)', fill: true, tension: 0.35, borderWidth: 2.5, pointRadius: showPoints ? 3 : 1, pointHoverRadius: 5, pointBackgroundColor: '#34a853' },
+    { label: 'Telegram', data: filledDaily.map(function(r) { var ev = dailyEventsMap[r.date] || {}; return ev.telegram_click || 0; }), borderColor: '#0088cc', backgroundColor: 'rgba(0,136,204,0.08)', fill: false, tension: 0.35, borderWidth: 2, pointRadius: showPoints ? 3 : 1, pointHoverRadius: 5, pointBackgroundColor: '#0088cc', borderDash: [5, 3] },
+    { label: 'Instagram', data: filledDaily.map(function(r) { var ev = dailyEventsMap[r.date] || {}; return ev.instagram_click || 0; }), borderColor: '#E4405F', backgroundColor: 'rgba(228,64,95,0.08)', fill: false, tension: 0.35, borderWidth: 2, pointRadius: showPoints ? 3 : 1, pointHoverRadius: 5, pointBackgroundColor: '#E4405F', borderDash: [5, 3] }
+  ];
+  if (chart) chart.destroy();
+  chart = new Chart(document.getElementById('dailyChart'), {
+    type: 'line',
+    data: { labels: labels, datasets: datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { intersect: false, mode: 'index' },
+      plugins: {
+        legend: { labels: { usePointStyle: true, pointStyle: 'circle', padding: 20 } },
+        tooltip: { backgroundColor: 'rgba(32,33,36,0.9)', titleFont: { size: 13 }, bodyFont: { size: 12 }, padding: 12, cornerRadius: 8, displayColors: true }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 11 }, maxTicksLimit: 15 } },
+        y: { grid: { color: '#f1f3f4' }, ticks: { font: { size: 11 } }, beginAtZero: true }
+      }
+    }
+  });
+
+  // Pages
+  var maxViews = Math.max.apply(null, d.pages.map(function(p) { return Number(p.views); }));
+  document.getElementById('pagesTable').innerHTML =
+    '<tr><th>Страница</th><th class="num">Просмотры</th><th class="num">Юзеры</th><th class="num">Ср. время</th></tr>' +
+    d.pages.map(function(p) {
+      return '<tr><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="' + p.path + '">' + p.path + '</td>' +
+        '<td class="num"><div class="bar-cell"><div class="bar purple" style="width:' + (Number(p.views)/maxViews*80) + 'px"></div>' + fmt(p.views) + '</div></td>' +
+        '<td class="num">' + fmt(p.users) + '</td>' +
+        '<td class="num">' + fmtDur(p.dur) + '</td></tr>';
+    }).join('');
+
+  // Sources
+  var sourceNames = { '(direct)': 'Прямой', 'google': 'Google', '(not set)': 'Не указан', '(data not available)': 'Нет данных', 'l.instagram.com': 'Instagram', 'facebook.com': 'Facebook', 'ig': 'Instagram' };
+  var maxSess = Math.max.apply(null, d.sources.map(function(s) { return Number(s.sessions); }));
+  document.getElementById('sourcesTable').innerHTML =
+    '<tr><th>Источник</th><th class="num">Сессии</th><th class="num">Юзеры</th></tr>' +
+    d.sources.map(function(s) {
+      return '<tr><td>' + (sourceNames[s.source] || s.source) + '</td>' +
+        '<td class="num"><div class="bar-cell"><div class="bar green" style="width:' + (Number(s.sessions)/maxSess*80) + 'px"></div>' + fmt(s.sessions) + '</div></td>' +
+        '<td class="num">' + fmt(s.users) + '</td></tr>';
+    }).join('');
+
+  // Cities
+  var cities = d.cities.filter(function(c) { return c.city && c.city !== '(not set)' && c.city !== ''; });
+  var maxCity = Math.max.apply(null, cities.map(function(c) { return Number(c.users); }));
+  document.getElementById('citiesTable').innerHTML =
+    '<tr><th>Город</th><th class="num">Юзеры</th><th class="num">Сессии</th></tr>' +
+    cities.map(function(c) {
+      return '<tr><td>' + c.city + '</td>' +
+        '<td class="num"><div class="bar-cell"><div class="bar" style="width:' + (Number(c.users)/maxCity*60) + 'px"></div>' + fmt(c.users) + '</div></td>' +
+        '<td class="num">' + fmt(c.sessions) + '</td></tr>';
+    }).join('');
+
+  // Countries
+  document.getElementById('countriesTable').innerHTML =
+    '<tr><th>Страна</th><th class="num">Юзеры</th></tr>' +
+    d.countries.map(function(c) { return '<tr><td>' + c.country + '</td><td class="num">' + fmt(c.users) + '</td></tr>'; }).join('');
+
+  // Devices
+  var totalDev = d.devices.reduce(function(s, v) { return s + Number(v.users); }, 0);
+  var devNames = { mobile: 'Мобильные', desktop: 'Десктоп', tablet: 'Планшеты' };
+  var devColors = { mobile: 'var(--blue)', desktop: 'var(--green)', tablet: 'var(--orange)' };
+  document.getElementById('devicesContent').innerHTML =
+    d.devices.map(function(v) {
+      var pct = ((Number(v.users) / totalDev) * 100).toFixed(1);
+      return '<div class="legend-item"><div class="legend-dot" style="background:' + (devColors[v.device] || '#999') + '"></div>' +
+        '<span>' + (devNames[v.device] || v.device) + ': <strong>' + fmt(v.users) + '</strong> (' + pct + '%)</span></div>';
+    }).join('');
+
+  // Browsers
+  document.getElementById('browsersTable').innerHTML =
+    '<tr><th>Браузер</th><th class="num">Юзеры</th></tr>' +
+    d.browsers.map(function(b) { return '<tr><td>' + b.browser + '</td><td class="num">' + fmt(b.users) + '</td></tr>'; }).join('');
+
+  // Contact Events
+  var evtMap = {};
+  (d.events || []).forEach(function(e) { evtMap[e.event] = Number(e.count); });
+  var totalEvents = (evtMap.phone_click || 0) + (evtMap.telegram_click || 0) + (evtMap.instagram_click || 0);
+  document.getElementById('eventsPanel').innerHTML =
+    '<div class="kpi"><div class="kpi-label">Все переходы</div><div class="kpi-value" style="color:var(--text)">' + fmt(totalEvents) + '</div><div class="kpi-sub">звонки + мессенджеры</div></div>' +
+    '<div class="kpi"><div class="kpi-label">Звонки</div><div class="kpi-value" style="color:var(--green)">' + fmt(evtMap.phone_click || 0) + '</div><div class="kpi-sub">phone_click</div></div>' +
+    '<div class="kpi"><div class="kpi-label">Telegram</div><div class="kpi-value" style="color:var(--blue)">' + fmt(evtMap.telegram_click || 0) + '</div><div class="kpi-sub">telegram_click</div></div>' +
+    '<div class="kpi"><div class="kpi-label">Instagram</div><div class="kpi-value" style="color:var(--purple)">' + fmt(evtMap.instagram_click || 0) + '</div><div class="kpi-sub">instagram_click</div></div>';
+
+  // Languages
+  var langNames = { Russian: 'Русский', Uzbek: 'Узбекский', English: 'Английский' };
+  document.getElementById('languagesTable').innerHTML =
+    '<tr><th>Язык</th><th class="num">Юзеры</th></tr>' +
+    d.languages.map(function(l) { return '<tr><td>' + (langNames[l.language] || l.language) + '</td><td class="num">' + fmt(l.users) + '</td></tr>'; }).join('');
+}
+
+function renderGSC(g) {
+  var o = g.overview;
+  document.getElementById('gscKpis').innerHTML =
+    '<div class="kpi"><div class="kpi-label">Клики из Google</div><div class="kpi-value" style="color:var(--blue)">' + fmt(o.clicks) + '</div><div class="kpi-sub">переходы из поиска</div></div>' +
+    '<div class="kpi"><div class="kpi-label">Показы</div><div class="kpi-value" style="color:var(--green)">' + fmt(o.impressions) + '</div><div class="kpi-sub">появлений в выдаче</div></div>' +
+    '<div class="kpi"><div class="kpi-label">CTR</div><div class="kpi-value ' + ctrClass(o.ctr) + '">' + o.ctr + '%</div><div class="kpi-sub">кликабельность</div></div>' +
+    '<div class="kpi"><div class="kpi-label">Ср. позиция</div><div class="kpi-value"><span class="pos-badge">' + o.position + '</span></div><div class="kpi-sub">в Google выдаче</div></div>';
+
+  // GSC daily chart
+  var periodDays = Number(currentPeriod) || 28;
+  var gscDailyMap = {};
+  g.daily.forEach(function(r) { gscDailyMap[r.date] = r; });
+  var filledGsc = [];
+  for (var i = periodDays - 1; i >= 0; i--) {
+    var dt = new Date();
+    dt.setDate(dt.getDate() - 2 - i);
+    var key = dt.getFullYear() + String(dt.getMonth()+1).padStart(2,'0') + String(dt.getDate()).padStart(2,'0');
+    filledGsc.push(gscDailyMap[key] || { date: key, clicks: 0, impressions: 0 });
+  }
+
+  var showPts = filledGsc.length <= 31;
+  var gscLabels = filledGsc.map(function(r) { return fmtDate(r.date); });
+  if (gscChart) gscChart.destroy();
+  gscChart = new Chart(document.getElementById('gscChart'), {
+    type: 'line',
+    data: {
+      labels: gscLabels,
+      datasets: [
+        { label: 'Клики', data: filledGsc.map(function(r) { return r.clicks; }), borderColor: '#1a73e8', backgroundColor: 'rgba(26,115,232,0.1)', fill: true, tension: 0.35, borderWidth: 2.5, pointRadius: showPts ? 3 : 1, pointHoverRadius: 5, pointBackgroundColor: '#1a73e8', yAxisID: 'y' },
+        { label: 'Показы', data: filledGsc.map(function(r) { return r.impressions; }), borderColor: '#34a853', backgroundColor: 'rgba(52,168,83,0.1)', fill: true, tension: 0.35, borderWidth: 2.5, pointRadius: showPts ? 3 : 1, pointHoverRadius: 5, pointBackgroundColor: '#34a853', yAxisID: 'y1' }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { intersect: false, mode: 'index' },
+      plugins: {
+        legend: { labels: { usePointStyle: true, pointStyle: 'circle', padding: 20 } },
+        tooltip: { backgroundColor: 'rgba(32,33,36,0.9)', titleFont: { size: 13 }, bodyFont: { size: 12 }, padding: 12, cornerRadius: 8, displayColors: true }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 11 }, maxTicksLimit: 15 } },
+        y: { type: 'linear', position: 'left', grid: { color: '#f1f3f4' }, ticks: { font: { size: 11 } }, beginAtZero: true, title: { display: true, text: 'Клики', font: { size: 11 } } },
+        y1: { type: 'linear', position: 'right', grid: { drawOnChartArea: false }, ticks: { font: { size: 11 } }, beginAtZero: true, title: { display: true, text: 'Показы', font: { size: 11 } } }
+      }
+    }
+  });
+
+  // Queries table
+  var maxClicks = Math.max.apply(null, g.queries.map(function(q) { return q.clicks; }).concat([1]));
+  document.getElementById('gscQueriesTable').innerHTML =
+    '<tr><th>Запрос</th><th class="num">Клики</th><th class="num">Показы</th><th class="num">CTR</th><th class="num">Позиция</th></tr>' +
+    g.queries.map(function(q) {
+      return '<tr><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="' + q.query + '">' + q.query + '</td>' +
+        '<td class="num"><div class="bar-cell"><div class="bar" style="width:' + (q.clicks/maxClicks*60) + 'px"></div>' + fmt(q.clicks) + '</div></td>' +
+        '<td class="num">' + fmt(q.impressions) + '</td>' +
+        '<td class="num"><span class="' + ctrClass(q.ctr) + '">' + q.ctr + '%</span></td>' +
+        '<td class="num"><span class="pos-badge">' + q.position + '</span></td></tr>';
+    }).join('');
+
+  // Pages table
+  var maxPageClicks = Math.max.apply(null, g.pages.map(function(p) { return p.clicks; }).concat([1]));
+  document.getElementById('gscPagesTable').innerHTML =
+    '<tr><th>Страница</th><th class="num">Клики</th><th class="num">Показы</th><th class="num">CTR</th><th class="num">Позиция</th></tr>' +
+    g.pages.map(function(p) {
+      return '<tr><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="' + p.page + '">' + p.page + '</td>' +
+        '<td class="num"><div class="bar-cell"><div class="bar green" style="width:' + (p.clicks/maxPageClicks*60) + 'px"></div>' + fmt(p.clicks) + '</div></td>' +
+        '<td class="num">' + fmt(p.impressions) + '</td>' +
+        '<td class="num"><span class="' + ctrClass(p.ctr) + '">' + p.ctr + '%</span></td>' +
+        '<td class="num"><span class="pos-badge">' + p.position + '</span></td></tr>';
+    }).join('');
+}
+
+loadData();
+</script>
+</body>
+</html>
