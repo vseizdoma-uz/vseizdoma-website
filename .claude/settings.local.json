@@ -64,7 +64,23 @@
       "WebFetch(domain:www.google.com)",
       "Bash(GOOGLE_APPLICATION_CREDENTIALS=\"C:/Users/Muslim/.config/ga-service-account.json\" python:*)",
       "Bash(npx vercel:*)",
-      "WebFetch(domain:share.google)"
+      "WebFetch(domain:share.google)",
+      "WebFetch(domain:ga-api-psi.vercel.app)",
+      "Bash(for f:*)",
+      "Bash(done)",
+      "Bash(cd \"D:/Emir-Asan Sayt\" && rm update_meta.py)",
+      "Bash(find . -name \"*.html\" -exec sed -i 's|\"\"href_matches\"\": \"\"/\\\\*\"\"|\"\"href_matches\"\": \"\"/*.html\"\"|g' {} +)",
+      "Bash(gh repo:*)",
+      "Bash(do)",
+      "Bash(sed -i 's|<a href=\"\"kupit-shkaf.html\"\" class=\"\"nav-menu-link\"\" role=\"\"menuitem\"\">🗄️ Шкафы</a>|<a href=\"\"kupit-shkaf.html\"\" class=\"\"nav-menu-link\"\" role=\"\"menuitem\"\">🗄️ Шкафы</a>\\\\n                        <a href=\"\"kupit-mebel.html\"\" class=\"\"nav-menu-link\"\" role=\"\"menuitem\"\">🛋️ Мебель б/у</a>|' \"$f\")",
+      "Bash(sed -i 's|<a href=\"\"kupit-shkaf.html\"\" class=\"\"mobile-menu-link\"\">🗄️ Шкафы</a>|<a href=\"\"kupit-shkaf.html\"\" class=\"\"mobile-menu-link\"\">🗄️ Шкафы</a>\\\\n            <a href=\"\"kupit-mebel.html\"\" class=\"\"mobile-menu-link\"\">🛋️ Мебель б/у</a>|' \"$f\")",
+      "Bash(echo \"Done: $f\")",
+      "Bash(sed -i 's|<a href=\"\"kupit-shkaf.html\"\" class=\"\"nav-menu-link\"\" role=\"\"menuitem\"\">🗄️ Shkaflar</a>|<a href=\"\"kupit-shkaf.html\"\" class=\"\"nav-menu-link\"\" role=\"\"menuitem\"\">🗄️ Shkaflar</a>\\\\n                        <a href=\"\"kupit-mebel.html\"\" class=\"\"nav-menu-link\"\" role=\"\"menuitem\"\">🛋️ Mebel b/u</a>|' \"$f\")",
+      "Bash(sed -i 's|<a href=\"\"kupit-shkaf.html\"\" class=\"\"mobile-menu-link\"\">🗄️ Shkaflar</a>|<a href=\"\"kupit-shkaf.html\"\" class=\"\"mobile-menu-link\"\">🗄️ Shkaflar</a>\\\\n            <a href=\"\"kupit-mebel.html\"\" class=\"\"mobile-menu-link\"\">🛋️ Mebel b/u</a>|' \"$f\")",
+      "Bash(echo \"Done: uz/$f\")",
+      "Bash(sed -i 's|<a href=\"\"../kupit-shkaf.html\"\" class=\"\"nav-menu-link\"\" role=\"\"menuitem\"\">🗄️ Wardrobes</a>|<a href=\"\"../kupit-shkaf.html\"\" class=\"\"nav-menu-link\"\" role=\"\"menuitem\"\">🗄️ Wardrobes</a>\\\\n                        <a href=\"\"../kupit-mebel.html\"\" class=\"\"nav-menu-link\"\" role=\"\"menuitem\"\">🛋️ Used Furniture</a>|' \"$f\")",
+      "Bash(sed -i 's|<a href=\"\"../kupit-shkaf.html\"\" class=\"\"mobile-menu-link\"\">🗄️ Wardrobes</a>|<a href=\"\"../kupit-shkaf.html\"\" class=\"\"mobile-menu-link\"\">🗄️ Wardrobes</a>\\\\n            <a href=\"\"../kupit-mebel.html\"\" class=\"\"mobile-menu-link\"\">🛋️ Used Furniture</a>|' \"$f\")",
+      "Bash(echo \"Done: en/$f\")"
     ]
   }
 }
