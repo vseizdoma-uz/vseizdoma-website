@@ -128,6 +128,14 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Blog -->
+  <url>
+    <loc>https://vseizdoma.store/blog/kak-prodat-mebel-tashkent.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <!-- English -->
   <url>
     <loc>https://vseizdoma.store/en/</loc>
