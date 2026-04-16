@@ -3,24 +3,28 @@ Allow: /
 Disallow: /promo/
 Disallow: /.claude/
 
-# Block AI crawlers
+# AI crawlers ALLOWED (for AI Overviews, ChatGPT, Gemini, Perplexity citations)
+# We WANT to be cited in AI answers
 User-agent: GPTBot
-Disallow: /
+Allow: /
 
 User-agent: CCBot
-Disallow: /
+Allow: /
 
 User-agent: Google-Extended
-Disallow: /
+Allow: /
 
 User-agent: anthropic-ai
-Disallow: /
+Allow: /
 
 User-agent: ClaudeBot
-Disallow: /
+Allow: /
 
-User-agent: Bytespider
-Disallow: /
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
 
 Sitemap: https://vseizdoma.store/sitemap.xml
 Host: https://vseizdoma.store
