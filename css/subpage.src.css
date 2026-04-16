@@ -1301,3 +1301,11 @@ body {
 }
 .sub-hero-phone:active, .cta-phone:active { transform: translateY(0) scale(0.97); transition-duration: 0.1s; }
 .lang-btn:active, .theme-toggle:active, .burger-btn:active, .mobile-menu a:active, .nav-menu-link:active, .sub-faq-item summary:active { transform: scale(0.96); transition-duration: 0.1s; }
+
+/* TL;DR on homepage (first child of main, no breadcrumb above) needs offset for fixed navbar */
+main > .quick-answer:first-child {
+    margin-top: 120px;
+}
+@media (max-width: 768px) {
+    main > .quick-answer:first-child { margin-top: 90px; }
+}
