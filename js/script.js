@@ -688,3 +688,45 @@ window.addEventListener('scroll', () => {
         track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     });
 })();
+
+// === Phase 2: Dropdown menu touch support ===
+(function() {
+    const dropdown = document.querySelector('.nav-dropdown');
+    if (!dropdown) return;
+    const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+    if (!toggle) return;
+
+    // Make toggle keyboard-focusable
+    toggle.setAttribute('tabindex', '0');
+
+    // Click/tap toggles open state
+    toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdown.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', dropdown.classList.contains('open') ? 'true' : 'false');
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target)) {
+            dropdown.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            dropdown.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    // Close when a link inside is clicked (for navigation)
+    dropdown.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            dropdown.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+        });
+    });
+})();

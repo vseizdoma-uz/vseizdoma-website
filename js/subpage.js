@@ -137,3 +137,35 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.advantage-card, .product-card, .sub-step, .sub-faq-item').forEach(el => {
     observer.observe(el);
 });
+
+// === Phase 2: Dropdown menu touch support ===
+(function() {
+    const dropdown = document.querySelector('.nav-dropdown');
+    if (!dropdown) return;
+    const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+    if (!toggle) return;
+    toggle.setAttribute('tabindex', '0');
+    toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdown.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', dropdown.classList.contains('open') ? 'true' : 'false');
+    });
+    document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target)) {
+            dropdown.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            dropdown.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+    dropdown.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            dropdown.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+        });
+    });
+})();
