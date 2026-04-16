@@ -27,4 +27,6 @@ User-agent: OAI-SearchBot
 Allow: /
 
 Sitemap: https://vseizdoma.store/sitemap.xml
+Sitemap: https://vseizdoma.store/sitemap-images.xml
+Sitemap: https://vseizdoma.store/sitemap-index.xml
 Host: https://vseizdoma.store
