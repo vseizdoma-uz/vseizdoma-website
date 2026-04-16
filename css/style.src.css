@@ -2171,3 +2171,34 @@ body {
         height: 200px;
     }
 }
+
+/* ===== Quick Answer / TL;DR blocks (AI Overviews optimization) ===== */
+.quick-answer {
+    background: var(--bg-light);
+    border-left: 4px solid var(--primary);
+    padding: 18px 26px;
+    margin: 24px auto 0;
+    max-width: 1200px;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+.quick-answer .qa-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--primary);
+    margin-bottom: 8px;
+    display: block;
+}
+.quick-answer p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text);
+    margin: 0;
+}
+.quick-answer p strong { color: var(--primary); font-weight: 700; }
+@media (max-width: 768px) {
+    .quick-answer { margin: 16px 20px 0; padding: 14px 18px; }
+    .quick-answer p { font-size: 15px; }
+}

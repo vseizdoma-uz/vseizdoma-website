@@ -80,7 +80,9 @@
       "Bash(echo \"Done: uz/$f\")",
       "Bash(sed -i 's|<a href=\"\"../kupit-shkaf.html\"\" class=\"\"nav-menu-link\"\" role=\"\"menuitem\"\">🗄️ Wardrobes</a>|<a href=\"\"../kupit-shkaf.html\"\" class=\"\"nav-menu-link\"\" role=\"\"menuitem\"\">🗄️ Wardrobes</a>\\\\n                        <a href=\"\"../kupit-mebel.html\"\" class=\"\"nav-menu-link\"\" role=\"\"menuitem\"\">🛋️ Used Furniture</a>|' \"$f\")",
       "Bash(sed -i 's|<a href=\"\"../kupit-shkaf.html\"\" class=\"\"mobile-menu-link\"\">🗄️ Wardrobes</a>|<a href=\"\"../kupit-shkaf.html\"\" class=\"\"mobile-menu-link\"\">🗄️ Wardrobes</a>\\\\n            <a href=\"\"../kupit-mebel.html\"\" class=\"\"mobile-menu-link\"\">🛋️ Used Furniture</a>|' \"$f\")",
-      "Bash(echo \"Done: en/$f\")"
+      "Bash(echo \"Done: en/$f\")",
+      "Bash(python3 *)"
     ]
-  }
+  },
+  "outputStyle": "default"
 }
