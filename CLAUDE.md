@@ -14,10 +14,11 @@
 - Партнёр: mebelimport.store (+998 77 129-99-55)
 
 ## Структура
-- **10 RU + 10 UZ + 7 EN = 27 HTML**
+- **10 RU + 10 UZ + 7 EN + 1 Blog = 28 публичных HTML** (+ analytics/dash/404/review служебные)
 - 2 CSS: `style.css` (главные), `subpage.css` (подстраницы)
 - 2 JS: `script.js` (главные), `subpage.js` (подстраницы)
-- Подстраницы: skupka-mebeli, skupka-tehniki, kupit-holodilnik, kupit-stiralnuyu, kupit-konditsioner, kupit-televizor, kupit-mebel, kupit-gazplitu, kupit-shkaf
+- Подстраницы: skupka-mebeli, skupka-mebeli-sssr, skupka-tehniki, kupit-holodilnik, kupit-stiralnuyu, kupit-posudomoechnuyu, kupit-mikrovolnovku, kupit-konditsioner, kupit-televizor, kupit-mebel, kupit-gazplitu, kupit-shkaf
+- Блог: blog/kak-prodat-mebel-tashkent.html
 
 ## Правила работы
 - После изменений — **всегда пушить** (`git add` + `git commit` + `git push`)
@@ -63,20 +64,38 @@
 - skupka-antikvariata.html (отдельно от мебели СССР)
 
 ## SEO
-- Schema.org на всех страницах (LocalBusiness, Service, FAQPage, BreadcrumbList и др.)
-- AggregateRating + Reviews — звёзды в выдаче
-- Google Search Console + Yandex Webmaster подключены
+- Schema.org на всех страницах (LocalBusiness, Service, FAQPage, BreadcrumbList, Product, Review, BlogPosting и др.)
+- AggregateRating 5.0/17 + Review entries — **с видимым блоком на странице** (Google policy compliance)
+- Google Search Console + Yandex Webmaster + Bing Webmaster Tools подключены
 - GA4 Property ID: 526885505
-- **Title до 55 символов** на всех 23 страницах (не обрезаются на мобильных)
-- **Description 135-160 символов** с телефоном на всех 23 страницах
+- Microsoft Clarity ID: `wdhcx90w1t` (heatmaps + session recordings, на 34 публичных HTML)
+- **Title до 55 символов** на всех страницах (не обрезаются на мобильных)
+- **Description 135-160 символов** с телефоном на всех страницах
 - Бренд "ВсёИзДома" / "VseIzDoma" (НЕ "VsyoIzDoma") — единое написание
 - Подстраницы RU начинаются с "Куплю" (поисковое намерение)
 - Главная RU: "ВсёИзДома —" первым (совпадает с запросом "все из дома")
+
+## AEO (AI Engine Optimization)
+- **Wikidata Q139396140** в `sameAs` на 3 главных (LocalBusiness + Organization)
+- **alternateName массивы** на 3 главных (9 schema-блоков): VseIzDoma, Vse Iz Doma, Vsyo Iz Doma, Всё Из Дома, ВсёИзДома, Куплю Всё Из Дома, Kuplyu Vse Iz Doma, vseizdoma.store, vseizdoma
+- **robots.txt** разрешает GPTBot, Claude-Web, Google-Extended (фикс 15.03.2026)
+- **GBP короткая ссылка для CTA "отзывы":** `https://maps.app.goo.gl/LN59uJURUwJa7eXd9`
+- При обновлении бизнес-данных (адрес/телефон) — **также обновлять в Wikidata** (https://www.wikidata.org/wiki/Q139396140)
 
 ## Google Indexing API
 - Сервис-аккаунт добавлен как владелец в GSC (14 марта 2026)
 - Можно отправлять URL на переиндексацию через `google.oauth2` + `indexing.googleapis.com/v3/urlNotifications:publish`
 - 23 URL отправлены на переиндексацию 14 марта 2026
+
+## Bing IndexNow (Bing/Yandex/Naver/Seznam/Yep)
+- API ключ: `38beab8d753a4b6f94dc9c055f068492`
+- Verification файл: `https://vseizdoma.store/38beab8d753a4b6f94dc9c055f068492.txt`
+- Скрипт: `scripts/indexnow-submit.py` (директория в .gitignore, локально)
+- Использование:
+  - Все URL: `python scripts/indexnow-submit.py`
+  - Конкретные: `python scripts/indexnow-submit.py "URL1" "URL2"`
+- Лимит: 10 000 URL в день
+- Endpoint: `https://api.indexnow.org/IndexNow`
 
 ## SEO-аудитор (агент)
 - Агент `seo-qa-auditor` — полный SEO-аудит всех 23 HTML
@@ -100,6 +119,18 @@
 - Дубликат удалён (17 марта 2026)
 
 ## Changelog
+- **18.04.2026** ⭐ МЕГА-СЕССИЯ AEO:
+  - Reviews compliance fix: видимые блоки отзывов на 27 страницах (3 главных + 24 подстраниц), schema = visible 1-в-1
+  - Removed self-serving reviews ("Business Automation", "Podderjka") с RU index
+  - reviewCount 14→17 на 25 страницах, +6 новых GBP отзывов в schema
+  - **Wikidata Q139396140 создан** + добавлен в sameAs на 3 главных
+  - alternateName расширен (Kuplyu Vse Iz Doma, vseizdoma.store) — для ChatGPT/Claude/Gemini связи бренд↔домен
+  - **FAQ schema синхронизирована с HTML на 31 странице** (rich snippets вернутся)
+  - **Microsoft Clarity подключен** (ID wdhcx90w1t) на 34 страницах
+  - **Bing IndexNow подключен** (ключ 38beab8d...), 36 URL отправлены
+  - GBP CTA-кнопка с реальной короткой ссылкой `maps.app.goo.gl/LN59uJURUwJa7eXd9`
+  - Бэкап-тег: `git tag backup-before-faq-fix` (для отката если что)
+  - 70+ коммитов, всё запушено
 - **19.03.2026**: mebelimport.store перенесён на GitHub Pages (Maks27428/mebelimport-website), HTTPS включён
 - **18.03.2026**: Исправлена ошибка GSC 404 — speculationrules `"/*"` → `"/*.html"` на всех 27 HTML (Google сканировал `/*` буквально, источник: kupit-konditsioner.html)
 - **18.03.2026**: Отправлены на индексацию 2 UZ-страницы: uz/kupit-gazplitu.html, uz/kupit-shkaf.html
