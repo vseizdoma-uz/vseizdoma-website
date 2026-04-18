@@ -311,6 +311,33 @@
         </div>
     </section>
 
+    <section class="reviews-compact" id="reviews" aria-label="Отзывы клиентов">
+        <div class="container">
+            <div class="reviews-compact-head">
+                <h2 class="reviews-compact-title">Что говорят клиенты</h2>
+                <div class="reviews-compact-rating"><strong>5.0</strong><span class="stars">★★★★★</span>отзывы в Google</div>
+            </div>
+            <div class="reviews-compact-grid">
+                <article class="review-mini">
+                    <div class="review-mini-stars" aria-label="5 из 5">★★★★★</div>
+                    <p class="review-mini-text">«Молодцы! Всё аккуратно и оперативно.»</p>
+                    <div class="review-mini-author">— Степан Гуртяк</div>
+                </article>
+                <article class="review-mini">
+                    <div class="review-mini-stars" aria-label="5 из 5">★★★★★</div>
+                    <p class="review-mini-text">«Все товары высокого качества и по доступным ценам, а ещё лучший сервис!»</p>
+                    <div class="review-mini-author">— Лиля Тагирова</div>
+                </article>
+                <article class="review-mini">
+                    <div class="review-mini-stars" aria-label="5 из 5">★★★★★</div>
+                    <p class="review-mini-text">«Продал старую мебель из квартиры родителей — оценили быстро, забрали в тот же день.»</p>
+                    <div class="review-mini-author">— Azizbek Muradov</div>
+                </article>
+            </div>
+            <a href="https://maps.app.goo.gl/LN59uJURUwJa7eXd9" class="reviews-compact-link" target="_blank" rel="noopener">Читать все отзывы на Google →</a>
+        </div>
+    </section>
+
     <!-- Навигация по каталогу -->
     <section class="catalog-nav-section">
         <div class="container">
@@ -544,56 +571,119 @@
     </script>
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "Product",
-        "name": "Газовая плита б/у",
-        "image": "https://vseizdoma.store/images/gas-stove.jpg",
-        "description": "Б/у газовые плиты Artel, Shivaki, Gefest, Bosch, Indesit — 2 и 4 конфорки, с духовкой и без. Покупаем и продаём в Ташкенте.",
-        "category": "Бытовая техника",
-        "brand": {"@type": "Brand", "name": "Artel"},
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5.0",
-            "reviewCount": "17",
-            "bestRating": "5",
-            "worstRating": "1"
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Газовая плита б/у",
+    "image": "https://vseizdoma.store/images/gas-stove.jpg",
+    "description": "Б/у газовые плиты Artel, Shivaki, Gefest, Bosch, Indesit — 2 и 4 конфорки, с духовкой и без. Покупаем и продаём в Ташкенте.",
+    "category": "Бытовая техника",
+    "brand": {
+        "@type": "Brand",
+        "name": "Artel"
+    },
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "17",
+        "bestRating": "5",
+        "worstRating": "1"
+    },
+    "review": [
+        {
+            "@type": "Review",
+            "author": {
+                "@type": "Person",
+                "name": "Степан Гуртяк"
+            },
+            "datePublished": "2026-03-25",
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5"
+            },
+            "reviewBody": "Молодцы! Всё аккуратно и оперативно."
         },
-        "review": [
-            {"@type": "Review", "author": {"@type": "Person", "name": "Степан Гуртяк"}, "datePublished": "2026-03-15", "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"}, "reviewBody": "Молодцы!!! Всё аккуратно и оперативно"},
-            {"@type": "Review", "author": {"@type": "Person", "name": "Business Automation"}, "datePublished": "2026-03-15", "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"}, "reviewBody": "Купил мебель, честная и справедливая оценка. Рекомендую!"}
-        ],
-        "offers": {
-            "@type": "AggregateOffer",
-            "lowPrice": "200000",
-            "highPrice": "2500000",
-            "priceCurrency": "UZS",
-            "offerCount": "30",
-            "priceValidUntil": "2027-03-15",
-            "itemCondition": "https://schema.org/UsedCondition",
-            "availability": "https://schema.org/InStock",
-            "seller": {
-                "@type": "LocalBusiness",
-                "name": "ВсёИзДома",
-                "telephone": "+998991112323"
+        {
+            "@type": "Review",
+            "author": {
+                "@type": "Person",
+                "name": "Лиля Тагирова"
             },
-            "areaServed": {"@type": "City", "name": "Ташкент"},
-            "hasMerchantReturnPolicy": {
-                "@type": "MerchantReturnPolicy",
-                "applicableCountry": "UZ",
-                "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            "datePublished": "2026-04-16",
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5"
             },
-            "shippingDetails": {
-                "@type": "OfferShippingDetails",
-                "shippingRate": {"@type": "MonetaryAmount", "value": "0", "currency": "UZS"},
-                "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "UZ"},
-                "deliveryTime": {
-                    "@type": "ShippingDeliveryTime",
-                    "handlingTime": {"@type": "QuantitativeValue", "minValue": "0", "maxValue": "1", "unitCode": "DAY"},
-                    "transitTime": {"@type": "QuantitativeValue", "minValue": "0", "maxValue": "1", "unitCode": "DAY"}
+            "reviewBody": "Все товары высокого качества и по доступным ценам, а ещё лучший сервис!"
+        },
+        {
+            "@type": "Review",
+            "author": {
+                "@type": "Person",
+                "name": "Azizbek Muradov"
+            },
+            "datePublished": "2026-03-22",
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5"
+            },
+            "reviewBody": "Продал старую мебель из квартиры родителей — оценили быстро, забрали в тот же день."
+        }
+    ],
+    "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": "200000",
+        "highPrice": "2500000",
+        "priceCurrency": "UZS",
+        "offerCount": "30",
+        "priceValidUntil": "2027-03-15",
+        "itemCondition": "https://schema.org/UsedCondition",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+            "@type": "LocalBusiness",
+            "name": "ВсёИзДома",
+            "telephone": "+998991112323"
+        },
+        "areaServed": {
+            "@type": "City",
+            "name": "Ташкент"
+        },
+        "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "UZ",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": "0",
+                "currency": "UZS"
+            },
+            "shippingDestination": {
+                "@type": "DefinedRegion",
+                "addressCountry": "UZ"
+            },
+            "deliveryTime": {
+                "@type": "ShippingDeliveryTime",
+                "handlingTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": "0",
+                    "maxValue": "1",
+                    "unitCode": "DAY"
+                },
+                "transitTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": "0",
+                    "maxValue": "1",
+                    "unitCode": "DAY"
                 }
             }
         }
     }
+}
     </script>
     
     <script type="application/ld+json">
