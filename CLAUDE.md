@@ -30,7 +30,7 @@
 ## Автодеплой
 - Push в main → GitHub Pages собирает сайт (~30-90 сек) → обновляется vseizdoma.store
 - После каждого деплоя Telegram-уведомление в чат 5403400682 (через @mreferral_bot)
-- Workflow: `.github/workflows/telegram-notify.yml`, триггер `workflow_run` на "pages build and deployment"
+- Workflow: `.github/workflows/telegram-notify.yml`, триггер `workflow_run` на `pages-build-deployment`
 - Секреты в GitHub: `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`
 - Откат: GitHub Pages сам держит предыдущую версию если билд упадёт
 
