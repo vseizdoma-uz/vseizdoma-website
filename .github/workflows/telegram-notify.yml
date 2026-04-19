@@ -2,7 +2,7 @@ name: Notify Telegram on Pages Deploy
 
 on:
   workflow_run:
-    workflows: ["pages build and deployment"]
+    workflows: ["pages-build-deployment"]
     types: [completed]
   workflow_dispatch:
 
@@ -70,22 +70,14 @@ jobs:
           MSG: ${{ steps.info.outputs.msg }}
           SHORT_SHA: ${{ steps.info.outputs.short_sha }}
         run: |
-          html_escape() {
-            python3 -c "import html,sys; print(html.escape(sys.stdin.read()), end='')"
-          }
+          html_escape() { python3 -c "import html,sys; print(html.escape(sys.stdin.read()), end='')"; }
           AUTHOR_ESC=$(printf '%s' "$AUTHOR" | html_escape)
           MSG_ESC=$(printf '%s' "$MSG" | html_escape)
-
           if [ "$CONCLUSION" = "success" ]; then
-            TEXT="🟢 Сайт vseizdoma.store задеплоен
-Коммит <code>${SHORT_SHA}</code> by ${AUTHOR_ESC}
-${MSG_ESC}"
+            TEXT=$(printf '🟢 Сайт vseizdoma.store задеплоен\nКоммит <code>%s</code> by %s\n%s' "$SHORT_SHA" "$AUTHOR_ESC" "$MSG_ESC")
           else
-            TEXT="🔴 Pages деплой упал (${CONCLUSION})
-Коммит <code>${SHORT_SHA}</code> by ${AUTHOR_ESC}
-${MSG_ESC}"
+            TEXT=$(printf '🔴 Pages деплой упал (%s)\nКоммит <code>%s</code> by %s\n%s' "$CONCLUSION" "$SHORT_SHA" "$AUTHOR_ESC" "$MSG_ESC")
           fi
-
           curl -sS -X POST "https://api.telegram.org/bot${TOKEN}/sendMessage" \
             --data-urlencode "chat_id=${CHAT_ID}" \
             --data-urlencode "parse_mode=HTML" \
