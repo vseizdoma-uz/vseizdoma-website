@@ -1,7 +1,10 @@
 name: Notify Telegram on Pages Deploy
 
 on:
-  page_build:
+  workflow_run:
+    workflows: ["pages build and deployment"]
+    types: [completed]
+  workflow_dispatch:
 
 jobs:
   notify:
@@ -17,54 +20,70 @@ jobs:
             exit 1
           fi
 
-      - name: Fetch commit metadata
-        id: commit
+      - name: Collect deploy info
+        id: info
         env:
           GH_TOKEN: ${{ github.token }}
-          SHA: ${{ github.event.build.commit }}
           REPO: ${{ github.repository }}
+          EVENT_NAME: ${{ github.event_name }}
+          WR_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          WR_SHA: ${{ github.event.workflow_run.head_sha }}
+          WR_BRANCH: ${{ github.event.workflow_run.head_branch }}
         run: |
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            SHA=$(gh api "repos/${REPO}/commits/main" --jq '.sha')
+            CONCLUSION="success"
+          else
+            SHA="$WR_SHA"
+            CONCLUSION="$WR_CONCLUSION"
+            if [ "$WR_BRANCH" != "main" ]; then
+              echo "Skipping: branch $WR_BRANCH is not main"
+              echo "skip=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          fi
+
           DATA=$(gh api "repos/${REPO}/commits/${SHA}")
           AUTHOR=$(echo "$DATA" | jq -r '.commit.author.name')
           MSG=$(echo "$DATA" | jq -r '.commit.message' | head -n 1)
           SHORT_SHA=${SHA:0:7}
+
           {
+            echo "skip=false"
+            echo "conclusion=$CONCLUSION"
+            echo "short_sha=$SHORT_SHA"
             echo "author<<EOF"
             echo "$AUTHOR"
             echo "EOF"
             echo "msg<<EOF"
             echo "$MSG"
             echo "EOF"
-            echo "short_sha=$SHORT_SHA"
           } >> "$GITHUB_OUTPUT"
 
       - name: Send Telegram notification
+        if: steps.info.outputs.skip != 'true'
         env:
           TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          STATUS: ${{ github.event.build.status }}
-          ERROR_MSG: ${{ github.event.build.error.message }}
-          AUTHOR: ${{ steps.commit.outputs.author }}
-          MSG: ${{ steps.commit.outputs.msg }}
-          SHORT_SHA: ${{ steps.commit.outputs.short_sha }}
+          CONCLUSION: ${{ steps.info.outputs.conclusion }}
+          AUTHOR: ${{ steps.info.outputs.author }}
+          MSG: ${{ steps.info.outputs.msg }}
+          SHORT_SHA: ${{ steps.info.outputs.short_sha }}
         run: |
           html_escape() {
             python3 -c "import html,sys; print(html.escape(sys.stdin.read()), end='')"
           }
           AUTHOR_ESC=$(printf '%s' "$AUTHOR" | html_escape)
           MSG_ESC=$(printf '%s' "$MSG" | html_escape)
-          ERROR_ESC=$(printf '%s' "$ERROR_MSG" | html_escape)
 
-          if [ "$STATUS" = "built" ]; then
+          if [ "$CONCLUSION" = "success" ]; then
             TEXT="🟢 Сайт vseizdoma.store задеплоен
 Коммит <code>${SHORT_SHA}</code> by ${AUTHOR_ESC}
 ${MSG_ESC}"
           else
-            TEXT="🔴 Pages билд упал
+            TEXT="🔴 Pages деплой упал (${CONCLUSION})
 Коммит <code>${SHORT_SHA}</code> by ${AUTHOR_ESC}
-${MSG_ESC}
-
-Ошибка: ${ERROR_ESC}"
+${MSG_ESC}"
           fi
 
           curl -sS -X POST "https://api.telegram.org/bot${TOKEN}/sendMessage" \
