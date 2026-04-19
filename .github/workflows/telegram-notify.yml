@@ -1,0 +1,75 @@
+name: Notify Telegram on Pages Deploy
+
+on:
+  page_build:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate secrets
+        env:
+          TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -z "$TOKEN" ] || [ -z "$CHAT_ID" ]; then
+            echo "::error::TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID secret is missing"
+            exit 1
+          fi
+
+      - name: Fetch commit metadata
+        id: commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SHA: ${{ github.event.build.commit }}
+          REPO: ${{ github.repository }}
+        run: |
+          DATA=$(gh api "repos/${REPO}/commits/${SHA}")
+          AUTHOR=$(echo "$DATA" | jq -r '.commit.author.name')
+          MSG=$(echo "$DATA" | jq -r '.commit.message' | head -n 1)
+          SHORT_SHA=${SHA:0:7}
+          {
+            echo "author<<EOF"
+            echo "$AUTHOR"
+            echo "EOF"
+            echo "msg<<EOF"
+            echo "$MSG"
+            echo "EOF"
+            echo "short_sha=$SHORT_SHA"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Send Telegram notification
+        env:
+          TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          STATUS: ${{ github.event.build.status }}
+          ERROR_MSG: ${{ github.event.build.error.message }}
+          AUTHOR: ${{ steps.commit.outputs.author }}
+          MSG: ${{ steps.commit.outputs.msg }}
+          SHORT_SHA: ${{ steps.commit.outputs.short_sha }}
+        run: |
+          html_escape() {
+            python3 -c "import html,sys; print(html.escape(sys.stdin.read()), end='')"
+          }
+          AUTHOR_ESC=$(printf '%s' "$AUTHOR" | html_escape)
+          MSG_ESC=$(printf '%s' "$MSG" | html_escape)
+          ERROR_ESC=$(printf '%s' "$ERROR_MSG" | html_escape)
+
+          if [ "$STATUS" = "built" ]; then
+            TEXT="🟢 Сайт vseizdoma.store задеплоен
+Коммит <code>${SHORT_SHA}</code> by ${AUTHOR_ESC}
+${MSG_ESC}"
+          else
+            TEXT="🔴 Pages билд упал
+Коммит <code>${SHORT_SHA}</code> by ${AUTHOR_ESC}
+${MSG_ESC}
+
+Ошибка: ${ERROR_ESC}"
+          fi
+
+          curl -sS -X POST "https://api.telegram.org/bot${TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${CHAT_ID}" \
+            --data-urlencode "parse_mode=HTML" \
+            --data-urlencode "disable_web_page_preview=true" \
+            --data-urlencode "text=${TEXT}" \
+            --fail-with-body
