@@ -76,7 +76,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Title: 50-60 символов, главный ключ + бренд -->
-    <title>Скупка мебели б/у в Ташкенте — продать дорого | ВсёИзДома</title>
+    <title>Скупка мебели б/у в Ташкенте — продать дорого | ВсеИзДома</title>
 
     <!-- Description: 150-160 символов, включить CTA и ключевые слова -->
     <meta name="description" content="Скупка б/у мебели в Ташкенте. Продать мебель дорого. Бесплатный выезд за 1-2 часа, оплата наличными. 8 лет на рынке.">
@@ -88,7 +88,7 @@
     <meta name="robots" content="index, follow, max-image-preview:large">
 
     <!-- Автор и гео -->
-    <meta name="author" content="ВсёИзДома">
+    <meta name="author" content="ВсеИзДома">
     <meta name="geo.region" content="UZ-TO">
     <meta name="geo.placename" content="Tashkent">
     <meta name="geo.position" content="41.2735;69.2824">
@@ -105,13 +105,13 @@
 ```html
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://vseizdoma.store/">
-<meta property="og:title" content="Скупка мебели б/у в Ташкенте | ВсёИзДома">
+<meta property="og:title" content="Скупка мебели б/у в Ташкенте | ВсеИзДома">
 <meta property="og:description" content="Продать б/у мебель дорого. Бесплатный выезд, оплата наличными.">
 <meta property="og:image" content="https://vseizdoma.store/promo/banner2.png">
 <meta property="og:image:width" content="1080">
 <meta property="og:image:height" content="1080">
 <meta property="og:locale" content="ru_RU">
-<meta property="og:site_name" content="ВсёИзДома">
+<meta property="og:site_name" content="ВсеИзДома">
 ```
 
 **Важно:** Изображение OG должно быть минимум 1200x630px для красивого превью.
@@ -120,7 +120,7 @@
 
 ```html
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Скупка мебели б/у в Ташкенте | ВсёИзДома">
+<meta name="twitter:title" content="Скупка мебели б/у в Ташкенте | ВсеИзДома">
 <meta name="twitter:description" content="Продать б/у мебель дорого. Бесплатный выезд.">
 <meta name="twitter:image" content="https://vseizdoma.store/promo/banner2.png">
 ```
@@ -168,7 +168,7 @@ Schema.org — главный инструмент для Rich Results (звёз
 {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "ВсёИзДома — Скупка техники и мебели",
+    "name": "ВсеИзДома — Скупка техники и мебели",
     "alternateName": "VseIzDoma",
     "inLanguage": "ru",
     "url": "https://vseizdoma.store",
@@ -247,7 +247,7 @@ Schema.org — главный инструмент для Rich Results (звёз
     "description": "Покупаем б/у мебель: диваны, шкафы, кровати...",
     "provider": {
         "@type": "LocalBusiness",
-        "name": "ВсёИзДома",
+        "name": "ВсеИзДома",
         "telephone": "+998991112323",
         "url": "https://vseizdoma.store",
         "address": {"@type": "PostalAddress", "streetAddress": "Abdurauf Fitrat ko'chasi 313", "addressLocality": "Ташкент", "addressCountry": "UZ"},
@@ -335,8 +335,8 @@ Schema.org — главный инструмент для Rich Results (звёз
 {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "ВсёИзДома",
-    "alternateName": ["VseIzDoma", "Vsyo Iz Doma", "Всё Из Дома", "vseizdoma"],
+    "name": "ВсеИзДома",
+    "alternateName": ["VseIzDoma", "Vsyo Iz Doma", "Все Из Дома", "vseizdoma"],
     "url": "https://vseizdoma.store"
 }
 </script>
@@ -351,7 +351,7 @@ Schema.org — главный инструмент для Rich Results (звёз
 {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "ВсёИзДома",
+    "name": "ВсеИзДома",
     "url": "https://vseizdoma.store",
     "logo": "https://vseizdoma.store/images/favicon.jpg",
     "contactPoint": {
@@ -548,7 +548,7 @@ Sitemap: https://vseizdoma.store/sitemap.xml
         allowfullscreen=""
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
-        title="ВсёИзДома на карте">
+        title="ВсеИзДома на карте">
     </iframe>
 </div>
 ```

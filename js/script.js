@@ -102,7 +102,7 @@ const langBtns = document.querySelectorAll('.lang-btn[data-lang]');
 
 const translations = {
     ru: {
-        heroTitle: '<span class="highlight">Куплю</span> всё из дома',
+        heroTitle: '<span class="highlight">Куплю</span> все из дома',
         heroSubtitle: 'Скупка бытовой техники по лучшим ценам.<br>Быстрый выезд, честная оценка, оплата сразу!',
         heroBadge: 'Ташкент и область',
         aboutTitle: '8 лет на рынке Ташкента',

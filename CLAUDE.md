@@ -78,13 +78,13 @@
 - Microsoft Clarity ID: `wdhcx90w1t` (heatmaps + session recordings, на 34 публичных HTML)
 - **Title до 55 символов** на всех страницах (не обрезаются на мобильных)
 - **Description 135-160 символов** с телефоном на всех страницах
-- Бренд "ВсёИзДома" / "VseIzDoma" (НЕ "VsyoIzDoma") — единое написание
+- Бренд "ВсеИзДома" / "VseIzDoma" (НЕ "VsyoIzDoma") — единое написание
 - Подстраницы RU начинаются с "Куплю" (поисковое намерение)
-- Главная RU: "ВсёИзДома —" первым (совпадает с запросом "все из дома")
+- Главная RU: "ВсеИзДома —" первым (совпадает с запросом "все из дома")
 
 ## AEO (AI Engine Optimization)
 - **Wikidata Q139396140** в `sameAs` на 3 главных (LocalBusiness + Organization)
-- **alternateName массивы** на 3 главных (9 schema-блоков): VseIzDoma, Vse Iz Doma, Vsyo Iz Doma, Всё Из Дома, ВсёИзДома, Куплю Всё Из Дома, Kuplyu Vse Iz Doma, vseizdoma.store, vseizdoma
+- **alternateName массивы** на 3 главных (9 schema-блоков): VseIzDoma, Vse Iz Doma, Vsyo Iz Doma, Все Из Дома, ВсеИзДома, Куплю Все Из Дома, Kuplyu Vse Iz Doma, vseizdoma.store, vseizdoma
 - **robots.txt** разрешает GPTBot, Claude-Web, Google-Extended (фикс 15.03.2026)
 - **GBP короткая ссылка для CTA "отзывы":** `https://maps.app.goo.gl/LN59uJURUwJa7eXd9`
 - При обновлении бизнес-данных (адрес/телефон) — **также обновлять в Wikidata** (https://www.wikidata.org/wiki/Q139396140)
