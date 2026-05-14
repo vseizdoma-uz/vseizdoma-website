@@ -1,0 +1,61 @@
+name: Auto-update sitemap lastmod
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '*.html'
+      - 'uz/**/*.html'
+      - 'en/**/*.html'
+      - 'blog/**/*.html'
+
+jobs:
+  update-sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Update lastmod for changed HTML files
+        run: |
+          TODAY=$(date -u +%Y-%m-%d)
+          CHANGED=$(git diff --name-only HEAD~1 HEAD -- '*.html' 'uz/*.html' 'en/*.html' 'blog/*.html')
+
+          if [ -z "$CHANGED" ]; then
+            echo "No HTML files changed, skipping"
+            exit 0
+          fi
+
+          echo "Changed files:"
+          echo "$CHANGED"
+          echo "Updating lastmod to $TODAY"
+
+          for FILE in $CHANGED; do
+            case "$FILE" in
+              index.html)       URL="https://vseizdoma.store/" ;;
+              uz/index.html)    URL="https://vseizdoma.store/uz/" ;;
+              en/index.html)    URL="https://vseizdoma.store/en/" ;;
+              *)                URL="https://vseizdoma.store/$FILE" ;;
+            esac
+
+            if grep -q "<loc>${URL}</loc>" sitemap.xml; then
+              sed -i "/<loc>${URL//\//\\/}<\/loc>/{n;s/<lastmod>[0-9-]*<\/lastmod>/<lastmod>${TODAY}<\/lastmod>/}" sitemap.xml
+              echo "  Updated: $URL"
+            fi
+          done
+
+          sed -i "s/<lastmod>[0-9-]*<\/lastmod>/<lastmod>${TODAY}<\/lastmod>/g" sitemap-index.xml
+          echo "Updated sitemap-index.xml"
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml sitemap-index.xml
+          if git diff --cached --quiet; then
+            echo "No sitemap changes to commit"
+          else
+            git commit -m "chore: auto-update sitemap lastmod [skip ci]"
+            git push
+          fi
