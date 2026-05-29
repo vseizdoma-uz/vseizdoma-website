@@ -126,6 +126,13 @@
 - Дубликат удалён (17 марта 2026)
 
 ## Changelog
+- **29.05.2026** SEO+AEO улучшения:
+  - Создан **llms.txt + llms-full.txt** (новый стандарт для AI-краулеров — Claude, Gemini, Perplexity)
+  - `<link rel="help" href="/llms.txt">` добавлен в `<head>` 3 главных страниц
+  - sameAs расширен Google Maps ссылкой на 6 schema-блоках (3 страницы × 2 блока)
+  - Google Maps iframe получил `width="100%" height="300"` (фикс CLS на 3 страницах)
+  - robots.txt: добавлены Amazonbot, Bytespider, cohere-ai + комментарии к llms.txt
+  - Бэкап-тег: `backup-before-seo-improvements-2026-05-29`
 - **18.04.2026** ⭐ МЕГА-СЕССИЯ AEO:
   - Reviews compliance fix: видимые блоки отзывов на 27 страницах (3 главных + 24 подстраниц), schema = visible 1-в-1
   - Removed self-serving reviews ("Business Automation", "Podderjka") с RU index
