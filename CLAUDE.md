@@ -83,11 +83,11 @@
 - Главная RU: "ВсеИзДома —" первым (совпадает с запросом "все из дома")
 
 ## AEO (AI Engine Optimization)
-- **Wikidata Q139396140** в `sameAs` на 3 главных (LocalBusiness + Organization)
+- **Wikidata Q139979277** в `sameAs` на 3 главных (LocalBusiness + Organization)
 - **alternateName массивы** на 3 главных (9 schema-блоков): VseIzDoma, Vse Iz Doma, Vsyo Iz Doma, Все Из Дома, ВсеИзДома, Куплю Все Из Дома, Kuplyu Vse Iz Doma, vseizdoma.store, vseizdoma
 - **robots.txt** разрешает GPTBot, Claude-Web, Google-Extended (фикс 15.03.2026)
 - **GBP короткая ссылка для CTA "отзывы":** `https://maps.app.goo.gl/LN59uJURUwJa7eXd9`
-- При обновлении бизнес-данных (адрес/телефон) — **также обновлять в Wikidata** (https://www.wikidata.org/wiki/Q139396140)
+- При обновлении бизнес-данных (адрес/телефон) — **также обновлять в Wikidata** (https://www.wikidata.org/wiki/Q139979277)
 
 ## Google Indexing API
 - Сервис-аккаунт добавлен как владелец в GSC (14 марта 2026)
@@ -143,7 +143,7 @@
   - Reviews compliance fix: видимые блоки отзывов на 27 страницах (3 главных + 24 подстраниц), schema = visible 1-в-1
   - Removed self-serving reviews ("Business Automation", "Podderjka") с RU index
   - reviewCount 14→17 на 25 страницах, +6 новых GBP отзывов в schema
-  - **Wikidata Q139396140 создан** + добавлен в sameAs на 3 главных
+  - **Wikidata Q139979277 создан** + добавлен в sameAs на 3 главных
   - alternateName расширен (Kuplyu Vse Iz Doma, vseizdoma.store) — для ChatGPT/Claude/Gemini связи бренд↔домен
   - **FAQ schema синхронизирована с HTML на 31 странице** (rich snippets вернутся)
   - **Microsoft Clarity подключен** (ID wdhcx90w1t) на 34 страницах
