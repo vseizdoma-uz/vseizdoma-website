@@ -9,6 +9,9 @@ on:
       - 'en/**/*.html'
       - 'blog/**/*.html'
 
+permissions:
+  contents: write
+
 jobs:
   update-sitemap:
     runs-on: ubuntu-latest
