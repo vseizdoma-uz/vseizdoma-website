@@ -126,6 +126,11 @@
 - Дубликат удалён (17 марта 2026)
 
 ## Changelog
+- **29.05.2026** SEO Round 3:
+  - **Wikidata Q139979277** полностью заполнен: EN labels/aliases + 8 claims (instance of, country, located in, official website, phone, industry, inception 2018, coordinates, operating area)
+  - Старый ID Q139396140 (удалён) заменён на Q139979277 в 6 файлах
+  - Новая блог-статья: `blog/skolko-stoit-mebel-tashkent.html` — гид по ценам б/у мебели и техники 2026
+  - Privacy Policy ссылка добавлена в футеры всех 28 подстраниц (RU/UZ/EN/blog)
 - **29.05.2026** SEO Round 2:
   - JS минифицирован: script.js 48KB→39KB, subpage.js 6.4KB→4.2KB (исходники .src.js)
   - Создана **privacy-policy.html** (E-E-A-T сигнал доверия)
