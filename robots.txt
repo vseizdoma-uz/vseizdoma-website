@@ -26,6 +26,19 @@ Allow: /
 User-agent: OAI-SearchBot
 Allow: /
 
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# AI model information files
+# llms.txt: https://vseizdoma.store/llms.txt
+# llms-full.txt: https://vseizdoma.store/llms-full.txt
+
 Sitemap: https://vseizdoma.store/sitemap.xml
 Sitemap: https://vseizdoma.store/sitemap-images.xml
 Sitemap: https://vseizdoma.store/sitemap-index.xml
