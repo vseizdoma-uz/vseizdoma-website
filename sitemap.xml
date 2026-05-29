@@ -3,7 +3,7 @@
   <!-- Russian (main) -->
   <url>
     <loc>https://vseizdoma.store/</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -91,7 +91,7 @@
   <!-- Uzbek -->
   <url>
     <loc>https://vseizdoma.store/uz/</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -176,6 +176,14 @@
     <priority>0.5</priority>
   </url>
 
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://vseizdoma.store/privacy-policy.html</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
   <!-- Blog -->
   <url>
     <loc>https://vseizdoma.store/blog/kak-prodat-mebel-tashkent.html</loc>
@@ -187,7 +195,7 @@
   <!-- English -->
   <url>
     <loc>https://vseizdoma.store/en/</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
