@@ -126,6 +126,12 @@
 - Дубликат удалён (17 марта 2026)
 
 ## Changelog
+- **29.05.2026** SEO Round 2:
+  - JS минифицирован: script.js 48KB→39KB, subpage.js 6.4KB→4.2KB (исходники .src.js)
+  - Создана **privacy-policy.html** (E-E-A-T сигнал доверия)
+  - Ссылка на Privacy Policy в футере 3 главных страниц
+  - Cache-bust обновлён v=20260529 на 34 HTML файлах
+  - sitemap.xml обновлён: lastmod на 3 главных, добавлен privacy-policy.html
 - **29.05.2026** SEO+AEO улучшения:
   - Создан **llms.txt + llms-full.txt** (новый стандарт для AI-краулеров — Claude, Gemini, Perplexity)
   - `<link rel="help" href="/llms.txt">` добавлен в `<head>` 3 главных страниц
