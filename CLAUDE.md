@@ -73,7 +73,8 @@
 ## SEO
 - Schema.org на всех страницах (LocalBusiness, Service, FAQPage, BreadcrumbList, Product, Review, BlogPosting и др.)
 - AggregateRating 5.0/17 + Review entries — **с видимым блоком на странице** (Google policy compliance)
-- Google Search Console + Yandex Webmaster + Bing Webmaster Tools подключены
+- Google Search Console + Yandex Webmaster подключены
+- **Bing Webmaster Tools** верифицирован 30.05.2026 (meta tag, аккаунт businessaut222@gmail.com), sitemap переотправлен
 - GA4 Property ID: 526885505
 - Microsoft Clarity ID: `wdhcx90w1t` (heatmaps + session recordings, на 34 публичных HTML)
 - **Title до 55 символов** на всех страницах (не обрезаются на мобильных)
