@@ -47,6 +47,10 @@ Allow: /
 User-agent: meta-externalagent
 Allow: /
 
+# Brave Search crawler (powers Claude AI web search via Brave API)
+User-agent: Bravebot
+Allow: /
+
 # AI model information files
 # llms.txt: https://vseizdoma.store/llms.txt
 # llms-full.txt: https://vseizdoma.store/llms-full.txt
