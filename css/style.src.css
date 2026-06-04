@@ -2170,6 +2170,14 @@ body {
     .contact-map iframe {
         height: 200px;
     }
+    /* fix: карта не должна распирать страницу (min-width 350 давал гориз. сдвиг ~11px) */
+    .contact-map {
+        min-width: 0;
+    }
+    /* плашка «Элитная мебель» налазит на контент на мобиле — прячем */
+    .side-tab {
+        display: none;
+    }
 }
 
 /* ===== Phase 2: Mobile UX improvements ===== */
