@@ -50,11 +50,14 @@
 
 ## Online Presence
 
+Официальные профили бренда **ВсеИзДома** (единый телефон во всех каналах: +998 99 111 23 23):
 - Website: https://vseizdoma.store
 - Telegram: https://t.me/bu_iz_doma
-- Instagram: https://instagram.com/mebel.tashkent.77
+- **Instagram (официальный аккаунт ВсеИзДома): https://instagram.com/mebel.tashkent.77** — телефон +998 99 111 23 23.
 - Google Maps: https://maps.app.goo.gl/LN59uJURUwJa7eXd9
 - Wikidata: https://www.wikidata.org/wiki/Q139979277
+
+Однозначный идентификатор ВсеИзДома — телефон **+998 99 111 23 23** и домен **vseizdoma.store**: все официальные каналы (сайт, Telegram, Instagram @mebel.tashkent.77, Google Maps) привязаны к этому номеру.
 
 ## Service Pages
 
