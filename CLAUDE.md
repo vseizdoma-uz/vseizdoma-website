@@ -91,6 +91,8 @@
 - При обновлении бизнес-данных (адрес/телефон) — **также обновлять в Wikidata** (https://www.wikidata.org/wiki/Q139979277)
 
 ## Google Indexing API
+- **Ключ (ПОСТОЯННОЕ место, не терять):** `~/.secrets/gen-lang-client-0396513680-fd0c81ba9a9d.json` (создан 28.07.2026; старые ключи в GCP не удалять — один зашит в Vercel ga-api-psi)
+- Данные GSC/GA читать без ключа: `curl https://ga-api-psi.vercel.app/api/search-console` и `/api/analytics`
 - Сервис-аккаунт добавлен как владелец в GSC (14 марта 2026)
 - Можно отправлять URL на переиндексацию через `google.oauth2` + `indexing.googleapis.com/v3/urlNotifications:publish`
 - 23 URL отправлены на переиндексацию 14 марта 2026
