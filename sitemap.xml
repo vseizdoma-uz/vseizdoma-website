@@ -183,10 +183,34 @@
     <priority>0.9</priority>
   </url>
 
+  <url>
+    <loc>https://vseizdoma.store/skupka-posudy.html</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vseizdoma.store/skupka-kovrov.html</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <!-- Uzbek kuplyu-vse-iz-doma -->
   <url>
     <loc>https://vseizdoma.store/uz/kuplyu-vse-iz-doma.html</loc>
     <lastmod>2026-07-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vseizdoma.store/uz/skupka-posudy.html</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vseizdoma.store/uz/skupka-kovrov.html</loc>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
