@@ -53,109 +53,11 @@
     <link rel="icon" type="image/png" sizes="96x96" href="../images/favicon-96.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="../css/subpage.css?v=20260514">
-    <meta name="theme-color" content="#f4efe6">
+    <meta name="theme-color" content="#2563eb">
 
-    <style>
-    :root {
-        --arc-bg: #f4efe6;
-        --arc-bg-alt: #ebe4d6;
-        --arc-ink: #1a1815;
-        --arc-ink-soft: #5a5448;
-        --arc-ink-mute: #8a8474;
-        --arc-line: #d8cfbe;
-        --arc-accent: #8b2e1f;
-        --arc-brass: #c4a572;
-        --arc-font-display: 'Cormorant Garamond', 'PT Serif', Georgia, serif;
-        --arc-font-body: 'Inter', -apple-system, sans-serif;
-        --arc-font-mono: 'JetBrains Mono', 'Courier New', monospace;
-    }
-    [data-theme="dark"] {
-        --arc-bg: #1c1a17;
-        --arc-bg-alt: #252220;
-        --arc-ink: #f4efe6;
-        --arc-ink-soft: #c4bdad;
-        --arc-ink-mute: #8a8474;
-        --arc-line: #3a342c;
-        --arc-accent: #d14a36;
-        --arc-brass: #d4b27e;
-    }
-    .archive { background: var(--arc-bg); color: var(--arc-ink); font-family: var(--arc-font-body); padding: 0; }
-    .archive * { box-sizing: border-box; }
-    .archive .arc-container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
-    .arc-hero { background: var(--arc-bg); padding: 120px 0 100px; border-bottom: 1px solid var(--arc-line); }
-    .arc-eyebrow { font-family: var(--arc-font-mono); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.18em; color: var(--arc-ink-mute); margin-bottom: 40px; display: block; }
-    .arc-hero h1 { font-family: var(--arc-font-display); font-size: clamp(48px, 8vw, 104px); font-weight: 500; line-height: 1.02; letter-spacing: -0.035em; color: var(--arc-ink); margin: 0 0 48px; max-width: 14ch; }
-    .arc-hero .arc-lede { font-family: var(--arc-font-body); font-size: 19px; line-height: 1.65; color: var(--arc-ink-soft); max-width: 620px; font-weight: 400; margin: 0 0 56px; }
-    .arc-cta { display: inline-flex; align-items: center; gap: 14px; padding: 20px 42px; background: var(--arc-ink); color: var(--arc-bg); font-family: var(--arc-font-body); font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; border: none; border-radius: 0; transition: background 500ms cubic-bezier(0.16, 1, 0.3, 1); }
-    .arc-cta:hover { background: var(--arc-accent); }
-    .arc-cta svg { width: 16px; height: 16px; }
-    .arc-manifesto { padding: 140px 0; border-bottom: 1px solid var(--arc-line); }
-    .arc-manifesto-wrap { max-width: 680px; }
-    .arc-manifesto p { font-family: var(--arc-font-display); font-size: clamp(22px, 2.4vw, 30px); font-weight: 400; line-height: 1.45; color: var(--arc-ink); margin: 0 0 28px; letter-spacing: -0.01em; }
-    .arc-manifesto p:last-child { margin: 0; }
-    .arc-catalog { padding: 140px 0; border-bottom: 1px solid var(--arc-line); }
-    .arc-section-label { font-family: var(--arc-font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--arc-ink-mute); margin-bottom: 20px; display: block; }
-    .arc-section-heading { font-family: var(--arc-font-display); font-size: clamp(36px, 5vw, 64px); font-weight: 500; line-height: 1.08; letter-spacing: -0.025em; color: var(--arc-ink); margin: 0 0 80px; max-width: 18ch; }
-    .arc-catalog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--arc-line); }
-    .arc-catalog-item { padding: 56px 48px 56px 0; border-bottom: 1px solid var(--arc-line); position: relative; }
-    .arc-catalog-item:nth-child(2n) { padding-left: 48px; padding-right: 0; border-left: 1px solid var(--arc-line); }
-    .arc-catalog-item:last-child, .arc-catalog-item:nth-last-child(2):nth-child(odd) { border-bottom: none; }
-    .arc-catalog-num { font-family: var(--arc-font-mono); font-size: 11px; color: var(--arc-ink-mute); letter-spacing: 0.15em; margin-bottom: 20px; display: block; }
-    .arc-catalog-item h3 { font-family: var(--arc-font-display); font-size: 32px; font-weight: 500; line-height: 1.15; letter-spacing: -0.015em; color: var(--arc-ink); margin: 0 0 18px; }
-    .arc-catalog-item p { font-family: var(--arc-font-body); font-size: 15px; line-height: 1.65; color: var(--arc-ink-soft); margin: 0; max-width: 440px; }
-    .arc-catalog-meta { display: block; margin-top: 24px; font-family: var(--arc-font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--arc-ink-mute); }
-    .arc-process { padding: 140px 0; background: var(--arc-bg-alt); border-bottom: 1px solid var(--arc-line); }
-    .arc-process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px; margin-top: 72px; }
-    .arc-step-num { font-family: var(--arc-font-display); font-size: 72px; font-weight: 400; line-height: 1; color: var(--arc-accent); margin-bottom: 32px; display: block; letter-spacing: -0.03em; }
-    .arc-step-divider { height: 1px; background: var(--arc-ink); width: 48px; margin-bottom: 20px; }
-    .arc-step h3 { font-family: var(--arc-font-display); font-size: 26px; font-weight: 500; line-height: 1.15; color: var(--arc-ink); margin: 0 0 14px; }
-    .arc-step p { font-family: var(--arc-font-body); font-size: 15px; line-height: 1.6; color: var(--arc-ink-soft); margin: 0; }
-    .arc-quote { padding: 160px 0; border-bottom: 1px solid var(--arc-line); }
-    .arc-quote-wrap { max-width: 880px; }
-    .arc-quote blockquote { font-family: var(--arc-font-display); font-size: clamp(28px, 4vw, 48px); font-weight: 400; font-style: italic; line-height: 1.25; color: var(--arc-ink); margin: 0 0 40px; letter-spacing: -0.015em; quotes: "«" "»"; }
-    .arc-quote blockquote::before { content: open-quote; color: var(--arc-accent); }
-    .arc-quote blockquote::after { content: close-quote; color: var(--arc-accent); }
-    .arc-quote cite { font-family: var(--arc-font-mono); font-size: 12px; font-style: normal; text-transform: uppercase; letter-spacing: 0.16em; color: var(--arc-ink-mute); }
-    .arc-quote cite::before { content: "— "; }
-    .arc-faq { padding: 140px 0; border-bottom: 1px solid var(--arc-line); }
-    .arc-faq-list { margin-top: 64px; border-top: 1px solid var(--arc-line); }
-    .arc-faq-item { border-bottom: 1px solid var(--arc-line); padding: 0; }
-    .arc-faq-item summary { list-style: none; cursor: pointer; padding: 36px 48px 36px 0; font-family: var(--arc-font-display); font-size: clamp(20px, 2.2vw, 26px); font-weight: 500; line-height: 1.25; color: var(--arc-ink); position: relative; transition: color 400ms cubic-bezier(0.16, 1, 0.3, 1); }
-    .arc-faq-item summary::-webkit-details-marker { display: none; }
-    .arc-faq-item summary::after { content: "+"; position: absolute; right: 0; top: 50%; transform: translateY(-50%); font-family: var(--arc-font-body); font-size: 24px; font-weight: 300; color: var(--arc-ink-mute); }
-    .arc-faq-item[open] summary::after { content: "−"; }
-    .arc-faq-item summary:hover { color: var(--arc-accent); }
-    .arc-faq-item[open] summary { color: var(--arc-accent); }
-    .arc-faq-item p { font-family: var(--arc-font-body); font-size: 16px; line-height: 1.7; color: var(--arc-ink-soft); margin: 0 0 36px; padding-right: 48px; max-width: 780px; }
-    .arc-final { padding: 160px 0; background: var(--arc-ink); color: var(--arc-bg); }
-    .arc-final .arc-eyebrow { color: var(--arc-brass); }
-    .arc-final h2 { font-family: var(--arc-font-display); font-size: clamp(40px, 6vw, 88px); font-weight: 500; line-height: 1.05; letter-spacing: -0.03em; color: var(--arc-bg); margin: 0 0 56px; max-width: 16ch; }
-    .arc-final .arc-lede { color: var(--arc-ink-mute); max-width: 620px; margin-bottom: 56px; font-size: 18px; line-height: 1.65; }
-    .arc-final .arc-cta { background: var(--arc-bg); color: var(--arc-ink); }
-    .arc-final .arc-cta:hover { background: var(--arc-brass); color: var(--arc-ink); }
-    .arc-phone-lg { display: block; font-family: var(--arc-font-display); font-size: clamp(32px, 5vw, 56px); font-weight: 400; color: var(--arc-brass); margin: 48px 0 16px; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; text-decoration: none; }
-    .arc-phone-lg:hover { color: var(--arc-bg); }
-    .arc-contact-name { font-family: var(--arc-font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--arc-ink-mute); }
-    .archive-wrap .breadcrumb { background: var(--arc-bg); border-bottom: 1px solid var(--arc-line); padding: 24px 0; }
-    .archive-wrap .breadcrumb-list, .archive-wrap .breadcrumb-list a, .archive-wrap .breadcrumb-current { font-family: var(--arc-font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--arc-ink-mute); }
-    .archive-wrap .breadcrumb-list a:hover { color: var(--arc-accent); }
-    @media (max-width: 900px) {
-        .arc-catalog-grid { grid-template-columns: 1fr; }
-        .arc-catalog-item, .arc-catalog-item:nth-child(2n) { padding: 48px 0; border-left: none !important; border-right: none !important; }
-        .arc-process-grid { grid-template-columns: repeat(2, 1fr); gap: 56px 32px; }
-    }
-    @media (max-width: 600px) {
-        .archive .arc-container { padding: 0 24px; }
-        .arc-hero { padding: 80px 0 64px; }
-        .arc-manifesto, .arc-catalog, .arc-process, .arc-quote, .arc-faq, .arc-final { padding: 80px 0; }
-        .arc-process-grid { grid-template-columns: 1fr; gap: 48px; }
-        .arc-step-num { font-size: 56px; }
-        .arc-faq-item summary { padding-right: 40px; padding-top: 28px; padding-bottom: 28px; }
-    }
-    </style>
 </head>
 <body>
     <nav class="navbar" role="navigation" aria-label="Asosiy navigatsiya">
@@ -232,215 +134,205 @@
         </div>
     </div>
 
-    <article class="archive">
-
-        <section class="arc-hero">
-            <div class="arc-container">
-                <span class="arc-eyebrow">Arxiv · 1955–1991</span>
-                <h1>Davrdan omon qolgan mebel</h1>
-                <p class="arc-lede">Chex stenkalari, rumin garnituralari, sovet davridagi servant va bufetlar. Sovet mebelini halol narxda sotib olamiz — chunki har bir buyumning tarixini tushunamiz.</p>
-                <a href="tel:+998991112323" class="arc-cta">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
-                    Baholash
-                </a>
-            </div>
-        </section>
-
-        <section class="arc-manifesto">
-            <div class="arc-container">
-                <div class="arc-manifesto-wrap">
-                    <p>Agar sizning uyingizda hali ham chex stenkasi, rumin yotoq garniturasi yoki shisha eshikli servant bo'lsa — uni axlatga tashlashga shoshilmang.</p>
-                    <p>O'n yillar davomida "buvi asari" deb hisoblangan narsalar bugun yana qimmat. Dunyo bo'ylab dizaynerlar 1950-80-yillardagi mebellarni izlaydi: tabiiy dub va yong'oq massiviga, guruch jihozlarga, yarim asr davomida saqlanib qolgan silliqlangan laklarga. Zamonaviy fabrikalar endi bunday sifatda ishlab chiqarmaydi.</p>
-                    <p>Biz "uydan hamma narsani" arzon narxda sotib olmaymiz. Biz baholash uchun kelayotgan narsani tushunamiz.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="arc-catalog">
-            <div class="arc-container">
-                <span class="arc-section-label">Katalog · Nima sotib olamiz</span>
-                <h2 class="arc-section-heading">Biz qadrlaydigan toifalar</h2>
-
-                <div class="arc-catalog-grid">
-
-                    <div class="arc-catalog-item">
-                        <span class="arc-catalog-num">01 / 08</span>
-                        <h3>Sotsialistik lager stenkalari</h3>
-                        <p>Chex Jitona va UP Závody, ko'zguli venger modellari, GDR Hellerau, Polsha Swarzędz, "Helga". Lakonik modernizm, tabiiy shpon, guruch jihozlar.</p>
-                        <span class="arc-catalog-meta">1960–1980 · Yong'oq shpon, dub, buk</span>
-                    </div>
-
-                    <div class="arc-catalog-item">
-                        <span class="arc-catalog-num">02 / 08</span>
-                        <h3>Rumin yotoq garnituralari</h3>
-                        <p>To'q yong'oq, qo'l bilan o'yilgan naqshlar, massiv karavot boshliqlari, o'yilgan tryumolar. Duradgorlik mahorati va bugun garniturning o'zidan qimmatroq turadigan tabiiy yog'och uchun qadrlanadi.</p>
-                        <span class="arc-catalog-meta">1970–1985 · Yong'oq, naqsh, patina</span>
-                    </div>
-
-                    <div class="arc-catalog-item">
-                        <span class="arc-catalog-num">03 / 08</span>
-                        <h3>Qirrali shishali servantlar</h3>
-                        <p>1950–60-yillar servantlari guruch jihozlar, qirrali shishalar va ko'zguli orqa taxtalar bilan. Sovet mehmonxonasining ramzi — va bugun kollektsionerlar kelib oladigan buyum.</p>
-                        <span class="arc-catalog-meta">1955–1965 · Silliqlangan lak, guruch</span>
-                    </div>
-
-                    <div class="arc-catalog-item">
-                        <span class="arc-catalog-num">04 / 08</span>
-                        <h3>Stalin empire davridagi bufetlar</h3>
-                        <p>1940–50-yillardagi massiv dub bufetlari o'ymakorlik, ustunlar, inkrustatsiya bilan. Sovet mebelining eng qimmat toifasi: haqiqiy massiv, qo'l ishi, o'n yillab xizmat.</p>
-                        <span class="arc-catalog-meta">1940–1955 · Dub massivi, naqsh</span>
-                    </div>
-
-                    <div class="arc-catalog-item">
-                        <span class="arc-catalog-num">05 / 08</span>
-                        <h3>Yog'och qo'l tayanchli kreslalar</h3>
-                        <p>1960-yillardagi rumin va chex kreslalari ingichka oyoqlarda. Original qoplama shart emas — massiv karkasi, shakli, yog'och holati qadrlanadi. O'zimiz ta'mirlaymiz.</p>
-                        <span class="arc-catalog-meta">1960–1975 · Massiv, original shakllar</span>
-                    </div>
-
-                    <div class="arc-catalog-item">
-                        <span class="arc-catalog-num">06 / 08</span>
-                        <h3>Silliqlangan stollar va byurolar</h3>
-                        <p>Yig'ma ovqat stollari, stol-kitoblar, tumbali yozuv stollari, guruch dastalar bilan sekretlar va byurolar. Silliqlangan sirt, massiv, burama oyoqlar.</p>
-                        <span class="arc-catalog-meta">1950–1980 · Silliqlangan lak</span>
-                    </div>
-
-                    <div class="arc-catalog-item">
-                        <span class="arc-catalog-num">07 / 08</span>
-                        <h3>Tryumolar, trellaj, etajerkalar</h3>
-                        <p>Ko'zguli va o'ymakorlikli tryumolar, ingichka oyoqlardagi etajerkalar, shisha eshikli kitob shkaflari. WhatsApp'da 15 daqiqada fotodan baholaymiz.</p>
-                        <span class="arc-catalog-meta">1955–1975 · Ko'zgular, naqsh</span>
-                    </div>
-
-                    <div class="arc-catalog-item">
-                        <span class="arc-catalog-num">08 / 08</span>
-                        <h3>Radiolalar, tumbalar, sandiqlar</h3>
-                        <p>Radiola tumbalari, lomberniy stollar, eski sandiqlar, sharlari bor nikellangan karavotlar — davrdan omon qolgan va xarakterini saqlagan hamma narsa. "Ta'mirlash uchun" holatda ham sotib olamiz.</p>
-                        <span class="arc-catalog-meta">1950–1980 · Massiv, original</span>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="arc-process">
-            <div class="arc-container">
-                <span class="arc-section-label">Jarayon · Qanday ishlaydi</span>
-                <h2 class="arc-section-heading">To'lovgacha to'rt qadam</h2>
-
-                <div class="arc-process-grid">
-                    <div class="arc-step">
-                        <span class="arc-step-num">01</span>
-                        <div class="arc-step-divider"></div>
-                        <h3>Qo'ng'iroq yoki foto</h3>
-                        <p>+998 99 111 23 23 ga qo'ng'iroq qiling yoki buyumning fotosini WhatsApp'ga yuboring. 15 daqiqada dastlabki narxni aytamiz.</p>
-                    </div>
-                    <div class="arc-step">
-                        <span class="arc-step-num">02</span>
-                        <div class="arc-step-divider"></div>
-                        <h3>Baholash uchun chiqish</h3>
-                        <p>Toshkentning istalgan tumaniga o'sha kuni bepul chiqamiz. Ko'rib chiqamiz, baholaymiz, model va fabrika tarixini aytamiz.</p>
-                    </div>
-                    <div class="arc-step">
-                        <span class="arc-step-num">03</span>
-                        <div class="arc-step-divider"></div>
-                        <h3>Yakuniy narx</h3>
-                        <p>Bozorlik va kutilmagan holatlarsiz yakuniy summani kelishamiz. Nega ko'proq to'lashga tayyormiz — tushuntiramiz.</p>
-                    </div>
-                    <div class="arc-step">
-                        <span class="arc-step-num">04</span>
-                        <div class="arc-step-divider"></div>
-                        <h3>To'lov va olib ketish</h3>
-                        <p>Ko'rib chiqilgan kuni naqd pul bilan to'lov. O'z yukchilarimiz va transportimiz bilan olib ketamiz.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="arc-quote">
-            <div class="arc-container">
-                <div class="arc-quote-wrap">
-                    <blockquote>Bir necha avlodni eslaydigan narsalardan ajralish doim oson emas. Shuning uchun biz sokin va hurmat bilan ishlaymiz.</blockquote>
-                    <cite>Nariman · Asoschi, Toshkent bozorida 8 yil</cite>
-                </div>
-            </div>
-        </section>
-
-        <section class="arc-faq">
-            <div class="arc-container">
-                <span class="arc-section-label">Savollar · Ko'p so'raladi</span>
-                <h2 class="arc-section-heading">Sotish haqida bilmoqchi bo'lganlar</h2>
-
-                <div class="arc-faq-list">
-                    <details class="arc-faq-item">
-                        <summary>Qaysi sovet mebelini eng qimmat sotib olasiz?</summary>
-                        <p>Chex, rumin, venger va GDR garnituralari. 1950–60-yillardagi yong'oq va palisandr shponli servant va bufetlar. Dub massividan o'ymakorlikli mebel. Yog'och qo'l tayanchli kreslalar. Stalin empire davri ayniqsa yuqori baholanadi.</p>
-                    </details>
-                    <details class="arc-faq-item">
-                        <summary>1980-yillardagi sovet stenkalarini sotib olasizmi?</summary>
-                        <p>Ha, lekin narx sotsialistik lager import modellaridan past bo'ladi. Har qanday holatda qabul qilamiz — hattoki ta'mirlash uchun yoki materialga buzish uchun.</p>
-                    </details>
-                    <details class="arc-faq-item">
-                        <summary>Mebelda siniqlar, chiziqlar, lak ko'chgan bo'lsa nima qilish kerak?</summary>
-                        <p>Bu 40–60 yoshli mebel uchun normal. Biz o'zimiz ta'mirlaymiz, shuning uchun holat kritik emas. Asosiysi — karkas massivdan bo'lsin, zamonaviy MDF emas.</p>
-                    </details>
-                    <details class="arc-faq-item">
-                        <summary>Mebelni olib chiqmasdan baholash mumkinmi?</summary>
-                        <p>Ha. +998 99 111 23 23 raqamiga WhatsApp orqali foto yuboring — 15 daqiqa ichida dastlabki narxni aytamiz. Yakuniy summani joyida tasdiqlaymiz.</p>
-                    </details>
-                    <details class="arc-faq-item">
-                        <summary>Chex stenkasi yoki rumin garniturasi qancha turadi?</summary>
-                        <p>Narx modelga, holatga, komplektlikka va jihozlarning originalligiga bog'liq. Yaxshi holatdagi sotsialistik lager import stenkalari sovet analoglaridan sezilarli darajada qimmatroq baholanadi.</p>
-                    </details>
-                    <details class="arc-faq-item">
-                        <summary>Nima uchun birovga eski sovet mebeli kerak?</summary>
-                        <p>Uni vintaj kollektsionerlari, interyer dizaynerlari, ta'mirchilar va xususiy mijozlar izlaydi. Ko'p buyumlar Rossiya va Yevropaga ketadi — u yerda sovet modernizmiga moda 2010-yillar o'rtasidan beri davom etmoqda.</p>
-                    </details>
-                    <details class="arc-faq-item">
-                        <summary>Alohida buyumlarni ham qabul qilasizmi?</summary>
-                        <p>Ha, garnitur bilan topshirish shart emas. Servant, tryumo, bufet, kitob shkafi, stol, kreslolarni alohida sotib olamiz. Baholash uchun bitta buyum ham yetarli.</p>
-                    </details>
-                    <details class="arc-faq-item">
-                        <summary>Meros bo'lib qolgan mebel bo'lsa-chi, uni bilmasam?</summary>
-                        <p>Bu bizning ishimiz. Kelamiz, ko'rib chiqamiz, nima borligini, qaysi yilniki, qaysi fabrikaniki ekanligini va bugungi narxini aytamiz. Bepul va majburiyatsiz.</p>
-                    </details>
-                    <details class="arc-faq-item">
-                        <summary>Stalin davri mebelini ham olasizmi?</summary>
-                        <p>Alohida qiziqish bilan olamiz. Stalin empire, dub bufetlari, o'ymakorlikli shkaflar, byurolar — sovet mebelining eng qimmat toifasi.</p>
-                    </details>
-                    <details class="arc-faq-item">
-                        <summary>Mebelni o'zingiz olib ketasizmi?</summary>
-                        <p>Ha. Toshkent bo'ylab o'z yukchilarimiz va transportimiz bilan bepul olib ketish. Chirchiq, Olmaliq, Angren ga ham chiqamiz.</p>
-                    </details>
-                    <details class="arc-faq-item">
-                        <summary>Nimani sotib OLMAYSIZ?</summary>
-                        <p>Tarixiy qiymatsiz zamonaviy DSP va MDF. 2000-yillardagi IKEA mebeli. Karkas mog'or yoki chirish bilan. Qolgan hammasi — muhokama qilinadi.</p>
-                    </details>
-                    <details class="arc-faq-item">
-                        <summary>To'lov qanday amalga oshiriladi?</summary>
-                        <p>Olib ketish kuni naqd pul bilan. Summa yuklashdan oldin muhokama qilinadi va belgilanadi — hech qanday kutilmagan holat va "joyida savdolashish" yo'q.</p>
-                    </details>
-                </div>
-            </div>
-        </section>
-
-        <section class="arc-final">
-            <div class="arc-container">
-                <span class="arc-eyebrow">To'g'ridan-to'g'ri bog'laning</span>
-                <h2>15 daqiqada baholaymiz. Shu kuni kelamiz.</h2>
-                <p class="arc-lede">WhatsApp'ga foto yuboring yoki qo'ng'iroq qiling. Nima borligini, qaysi modelni, qaysi fabrikaniki va bugun qancha to'lashga tayyorligimizni tushuntiramiz.</p>
-                <a href="tel:+998991112323" class="arc-phone-lg">+998 99 111 23 23</a>
-                <span class="arc-contact-name">Nariman · Toshkent, Abdurauf Fitrat 313</span>
-                <div style="margin-top: 56px;">
-                    <a href="tel:+998991112323" class="arc-cta">
+    <section class="sub-hero">
+        <div class="container">
+            <div class="sub-hero-grid">
+                <div class="sub-hero-text">
+                    <div class="sub-hero-badge">VseIzDoma · Toshkent va viloyat</div>
+                    <h1><span class="highlight">Eski sovet mebelini</span> va antikvariatni Toshkentda qimmat sotib olamiz</h1>
+                    <p class="sub-hero-desc">VseIzDoma eski sovet va antikvar mebelni qimmat sotib oladi: devor javonlari, servantlar, bufetlar, tryumolar, jilvirlangan stollar, komodlar, shkaflar, antikvariat va kolleksion buyumlar. 1 soatda chiqamiz, baholash bepul, pul darhol!</p>
+                    <a href="tel:+998991112323" class="sub-hero-phone">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
-                        Hozir qo'ng'iroq qilish
+                        <span>+998 99 111 23 23</span>
+                    </a>
+                </div>
+                <div class="sub-hero-image">
+                    <picture><source srcset="../images/livingroom-baroque-display.webp" type="image/webp"><img src="../images/livingroom-baroque-display.jpg" alt="Toshkentda eski sovet va antikvar mebel sotib olish — devor javonlari, servantlar, bufetlar" width="600" height="450" fetchpriority="high"></picture>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="advantages">
+        <div class="container">
+            <h2 class="section-title">Nega sovet mebelini bizga sotishadi</h2>
+            <div class="advantages-grid">
+                <div class="advantage-card"><div class="advantage-icon">⚡</div><h3>15 daqiqada baholash</h3><p>WhatsApp ga surat yuboring yoki qo'ng'iroq qiling — dastlabki narxni 15 daqiqada aytamiz, baholashga esa Toshkent bo'ylab o'sha kuniyoq chiqamiz.</p></div>
+                <div class="advantage-card"><div class="advantage-icon">🎓</div><h3>Nima sotib olayotganimizni bilamiz</h3><p>Fabrikalar va davrlarni bilamiz: chexoslovakiyalik Jitona, GDR ning Hellerau si, rumin va venger garniturlari, stalin ampiri. «Eski-tuski» deb narxni tushirmaymiz.</p></div>
+                <div class="advantage-card"><div class="advantage-icon">♻️</div><h3>Har qanday holat</h3><p>Restavratsiyaga ham olamiz: uchgan joylar, tirnalgan izlar, ko'chgan lak — agar karkas massivdan bo'lsa, bular to'siq emas. Restavratsiyani o'zimiz qilamiz.</p></div>
+                <div class="advantage-card"><div class="advantage-icon">📦</div><h3>Bepul olib ketish</h3><p>Yukchilar va transport bizniki. Og'ir garniturni Toshkent bo'ylab qismlarga ajratamiz, olib chiqamiz va bepul olib ketamiz. To'lov joyida naqd pulda.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-gallery">
+        <div class="container">
+            <h2 class="section-title">Qanday sovet mebelini sotib olamiz</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-card-image">
+                        <picture><source srcset="../images/livingroom-elegant-fireplace.webp" type="image/webp"><img src="../images/livingroom-elegant-fireplace.jpg" alt="Sovet devor javonlari, servantlar va bufetlarni sotib olish Toshkentda" loading="lazy" width="400" height="250"></picture>
+                    </div>
+                    <div class="product-card-body">
+                        <h3>Devor javonlari, servantlar, bufetlar</h3>
+                        <p>Chexoslovakiya va GDR devor javonlari, qirrali shishali va ko'zguli orqa devorli servantlar, stalin ampiri uslubidagi eman bufetlar. Sotsialistik lager importi — qimmatroq.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-card-image">
+                        <picture><source srcset="../images/nightstand-baroque-gold.webp" type="image/webp"><img src="../images/nightstand-baroque-gold.jpg" alt="Jilvirlangan stollar, tryumolar va komodlarni sotib olish" loading="lazy" width="400" height="250"></picture>
+                    </div>
+                    <div class="product-card-body">
+                        <h3>Stollar, tryumolar, komodlar</h3>
+                        <p>Jilvirlangan yoyiladigan stollar va kitob-stollar, ko'zguli tryumo va trelyajlar, komodlar va tumbalar, latun furniturali sekreterlar va byurolar.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-card-image">
+                        <picture><source srcset="../images/armoire-baroque-white.webp" type="image/webp"><img src="../images/armoire-baroque-white.jpg" alt="Antikvariat va kolleksion buyumlarni sotib olish Toshkentda" loading="lazy" width="400" height="250"></picture>
+                    </div>
+                    <div class="product-card-body">
+                        <h3>Antikvariat va kolleksion buyumlar</h3>
+                        <p>Qadimiy shkaflar, lomber stolchalari, nikellangan krovatlar, sandiqlar, shuningdek kolleksion chinni va xrustal — agar mebel bilan birga sotmoqchi bo'lsangiz.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="advantages">
+        <div class="container">
+            <h2 class="section-title">Sovet va antikvar mebel narxi nimaga bog'liq</h2>
+            <div class="advantages-grid">
+                <div class="advantage-card"><div class="advantage-icon">🛡️</div><h3>Saqlanganligi</h3><p>Karkas, original lak, furnitura, shisha va ko'zgularning butunligi. Qayta ishlov va aralashuv qancha kam bo'lsa, buyum shuncha qimmat.</p></div>
+                <div class="advantage-card"><div class="advantage-icon">💎</div><h3>Nodirlik va kolleksionlik</h3><p>Kam uchraydigan modellar, kichik seriyalar va sotsialistik lager importi — Chexoslovakiya, GDR, Ruminiya, Vengriya, Polsha — ommaviy mahsulotdan yuqori baholanadi.</p></div>
+                <div class="advantage-card"><div class="advantage-icon">🌳</div><h3>Materiali</h3><p>Eman, yong'oq, buk va palisandr massivi shpondan qimmat, jilvirlangan lak va qo'lda o'yish narxga qo'shiladi. DSP arzonroq turadi.</p></div>
+                <div class="advantage-card"><div class="advantage-icon">🧩</div><h3>Garnitur to'liqligi</h3><p>To'liq garnitur — devor javoni, yotoqxona yoki ovqatlanish xonasi — original javonlari, shishalari va kalitlari bilan tarqoq buyumlardan sezilarli qimmat turadi.</p></div>
+                <div class="advantage-card"><div class="advantage-icon">🏛️</div><h3>Uslub va davr</h3><p>Stalin ampiri, erta sovet moderni va 1940–60-yillar buyumlari 1980-yillarning kechki mebelidan yuqori baholanadi.</p></div>
+                <div class="advantage-card"><div class="advantage-icon">🔨</div><h3>Restavratsiya qiymati</h3><p>Qimmatli karkasli «restavratsiyaga» buyumlarni uchgan joylari bilan ham olamiz: asosiysi — asllik va material, mukammal tashqi ko'rinish emas.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sub-steps">
+        <div class="container">
+            <h2 class="section-title">Sovet mebelini qanday sotish mumkin</h2>
+            <div class="steps-grid">
+                <div class="sub-step">
+                    <div class="step-num">1</div>
+                    <h3>Qo'ng'iroq qiling yoki surat yuboring</h3>
+                    <p>Marka va davr muhim emas: buyumni tasvirlab bering yoki WhatsApp ga surat yuboring — narxni 15 daqiqada aytamiz.</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="sub-step">
+                    <div class="step-num">2</div>
+                    <h3>Baholashga kelamiz</h3>
+                    <p>Toshkent bo'ylab o'sha kuniyoq bepul chiqamiz. Ko'rib chiqamiz, model va fabrika tarixini aytamiz, narxni kelishamiz.</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="sub-step">
+                    <div class="step-num">3</div>
+                    <h3>To'laymiz va olib ketamiz</h3>
+                    <p>To'lov joyida naqd pulda, yukchilar va transport bilan olib ketish bepul. Sizga hech narsani qismlarga ajratish shart emas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="seo-text">
+        <div class="container">
+            <div class="blog-content" style="max-width:900px;margin:0 auto">
+                <h2>Toshkentda eski sovet va antikvar mebel qancha turadi</h2>
+                <p>Sotib olish narxi davrga, nodirligiga, materialiga, saqlanganligiga va buyumning to'liqligiga bog'liq. Quyida — Toshkent bo'yicha sovet va antikvar mebel uchun taxminiy narx oralig'i. Aniq summani surat bo'yicha yoki ko'rikdan keyin aytamiz: <a href="tel:+998991112323">+998 99 111 23 23</a>.</p>
+                <table>
+                    <thead><tr><th>Kategoriya</th><th>Holati</th><th>Narxi, so'm</th></tr></thead>
+                    <tbody>
+                        <tr><td>Antikvariat va kolleksion — tarixi bor bufet, komod</td><td>asl nusxa, qimmatli davr</td><td>1 000 000 – 5 000 000+</td></tr>
+                        <tr><td>Jilvirlangan devor javoni, servant</td><td>yaxshi holat</td><td>500 000 – 2 000 000</td></tr>
+                        <tr><td>Jilvirlangan stol, tryumo, tumbalar, komod</td><td>yaroqli</td><td>200 000 – 900 000</td></tr>
+                        <tr><td>Alohida buyumlar — stullar, javonlar, etajerkalar</td><td>yaroqli</td><td>50 000 – 400 000</td></tr>
+                        <tr><td>Har qanday mebel</td><td>nuqsonli / restavratsiyaga</td><td>50 000 dan</td></tr>
+                    </tbody>
+                </table>
+                <p>Narxlar taxminiy — yakuniy summa aniq modelga, fabrikaga, davrga va haqiqiy holatiga bog'liq. Chiqish va baholash bepul, sizni hech narsaga majbur qilmaydi.</p>
+
+                <h3>Nimalarni sotib olamiz</h3>
+                <p>Sovet va qadimiy mebelni donalab ham, garnitur holida ham olamiz — yaroqlisini va restavratsiyaga bo'lganini:</p>
+                <ul>
+                    <li>sotsialistik lager devor javonlari va gorkalari — Chexoslovakiya, GDR, Ruminiya, Vengriya, Polsha;</li>
+                    <li>qirrali shishali va ko'zguli orqa devorli servantlar;</li>
+                    <li>eman massividan stalin ampiri bufetlari;</li>
+                    <li>tryumolar, trelyajlar va ko'zguli komodlar;</li>
+                    <li>jilvirlangan yoyiladigan stollar, kitob-stollar, sekreterlar va byurolar;</li>
+                    <li>antikvar shkaflar, lomber stolchalari, sandiqlar, nikellangan krovatlar;</li>
+                    <li>kolleksion buyumlar — chinni, xrustal, idish-tovoq (mebel bilan birga sotmoqchi bo'lsangiz);</li>
+                    <li>restavratsiyaga buyumlar — uchgan joylari, ko'chgan laki, furniturasi to'liq bo'lmaganlari.</li>
+                </ul>
+
+                <h3>Nima qimmatroq baholanadi</h3>
+                <p>Eng qimmat baholanadigani — kam uchraydigan va kolleksion buyumlar: sotsialistik lager importi, erta sovet moderni va stalin ampiri. Narxga yaxshi saqlanganlik (original lak, shishalar, ko'zgular, furnitura), garniturning to'liqligi va mashhur fabrikadan yoki qimmatli davrdan kelib chiqishi qo'shiladi. Eman, yong'oq va palisandr massivi doim shpon va DSP dan qimmatroq, qo'lda o'yish va latun furnitura esa qiymatni oshiradi.</p>
+
+                <h3>Nega OLX yoki bozordan foydaliroq</h3>
+                <p>OLX va bozorda eski mebelni odatda «keraksiz narsa» deb, eng past chegara bo'yicha baholashadi — oldilarida kam uchraydigan chexoslovak devor javoni yoki stalin bufeti turganini tushunishmaydi. Sizga haftalab xaridor kutish, og'ir garniturni o'zingiz yuklab olib chiqish kerak bo'ladi. Biz modellar va davrlarni bilamiz, halol narxni 15 daqiqada aytamiz, o'sha kuniyoq kelamiz, naqd to'laymiz va o'z kuchimiz bilan bepul olib ketamiz. Natijada tezroq, ko'pincha esa qo'lda sotishdan foydaliroq chiqadi.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="sub-faq">
+        <div class="container">
+            <h2 class="section-title">Sovet mebelini sotib olish haqida savollar</h2>
+            <div class="faq-list">
+                <details class="sub-faq-item"><summary>Sovet davri mebeli qancha turadi?</summary><p>Davrga, nodirligiga, materialiga, saqlanganligiga va to'liqligiga bog'liq. Antikvariat va kolleksion buyumlar eng qimmat, jilvirlangan devor javonlari va servantlar — o'rtacha oraliqda. Surat yuboring yoki qo'ng'iroq qiling — narxni 15 daqiqada aytamiz.</p></details>
+                <details class="sub-faq-item"><summary>Qanday sovet mebelini eng qimmat sotib olasiz?</summary><p>Eng qimmati — stalin ampiri, eman bufetlar, antikvariat va sotsialistik lager importi: chexoslovak, rumin, venger va GDR garniturlari, massiv va yong'oq shponidan 1950–60-yillar servantlari. Nodirlik, saqlanganlik va to'liqlik narxni oshiradi.</p></details>
+                <details class="sub-faq-item"><summary>1980-yillar devor javonlari va servantlarini olasizmi?</summary><p>Ha, lekin sotsialistik lager importi va erta sovet davridan arzonroq. Har qanday holatda qabul qilamiz — yaroqlisini ham, restavratsiyaga bo'lganini ham. Massiv karkasli devor javonlari shponlangan DSP dan qimmatroq.</p></details>
+                <details class="sub-faq-item"><summary>Mebelda uchgan joylar, tirnalgan izlar, lak ko'chgan bo'lsa nima qilish kerak?</summary><p>40–70 yoshli mebel uchun bu odatiy hol. Restavratsiyani o'zimiz qilamiz, shuning uchun holat hal qiluvchi emas. Asosiysi — karkas zamonaviy DSP yoki MDF emas, massivdan bo'lsin.</p></details>
+                <details class="sub-faq-item"><summary>Mebelni olib chiqmasdan, surat bo'yicha baholash mumkinmi?</summary><p>Ha. +998 99 111 23 23 raqamiga WhatsApp orqali surat yuboring — dastlabki narxni 15 daqiqada aytamiz. Yakuniy summani joyida ko'rikdan keyin tasdiqlaymiz.</p></details>
+                <details class="sub-faq-item"><summary>Sovet devor javoni yoki rumin garnituri qancha turadi?</summary><p>Narx modelga, holatga, to'liqligiga va furnituraning asl bo'lishiga bog'liq. Yaxshi holatdagi sotsialistik lager import devor javonlari sovet o'xshashlaridan sezilarli yuqori baholanadi. Aniq summani surat bo'yicha yoki ko'rikdan keyin aytamiz.</p></details>
+                <details class="sub-faq-item"><summary>Antikvariat va kolleksion buyumlarni sotib olasizmi?</summary><p>Ha. Qadimiy shkaflar, bufetlar, tarixi bor komodlar, lomber stolchalari, shuningdek kolleksion chinni, xrustal va idish-tovoqni mebel bilan birga sotmoqchi bo'lsangiz olamiz. Qimmatli davr asl nusxalarini bozorning yuqori chegarasi bo'yicha olamiz.</p></details>
+                <details class="sub-faq-item"><summary>Eski sovet mebeli kimga kerak?</summary><p>Uni vintaj kolleksionerlari, interyer dizaynerlari va massivning tarixi hamda sifati muhim bo'lgan restavratorlar qidiradi. Ko'p buyumlar Rossiya va Yevropaga ketadi — u yerda sovet modernizmiga moda 2010-yillar o'rtasidan beri saqlanib kelmoqda.</p></details>
+                <details class="sub-faq-item"><summary>Komplekt emas, alohida buyumlarni qabul qilasizmi?</summary><p>Ha, garnitur holida topshirish shart emas. Servantlar, tryumolar, bufetlar, komodlar, stollar va shkaflarni donalab sotib olamiz. Baholashga chiqishimiz uchun bitta buyum ham yetarli.</p></details>
+                <details class="sub-faq-item"><summary>Mebel merosdan qolgan va men bu nima ekanini bilmasam-chi?</summary><p>Bu bizning ishimiz. Kelamiz, ko'rib chiqamiz, sizda nima turganini, qaysi yil va qaysi fabrikaniki ekanini va bugungi bozorda qancha turishini aytamiz. Bepul va majburiyatsiz.</p></details>
+                <details class="sub-faq-item"><summary>Stalin davri mebelini olasizmi?</summary><p>Alohida qiziqish bilan olamiz. Stalin ampiri, eman bufetlar, o'yilgan shkaflar va byurolar — sovet mebelining eng qimmatli toifasi. 1940–50-yillar asl nusxalari uchun bozorning yuqori chegarasi bo'yicha to'lashga tayyormiz.</p></details>
+                <details class="sub-faq-item"><summary>Mebelni o'zingiz olib ketasizmi?</summary><p>Ha. Toshkent bo'ylab o'z yukchilarimiz va transportimiz bilan bepul olib ketamiz. Chirchiq, Olmaliq va Angrenga ham chiqamiz. Sizga hech narsani qismlarga ajratish, olib chiqish yoki qadoqlash shart emas.</p></details>
+                <details class="sub-faq-item"><summary>Nimalarni sotib OLMAYSIZ?</summary><p>Tarixiy qiymatga ega bo'lmagan zamonaviy DSP va MDF, 2000-yillar IKEA mebeli, mog'or bosgan yoki karkasi chirigan korpus. Qolgan hammasi muhokama qilinadi. Qo'ng'iroq qiling, tasvirlab bering — halol aytamiz.</p></details>
+                <details class="sub-faq-item"><summary>To'lov qanday amalga oshiriladi?</summary><p>Olib ketilgan kuni naqd pulda. Summa yuklashdan oldin muhokama qilinadi va qat'iylashtiriladi — hech qanday kutilmagan hol va «joyida savdolashish» bo'lmaydi. So'rovga ko'ra kartaga o'tkazish ham mumkin.</p></details>
+                <details class="sub-faq-item"><summary>Toshkentning qaysi tumanlarida sovet mebelini sotib olasiz?</summary><p>Butun Toshkent bo'ylab ishlaymiz: Chilonzor, Yunusobod, Sergeli, Mirobod, Olmazor, Uchtepa, Yashnobod, Bektemir. Chirchiq, Olmaliq, Angren va Toshkent viloyatiga chiqamiz.</p></details>
+                <details class="sub-faq-item"><summary>Sovet mebelini shoshilinch qanday sotish mumkin?</summary><p>Surat yuboring yoki qo'ng'iroq qiling — 15 daqiqada baholaymiz. O'sha kuniyoq kelamiz, naqd to'laymiz va olib ketamiz. OLX yoki bozorda xaridor kutishdan tezroq va foydaliroq.</p></details>
+            </div>
+        </div>
+    </section>
+
+    <section class="seo-text">
+        <div class="container">
+            <p>Toshkentda sovet mebelini sotib olish — SSSR mebelini barcha tumanlar bo'ylab olamiz: Chilonzor, Yunusobod, Sergeli, Mirobod, Olmazor, Uchtepa, Yashnobod, Bektemir. Eski sovet mebelini qimmat sotish — devor javonlari, servantlar, bufetlar, tryumolar, jilvirlangan stollar va komodlar. Bepul chiqish, baholash va olib ketish, joyida naqd to'lov.</p>
+            <p>Sovet devor javoni, servant, bufet yoki rumin garnituri sotib olaman — yaroqlisini va restavratsiyaga bo'lganini. Toshkentda antikvariat sotib olish: qadimiy shkaflar, komodlar, lomber stolchalari, kolleksion idish-tovoq va xrustal. Fabrikalar va davrlarni bilamiz — chexoslovak Jitona, GDR Hellerau, polsha Swarzędz, venger va rumin garniturlari, 1940–50-yillar stalin ampiri.</p>
+            <p>Qadimiy va vintaj mebelni sotish bozordagidan foydaliroq: biz eman va yong'oq massivining, jilvirlangan lakning, latun furnituraning va qo'lda o'yishning haqiqiy qiymatini tushunamiz. Ko'p buyumlar Rossiya va Yevropadagi kolleksionerlar va dizaynerlarga ketadi — u yerda sovet modernizmiga moda 2010-yillar o'rtasidan beri saqlanib kelmoqda.</p>
+            <p>Toshkentning barcha tumanlarida ishlaymiz va Chirchiq, Olmaliq hamda Angrenga chiqamiz. Lombard yoki OLX da sotishdan farqli o'laroq, biz foiz olmaymiz va kutishga majbur qilmaymiz: narxni darhol aytamiz, joyida naqd to'laymiz va og'ir mebelni o'z yukchilarimiz bilan bepul olib ketamiz.</p>
+        </div>
+    </section>
+
+    <section class="sub-cta">
+        <div class="container">
+            <div class="cta-card">
+                <h2>Sovet mebelini qimmat soting!</h2>
+                <p>Qo'ng'iroq qiling yoki surat yuboring — narxni 15 daqiqada aytamiz, o'sha kuniyoq kelamiz va joyida to'laymiz. Bepul olib ketamiz!</p>
+                <a href="tel:+998991112323" class="cta-phone">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+                    <span>+998 99 111 23 23</span>
+                </a>
+                <div class="cta-socials">
+                    <a href="https://t.me/bu_iz_doma" class="cta-social-btn telegram" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                        Telegram
+                    </a>
+                    <a href="https://instagram.com/mebel.tashkent.77" class="cta-social-btn instagram" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.757-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+                        Instagram
                     </a>
                 </div>
             </div>
-        </section>
-
-    </article>
+        </div>
+    </section>
 
     <section class="reviews-compact" id="reviews" aria-label="Mijozlar sharhlari">
         <div class="container">
@@ -649,81 +541,97 @@
     </script>
 
     <script type="application/ld+json">
-    {
+{
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "inLanguage": "uz",
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Qaysi sovet mebelini eng qimmat sotib olasiz?",
+      "name": "Sovet davri mebeli qancha turadi?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Chex, rumin, venger va GDR garnituralari. 1950–60-yillardagi yong'oq va palisandr shponli servant va bufetlar. Dub massividan o'ymakorlikli mebel. Yog'och qo'l tayanchli kreslalar. Stalin empire davri ayniqsa yuqori baholanadi."
+        "text": "Davrga, nodirligiga, materialiga, saqlanganligiga va to'liqligiga bog'liq. Antikvariat va kolleksion buyumlar eng qimmat, jilvirlangan devor javonlari va servantlar — o'rtacha oraliqda. Surat yuboring yoki qo'ng'iroq qiling — narxni 15 daqiqada aytamiz."
       }
     },
     {
       "@type": "Question",
-      "name": "1980-yillardagi sovet stenkalarini sotib olasizmi?",
+      "name": "Qanday sovet mebelini eng qimmat sotib olasiz?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Ha, lekin narx sotsialistik lager import modellaridan past bo'ladi. Har qanday holatda qabul qilamiz — hattoki ta'mirlash uchun yoki materialga buzish uchun."
+        "text": "Eng qimmati — stalin ampiri, eman bufetlar, antikvariat va sotsialistik lager importi: chexoslovak, rumin, venger va GDR garniturlari, massiv va yong'oq shponidan 1950–60-yillar servantlari. Nodirlik, saqlanganlik va to'liqlik narxni oshiradi."
       }
     },
     {
       "@type": "Question",
-      "name": "Mebelda siniqlar, chiziqlar, lak ko'chgan bo'lsa nima qilish kerak?",
+      "name": "1980-yillar devor javonlari va servantlarini olasizmi?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Bu 40–60 yoshli mebel uchun normal. Biz o'zimiz ta'mirlaymiz, shuning uchun holat kritik emas. Asosiysi — karkas massivdan bo'lsin, zamonaviy MDF emas."
+        "text": "Ha, lekin sotsialistik lager importi va erta sovet davridan arzonroq. Har qanday holatda qabul qilamiz — yaroqlisini ham, restavratsiyaga bo'lganini ham. Massiv karkasli devor javonlari shponlangan DSP dan qimmatroq."
       }
     },
     {
       "@type": "Question",
-      "name": "Mebelni olib chiqmasdan baholash mumkinmi?",
+      "name": "Mebelda uchgan joylar, tirnalgan izlar, lak ko'chgan bo'lsa nima qilish kerak?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Ha. +998 99 111 23 23 raqamiga WhatsApp orqali foto yuboring — 15 daqiqa ichida dastlabki narxni aytamiz. Yakuniy summani joyida tasdiqlaymiz."
+        "text": "40–70 yoshli mebel uchun bu odatiy hol. Restavratsiyani o'zimiz qilamiz, shuning uchun holat hal qiluvchi emas. Asosiysi — karkas zamonaviy DSP yoki MDF emas, massivdan bo'lsin."
       }
     },
     {
       "@type": "Question",
-      "name": "Chex stenkasi yoki rumin garniturasi qancha turadi?",
+      "name": "Mebelni olib chiqmasdan, surat bo'yicha baholash mumkinmi?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Narx modelga, holatga, komplektlikka va jihozlarning originalligiga bog'liq. Yaxshi holatdagi sotsialistik lager import stenkalari sovet analoglaridan sezilarli darajada qimmatroq baholanadi."
+        "text": "Ha. +998 99 111 23 23 raqamiga WhatsApp orqali surat yuboring — dastlabki narxni 15 daqiqada aytamiz. Yakuniy summani joyida ko'rikdan keyin tasdiqlaymiz."
       }
     },
     {
       "@type": "Question",
-      "name": "Nima uchun birovga eski sovet mebeli kerak?",
+      "name": "Sovet devor javoni yoki rumin garnituri qancha turadi?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Uni vintaj kollektsionerlari, interyer dizaynerlari, ta'mirchilar va xususiy mijozlar izlaydi. Ko'p buyumlar Rossiya va Yevropaga ketadi — u yerda sovet modernizmiga moda 2010-yillar o'rtasidan beri davom etmoqda."
+        "text": "Narx modelga, holatga, to'liqligiga va furnituraning asl bo'lishiga bog'liq. Yaxshi holatdagi sotsialistik lager import devor javonlari sovet o'xshashlaridan sezilarli yuqori baholanadi. Aniq summani surat bo'yicha yoki ko'rikdan keyin aytamiz."
       }
     },
     {
       "@type": "Question",
-      "name": "Alohida buyumlarni ham qabul qilasizmi?",
+      "name": "Antikvariat va kolleksion buyumlarni sotib olasizmi?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Ha, garnitur bilan topshirish shart emas. Servant, tryumo, bufet, kitob shkafi, stol, kreslolarni alohida sotib olamiz. Baholash uchun bitta buyum ham yetarli."
+        "text": "Ha. Qadimiy shkaflar, bufetlar, tarixi bor komodlar, lomber stolchalari, shuningdek kolleksion chinni, xrustal va idish-tovoqni mebel bilan birga sotmoqchi bo'lsangiz olamiz. Qimmatli davr asl nusxalarini bozorning yuqori chegarasi bo'yicha olamiz."
       }
     },
     {
       "@type": "Question",
-      "name": "Meros bo'lib qolgan mebel bo'lsa-chi, uni bilmasam?",
+      "name": "Eski sovet mebeli kimga kerak?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Bu bizning ishimiz. Kelamiz, ko'rib chiqamiz, nima borligini, qaysi yilniki, qaysi fabrikaniki ekanligini va bugungi narxini aytamiz. Bepul va majburiyatsiz."
+        "text": "Uni vintaj kolleksionerlari, interyer dizaynerlari va massivning tarixi hamda sifati muhim bo'lgan restavratorlar qidiradi. Ko'p buyumlar Rossiya va Yevropaga ketadi — u yerda sovet modernizmiga moda 2010-yillar o'rtasidan beri saqlanib kelmoqda."
       }
     },
     {
       "@type": "Question",
-      "name": "Stalin davri mebelini ham olasizmi?",
+      "name": "Komplekt emas, alohida buyumlarni qabul qilasizmi?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Alohida qiziqish bilan olamiz. Stalin empire, dub bufetlari, o'ymakorlikli shkaflar, byurolar — sovet mebelining eng qimmat toifasi."
+        "text": "Ha, garnitur holida topshirish shart emas. Servantlar, tryumolar, bufetlar, komodlar, stollar va shkaflarni donalab sotib olamiz. Baholashga chiqishimiz uchun bitta buyum ham yetarli."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Mebel merosdan qolgan va men bu nima ekanini bilmasam-chi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bu bizning ishimiz. Kelamiz, ko'rib chiqamiz, sizda nima turganini, qaysi yil va qaysi fabrikaniki ekanini va bugungi bozorda qancha turishini aytamiz. Bepul va majburiyatsiz."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Stalin davri mebelini olasizmi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Alohida qiziqish bilan olamiz. Stalin ampiri, eman bufetlar, o'yilgan shkaflar va byurolar — sovet mebelining eng qimmatli toifasi. 1940–50-yillar asl nusxalari uchun bozorning yuqori chegarasi bo'yicha to'lashga tayyormiz."
       }
     },
     {
@@ -731,15 +639,15 @@
       "name": "Mebelni o'zingiz olib ketasizmi?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Ha. Toshkent bo'ylab o'z yukchilarimiz va transportimiz bilan bepul olib ketish. Chirchiq, Olmaliq, Angren ga ham chiqamiz."
+        "text": "Ha. Toshkent bo'ylab o'z yukchilarimiz va transportimiz bilan bepul olib ketamiz. Chirchiq, Olmaliq va Angrenga ham chiqamiz. Sizga hech narsani qismlarga ajratish, olib chiqish yoki qadoqlash shart emas."
       }
     },
     {
       "@type": "Question",
-      "name": "Nimani sotib OLMAYSIZ?",
+      "name": "Nimalarni sotib OLMAYSIZ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Tarixiy qiymatsiz zamonaviy DSP va MDF. 2000-yillardagi IKEA mebeli. Karkas mog'or yoki chirish bilan. Qolgan hammasi — muhokama qilinadi."
+        "text": "Tarixiy qiymatga ega bo'lmagan zamonaviy DSP va MDF, 2000-yillar IKEA mebeli, mog'or bosgan yoki karkasi chirigan korpus. Qolgan hammasi muhokama qilinadi. Qo'ng'iroq qiling, tasvirlab bering — halol aytamiz."
       }
     },
     {
@@ -747,7 +655,23 @@
       "name": "To'lov qanday amalga oshiriladi?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Olib ketish kuni naqd pul bilan. Summa yuklashdan oldin muhokama qilinadi va belgilanadi — hech qanday kutilmagan holat va \"joyida savdolashish\" yo'q."
+        "text": "Olib ketilgan kuni naqd pulda. Summa yuklashdan oldin muhokama qilinadi va qat'iylashtiriladi — hech qanday kutilmagan hol va «joyida savdolashish» bo'lmaydi. So'rovga ko'ra kartaga o'tkazish ham mumkin."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Toshkentning qaysi tumanlarida sovet mebelini sotib olasiz?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Butun Toshkent bo'ylab ishlaymiz: Chilonzor, Yunusobod, Sergeli, Mirobod, Olmazor, Uchtepa, Yashnobod, Bektemir. Chirchiq, Olmaliq, Angren va Toshkent viloyatiga chiqamiz."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Sovet mebelini shoshilinch qanday sotish mumkin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Surat yuboring yoki qo'ng'iroq qiling — 15 daqiqada baholaymiz. O'sha kuniyoq kelamiz, naqd to'laymiz va olib ketamiz. OLX yoki bozorda xaridor kutishdan tezroq va foydaliroq."
       }
     }
   ]
