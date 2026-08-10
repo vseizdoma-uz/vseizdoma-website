@@ -92,10 +92,21 @@
 
 ## Google Indexing API
 - **Ключ (ПОСТОЯННОЕ место, не терять):** `~/.secrets/gen-lang-client-0396513680-fd0c81ba9a9d.json` (создан 28.07.2026; старые ключи в GCP не удалять — один зашит в Vercel ga-api-psi)
-- Данные GSC/GA читать без ключа: `curl https://ga-api-psi.vercel.app/api/search-console` и `/api/analytics`
 - Сервис-аккаунт добавлен как владелец в GSC (14 марта 2026)
 - Можно отправлять URL на переиндексацию через `google.oauth2` + `indexing.googleapis.com/v3/urlNotifications:publish`
 - 23 URL отправлены на переиндексацию 14 марта 2026
+- ⚠️ Indexing API официально поддерживает только JobPosting/BroadcastEvent — для обычных страниц возвращает 200, но Google не обязан слушать. Надёжнее продублировать вручную: GSC → «Проверка URL» → «Запросить индексирование» (лимит ~10-12 URL/день)
+
+## Как читать данные GSC (ВАЖНО — не наступать на грабли)
+- ❌ **НЕ использовать `curl https://ga-api-psi.vercel.app/api/search-console` для свежих данных.** Этот эндпоинт не ставит `dataState` и **отстаёт на 2-3 дня** — последних дней в нём просто нет. Годится только для быстрого обзора за прошлый период.
+- ✅ **Правильно — напрямую через GSC API сервис-аккаунтом** (тот же ключ `~/.secrets/gen-lang-client-*.json`, scope `webmasters.readonly`), обязательно с **`"dataState": "all"`** в теле запроса — иначе Google отдаёт только «финализированные» данные и режет последние 2-3 дня.
+- Готовый скрипт: **`scripts/gsc.py`** (директория в .gitignore, живёт локально). Использование:
+  - `python scripts/gsc.py sites` — список ресурсов
+  - `python scripts/gsc.py <site> <start> <end> <dims> <limit>` — например `python scripts/gsc.py https://vseizdoma.store/ 2026-08-01 2026-08-10 date 100`
+  - dims: `date` / `query` / `page` / `query,page` / `device`. Пустая строка = сводка за период.
+- Если скрипта нет — воссоздать: `google.oauth2.service_account` + `build("searchconsole","v1")` + `searchanalytics().query(siteUrl=..., body={...,"dataState":"all"})`. Зависимости: `pip install google-auth google-api-python-client` (системный python3.9 их не содержит — ставить в venv).
+- **Диагностика «страница просела»:** всегда брать срез `dimensions=["query","page"]` за оба периода. Падение средней позиции страницы часто означает, что её запросы перехватила более сильная страница — это успех, а не деградация (проверено 10.08.2026 на `skupka-mebeli`). Метрика успеха — клики и позиции конкретных запросов, НЕ средняя позиция.
+- Проверка мобильного рендера: `resize_window` в Chrome **не меняет viewport** при fullscreen-окне. Мерить через iframe шириной 390px — в нём медиазапросы срабатывают честно.
 
 ## Bing IndexNow (Bing/Yandex/Naver/Seznam/Yep)
 - API ключ: `38beab8d753a4b6f94dc9c055f068492`
