@@ -20,7 +20,9 @@
 - **Household appliances:** Refrigerators, washing machines, air conditioners, TVs, gas/electric stoves, microwaves, dishwashers
 - **Furniture:** Sofas, beds, wardrobes, tables, chairs, kitchen sets, dressers
 - **Premium imported furniture:** Italian, Turkish, Malaysian (baroque, rococo, classic styles) — purchased at premium prices
-- **Soviet-era items:** USSR furniture, sideboards, buffets, polished tables, crystal, china sets
+- **Soviet-era items:** USSR furniture, sideboards, buffets, polished tables
+- **Tableware and crystal:** USSR and Bohemia crystal, "Madonna" dinner sets, LFZ/Dulyovo porcelain, melchior cutlery, samovars
+- **Carpets and rugs:** Handmade (Persian, Turkmen, Caucasian, Bukhara), Soviet factory carpets, palas rugs
 - **Building materials:** Doors, windows, plumbing, radiators, pipes, laminate, tiles
 - **Moving buyouts:** Complete apartment/home contents in a single visit
 
@@ -61,9 +63,12 @@
 
 ## Service Pages
 
+- /kuplyu-vse-iz-doma.html — Complete home contents buyout ("I buy everything from your home")
 - /skupka-mebeli.html — Used furniture buyback
-- /skupka-tehniki.html — Used appliance buyback
-- /skupka-mebeli-sssr.html — Soviet-era furniture buyback
+- /skupka-tehniki.html — Used household appliance buyback
+- /skupka-mebeli-sssr.html — Soviet-era furniture and antiques buyback
+- /skupka-posudy.html — Tableware, crystal and porcelain buyback
+- /skupka-kovrov.html — Carpet and rug buyback
 - /kupit-holodilnik.html — Used refrigerator buying
 - /kupit-stiralnuyu.html — Used washing machine buying
 - /kupit-posudomoechnuyu.html — Used dishwasher buying
@@ -74,3 +79,4 @@
 - /kupit-gazplitu.html — Used gas stove buying
 - /kupit-shkaf.html — Used wardrobe buying
 - /blog/kak-prodat-mebel-tashkent.html — How to sell furniture in Tashkent (guide)
+- /blog/skolko-stoit-mebel-tashkent.html — What used furniture and appliances are worth in Tashkent (price guide)

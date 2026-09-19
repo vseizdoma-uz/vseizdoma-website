@@ -531,11 +531,6 @@ body {
     height: 20px;
 }
 
-.social-btn.whatsapp:hover {
-    background: #25d366;
-    border-color: #25d366;
-    color: white;
-}
 
 .social-btn.telegram:hover {
     background: #0088cc;
@@ -1192,49 +1187,6 @@ body {
     line-height: 1.55;
 }
 
-/* Промо-галерея фото */
-.promo-gallery {
-    margin-top: 40px;
-    margin-bottom: 40px;
-}
-
-.promo-gallery h3 {
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.promo-gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-}
-
-.promo-gallery-item {
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-    transition: transform 0.3s ease;
-}
-
-.promo-gallery-item:hover {
-    transform: scale(1.03);
-}
-
-.promo-gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-@media (max-width: 600px) {
-    .promo-gallery-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-    }
-}
 
 .seo-faq h3 {
     font-size: 1.4rem;
@@ -1302,6 +1254,129 @@ body {
 
     .seo-content {
         padding: 40px 0;
+    }
+}
+
+/* Отзывы — видимый блок под AggregateRating (добавлен 18.04.2026, жил только в минифицированном style.css до 20.09.2026) */
+.reviews-section {
+    padding: 80px 0;
+    background: var(--bg-light);
+}
+
+.reviews-section .section-title {
+    margin-bottom: 15px;
+}
+
+.reviews-rating {
+    text-align: center;
+    margin-bottom: 45px;
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+.reviews-rating strong {
+    color: var(--text);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-right: 6px;
+}
+
+.reviews-stars {
+    color: #fbbf24;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-right: 6px;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.review-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.25s;
+}
+
+.review-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+.review-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.review-author {
+    font-weight: 700;
+    color: var(--text);
+    font-size: 1rem;
+}
+
+.review-date {
+    color: var(--text-light);
+    font-size: 0.8rem;
+}
+
+.review-card-stars {
+    color: #fbbf24;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.review-text {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.55;
+}
+
+.reviews-cta {
+    text-align: center;
+    margin-top: 35px;
+}
+
+.reviews-cta a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: 1px solid var(--primary);
+    border-radius: 10px;
+    transition: all 0.2s;
+}
+
+.reviews-cta a:hover {
+    background: var(--primary);
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .reviews-section {
+        padding: 60px 0;
+    }
+
+    .reviews-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .review-card {
+        padding: 20px;
     }
 }
 
@@ -1531,9 +1606,6 @@ body {
     min-width: 280px;
 }
 
-.contact-right {
-    text-align: center;
-}
 
 .cta-btn {
     display: inline-flex;
@@ -1875,9 +1947,6 @@ body {
     fill: var(--bg-light);
 }
 
-.wave-divider-to-white svg path {
-    fill: var(--bg);
-}
 
 /* Scroll animations */
 [data-animate] {
@@ -1971,7 +2040,7 @@ body {
         font-size: 0.9rem;
     }
 
-    .features, .categories, .how-it-works, .contact, .gallery, .partner-promo {
+    .features, .how-it-works, .contact, .gallery, .partner-promo {
         padding: 60px 0;
     }
 
