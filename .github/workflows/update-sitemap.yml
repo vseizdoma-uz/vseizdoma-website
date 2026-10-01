@@ -12,20 +12,28 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: update-sitemap
+  cancel-in-progress: false
+
 jobs:
   update-sitemap:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 0
 
-      # lastmod двигаем только при изменении содержания: title, description или видимого текста (слова и цифры).
-      # Правки стилей, cache-bust, theme-color, разметки, эмодзи и знаков препинания дату не меняют.
+      # lastmod двигаем только при изменении содержания: title, description, canonical/hreflang,
+      # видимого текста (слова и цифры), alt/src картинок, ссылок в контенте и JSON-LD.
+      # Правки стилей, cache-bust, theme-color, эмодзи и знаков препинания дату не меняют.
+      # Сравниваются все коммиты пуша (before..HEAD), а не только последний.
       - name: Update lastmod for pages with changed content
+        env:
+          BEFORE: ${{ github.event.before }}
         run: |
           python3 - <<'EOF'
-          import html, re, subprocess, datetime
+          import html, os, re, subprocess, datetime
 
           def show(rev, path):
               r = subprocess.run(["git", "show", f"{rev}:{path}"], capture_output=True, text=True)
@@ -34,22 +42,27 @@ jobs:
           def content(doc):
               title = re.search(r"<title>(.*?)</title>", doc, re.S)
               desc = re.search(r'<meta name="description" content="([^"]*)"', doc)
+              links = re.findall(r'<link rel="(?:canonical|alternate)"[^>]*>', doc)
+              ld = [re.sub(r"\s+", "", x) for x in re.findall(r'<script type="application/ld\+json">(.*?)</script>', doc, re.S)]
               body = re.search(r"<body.*?>(.*)</body>", doc, re.S)
-              text = body.group(1) if body else ""
-              text = re.sub(r"<(script|style|noscript)\b.*?</\1>", " ", text, flags=re.S)
-              text = re.sub(r"<[^>]+>", " ", text)
+              body = re.sub(r"<(script|style|noscript)\b.*?</\1>", " ", body.group(1) if body else "", flags=re.S)
+              attrs = re.findall(r'\b(?:alt|src|srcset|href)="([^"]*)"', body)
+              text = re.sub(r"<[^>]+>", " ", body)
               text = re.sub(r"[^\w\s]", " ", html.unescape(text))
               text = re.sub(r"\s+", " ", text).strip()
-              return (title.group(1).strip() if title else "", desc.group(1) if desc else "", text)
+              return (title.group(1).strip() if title else "", desc.group(1) if desc else "", links, ld, attrs, text)
 
+          before = os.environ.get("BEFORE", "")
+          if not before or set(before) == {"0"} or subprocess.run(["git", "cat-file", "-e", before]).returncode:
+              before = "HEAD~1"
           changed = subprocess.run(
-              ["git", "diff", "--name-only", "HEAD~1", "HEAD", "--", "*.html", "uz/*.html", "en/*.html", "blog/*.html"],
+              ["git", "diff", "--name-only", before, "HEAD", "--", "*.html", "uz/*.html", "en/*.html", "blog/*.html"],
               capture_output=True, text=True).stdout.split()
-          today = datetime.datetime.utcnow().strftime("%Y-%m-%d")
+          today = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=5))).strftime("%Y-%m-%d")
           sitemap = open("sitemap.xml", encoding="utf-8").read()
           updated = 0
           for path in changed:
-              old, new = show("HEAD~1", path), show("HEAD", path)
+              old, new = show(before, path), show("HEAD", path)
               if new is None or (old is not None and content(old) == content(new)):
                   print("  content unchanged:", path)
                   continue
