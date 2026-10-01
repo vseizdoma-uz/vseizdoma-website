@@ -2029,8 +2029,6 @@ body {
         width: 290px;
         right: -310px;
     }
-
-    .hero-blob { display: none; }
 }
 
 @media (max-width: 480px) {
