@@ -20,36 +20,52 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Update lastmod for changed HTML files
+      # lastmod двигаем только при изменении содержания: title, description или видимого текста (слова и цифры).
+      # Правки стилей, cache-bust, theme-color, разметки, эмодзи и знаков препинания дату не меняют.
+      - name: Update lastmod for pages with changed content
         run: |
-          TODAY=$(date -u +%Y-%m-%d)
-          CHANGED=$(git diff --name-only HEAD~1 HEAD -- '*.html' 'uz/*.html' 'en/*.html' 'blog/*.html')
+          python3 - <<'EOF'
+          import html, re, subprocess, datetime
 
-          if [ -z "$CHANGED" ]; then
-            echo "No HTML files changed, skipping"
-            exit 0
-          fi
+          def show(rev, path):
+              r = subprocess.run(["git", "show", f"{rev}:{path}"], capture_output=True, text=True)
+              return r.stdout if r.returncode == 0 else None
 
-          echo "Changed files:"
-          echo "$CHANGED"
-          echo "Updating lastmod to $TODAY"
+          def content(doc):
+              title = re.search(r"<title>(.*?)</title>", doc, re.S)
+              desc = re.search(r'<meta name="description" content="([^"]*)"', doc)
+              body = re.search(r"<body.*?>(.*)</body>", doc, re.S)
+              text = body.group(1) if body else ""
+              text = re.sub(r"<(script|style|noscript)\b.*?</\1>", " ", text, flags=re.S)
+              text = re.sub(r"<[^>]+>", " ", text)
+              text = re.sub(r"[^\w\s]", " ", html.unescape(text))
+              text = re.sub(r"\s+", " ", text).strip()
+              return (title.group(1).strip() if title else "", desc.group(1) if desc else "", text)
 
-          for FILE in $CHANGED; do
-            case "$FILE" in
-              index.html)       URL="https://vseizdoma.store/" ;;
-              uz/index.html)    URL="https://vseizdoma.store/uz/" ;;
-              en/index.html)    URL="https://vseizdoma.store/en/" ;;
-              *)                URL="https://vseizdoma.store/$FILE" ;;
-            esac
-
-            if grep -q "<loc>${URL}</loc>" sitemap.xml; then
-              sed -i "/<loc>${URL//\//\\/}<\/loc>/{n;s/<lastmod>[0-9-]*<\/lastmod>/<lastmod>${TODAY}<\/lastmod>/}" sitemap.xml
-              echo "  Updated: $URL"
-            fi
-          done
-
-          sed -i "s/<lastmod>[0-9-]*<\/lastmod>/<lastmod>${TODAY}<\/lastmod>/g" sitemap-index.xml
-          echo "Updated sitemap-index.xml"
+          changed = subprocess.run(
+              ["git", "diff", "--name-only", "HEAD~1", "HEAD", "--", "*.html", "uz/*.html", "en/*.html", "blog/*.html"],
+              capture_output=True, text=True).stdout.split()
+          today = datetime.datetime.utcnow().strftime("%Y-%m-%d")
+          sitemap = open("sitemap.xml", encoding="utf-8").read()
+          updated = 0
+          for path in changed:
+              old, new = show("HEAD~1", path), show("HEAD", path)
+              if new is None or (old is not None and content(old) == content(new)):
+                  print("  content unchanged:", path)
+                  continue
+              url = "https://vseizdoma.store/" + re.sub(r"(^|/)index\.html$", r"\1", path)
+              pattern = re.compile(r"(<loc>" + re.escape(url) + r"</loc>\s*<lastmod>)[0-9-]+(</lastmod>)")
+              sitemap, n = pattern.subn(r"\g<1>" + today + r"\g<2>", sitemap)
+              if n:
+                  updated += 1
+                  print("  updated:", url)
+          if updated:
+              open("sitemap.xml", "w", encoding="utf-8").write(sitemap)
+              index = open("sitemap-index.xml", encoding="utf-8").read()
+              index = re.sub(r"(<loc>https://vseizdoma\.store/sitemap\.xml</loc>\s*<lastmod>)[0-9-]+", r"\g<1>" + today, index)
+              open("sitemap-index.xml", "w", encoding="utf-8").write(index)
+          print("pages updated:", updated)
+          EOF
 
       - name: Commit and push
         run: |
